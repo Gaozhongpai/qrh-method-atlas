@@ -1553,7 +1553,496 @@
           "nodeId": "recovery",
           "text": "Continue and transfer to all Dirichlet characters"
         }
-      ]
+      ],
+      "bottleneck": {
+        "sourceCommit": "3874f3e75de18ff5806dcb9519fc260e034ef0e9",
+        "auditedAt": "2026-10-15T13:12:22.731641+00:00",
+        "assessment": "Global LOW is deliberately balanced at θ, and limiting moment capacity uses its plane boundary. Among the three comparable final-row guarantees, the top-row certificate has the smallest positive reserve. These facts identify constraints to inspect; they do not prove an optimized global bottleneck or that all remaining improvement is exhausted.",
+        "scope": "Audit of selected scalar identities, certified interval reserves and actual source contracts for the admitted 21871/25000 proof. Six analytic dimensions share constraints. Only the three final-row guarantees share the θ−E scale. Internal source-LOW/HIGH payments belong to the moment construction. Numerical optimization, exact global minima and cross-normalization reserve rankings are not claimed.",
+        "constraints": [
+          {
+            "id": "global-low-balance",
+            "label": "Global LOW: balanced at the endpoint",
+            "dimensions": [
+              "low",
+              "geometry"
+            ],
+            "gateId": "low",
+            "kind": "endpoint-balance",
+            "comparisonGroup": "global-low-balance",
+            "relation": "=",
+            "unit": "fixed signal-exponent slack at θ",
+            "domain": "θ=21871/25000 with the recorded physical geometry. The LOW estimate allows any fixed loss>0.",
+            "formula": "signal(θ) = x/2 + (y−x)/12; probe = O(Z^(signal(θ)+loss))",
+            "detail": "The nominal global LOW exponent equals the signal exponent at θ: it has zero fixed endpoint slack in this geometry. This is intentional endpoint balance, not a failed estimate or a universal barrier. Under β>θ, signal(β)−signal(θ)=β−θ and choose loss<(β−θ).",
+            "sources": [
+              {
+                "label": "Global LOW and signal balance",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Assembly/Geometry.lean#L19"
+              },
+              {
+                "label": "Global reflected-probe LOW bound",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Assembly/Final/SourceProbe.lean#L18"
+              }
+            ],
+            "margin": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          {
+            "id": "final-top-row",
+            "label": "Top physical rows",
+            "dimensions": [
+              "high",
+              "detector",
+              "moment",
+              "geometry"
+            ],
+            "gateId": "high",
+            "kind": "certified-lower-bound",
+            "comparisonGroup": "final-row",
+            "relation": ">",
+            "unit": "θ − E (same final-row normalization)",
+            "domain": "d∈[159/200,1989/2500+10⁻¹⁰], δ∈[0,3/4], p∈[0,1/2]; affine count on its certified region and old count elsewhere.",
+            "formula": "θ − Eκ*(d,Cnew;δ,p) > 4999/5000000000",
+            "detail": "Smallest of the three displayed comparable final-row reserve guarantees. It is a certified uniform lower bound, not an exact minimum and not a proven global bottleneck. The top-at-h certificate has reserve10⁻⁶; extension to h+10⁻¹⁰ charges at most2·10⁻¹⁰.",
+            "sources": [
+              {
+                "label": "Exact final-row certificates",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Arithmetic/Bernstein/Endpoint.lean#L180"
+              },
+              {
+                "label": "Full row intervals and endpoint extension",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Arithmetic/Bernstein/Feedback.lean#L326"
+              }
+            ],
+            "margin": {
+              "numerator": "4999",
+              "denominator": "5000000000"
+            }
+          },
+          {
+            "id": "final-middle-row",
+            "label": "Middle physical rows",
+            "dimensions": [
+              "high",
+              "geometry"
+            ],
+            "gateId": "high",
+            "kind": "certified-lower-bound",
+            "comparisonGroup": "final-row",
+            "relation": ">",
+            "unit": "θ − E (same final-row normalization)",
+            "domain": "d∈[1/2,159/200], δ∈[0,3/4], p∈[0,1/2], using old physical capacity.",
+            "formula": "θ − Eκ*(d,Cold;δ,p) > 1/100000",
+            "detail": "A positive uniform certificate for the inherited middle-row branch. It is not its optimized or exact smallest margin.",
+            "sources": [
+              {
+                "label": "Exact final-row certificates",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Arithmetic/Bernstein/Endpoint.lean#L180"
+              },
+              {
+                "label": "Full row intervals and endpoint extension",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Arithmetic/Bernstein/Feedback.lean#L326"
+              }
+            ],
+            "margin": {
+              "numerator": "1",
+              "denominator": "100000"
+            }
+          },
+          {
+            "id": "final-lower-row",
+            "label": "Lower physical rows",
+            "dimensions": [
+              "high",
+              "geometry"
+            ],
+            "gateId": "high",
+            "kind": "certified-lower-bound",
+            "comparisonGroup": "final-row",
+            "relation": ">",
+            "unit": "θ − E (same final-row normalization)",
+            "domain": "d∈[1/200,1/2], δ∈[0,3/4], p∈[0,1/2], using old physical capacity.",
+            "formula": "θ − Eκ*(d,Cold;δ,p) > 1/1000",
+            "detail": "Certified through the lower endpoint, half-height row and interval interpolation. Smaller d and floor/principal branches have separate source estimates; this is not a universal six-dimension margin.",
+            "sources": [
+              {
+                "label": "Exact final-row certificates",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Arithmetic/Bernstein/Endpoint.lean#L180"
+              },
+              {
+                "label": "Full row intervals and endpoint extension",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Arithmetic/Bernstein/Feedback.lean#L326"
+              }
+            ],
+            "margin": {
+              "numerator": "1",
+              "denominator": "1000"
+            }
+          },
+          {
+            "id": "source-low-terminal",
+            "label": "Inside moment proof: source-LOW reserve",
+            "dimensions": [
+              "moment"
+            ],
+            "gateId": "plain",
+            "kind": "exact-source-residual",
+            "comparisonGroup": "source-low-terminal",
+            "relation": "=",
+            "unit": "terminal exponent reserve per source width M",
+            "domain": "Cell upper b∈[3401/100000,1/25]; g(b)=B−1+(9/2−Λ)b, amp(b)=(34/21)g(b)+1/400000, q₀=17/25.",
+            "formula": "amp(b)(1−4q₀/3) − (2q₀/9)g(b) = 7/30000000",
+            "detail": "An exact internal terminal identity before padding and reconstruction losses. It belongs to the paid affine source-moment proof, not the global reflected-probe LOW dimension. The actual paid excess includes −M·7/30000000 plus an explicit padding term. This is not final endpoint headroom.",
+            "sources": [
+              {
+                "label": "Internal affine-source terminal reserves",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Arithmetic/LocalReserves.lean#L44"
+              },
+              {
+                "label": "Internal source-LOW paid excess",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Physical/TerminalLedger.lean#L20"
+              }
+            ],
+            "margin": {
+              "numerator": "7",
+              "denominator": "30000000"
+            }
+          },
+          {
+            "id": "source-high-payment",
+            "label": "Inside moment proof: source-HIGH payment",
+            "dimensions": [
+              "moment"
+            ],
+            "gateId": "plain",
+            "kind": "certified-lower-bound",
+            "comparisonGroup": "source-high-payment",
+            "relation": "≥",
+            "unit": "source exponent payment per width M",
+            "domain": "b∈[3401/100000,1/25]; marked source-density δ∈[17/25,7/10]. Above 7/10 the unmarked argument supplies the same stated reserve without the marked saving.",
+            "formula": "highMainReserve(b,δ) + 73/20000 ≥ 720486667/30493190000000",
+            "detail": "The actual marked source consumer retains this uniform reserve after the stated source-ledger loss; its complementary upper-density branch is paid separately. It is distinct from the raw terminal arithmetic residual and from θ−E of the final HIGH row. The source-width normalization and all marked/collision gates remain required.",
+            "sources": [
+              {
+                "label": "Internal source-HIGH paid reserve",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Physical/MarkedHighReserve.lean#L29"
+              },
+              {
+                "label": "Actual marked source payment after losses",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Physical/MarkedHighLedger.lean#L37"
+              }
+            ],
+            "margin": {
+              "numerator": "720486667",
+              "denominator": "30493190000000"
+            }
+          },
+          {
+            "id": "moment-capacity-boundary",
+            "label": "Local moment capacity: limiting plane used",
+            "dimensions": [
+              "moment",
+              "detector"
+            ],
+            "gateId": "plain",
+            "kind": "boundary-used",
+            "comparisonGroup": "moment-length-plane",
+            "relation": "=",
+            "unit": "normalized plain/prime length budget",
+            "domain": "Actual affine moment: .41≤m≤.44, .034≤z≤.04, source width1 and moving width0; B=14200/14361+7/10000, Λ=19312/4787.",
+            "formula": "zmax=(B−2m)/Λ; 2m+Λzmax=B; actual requests leave a positive rounding allowance",
+            "detail": "The displayed maximum spends the scalar capacity plane exactly. Actual detector selection subtracts a small positive allowance and uses fallback moments outside its local window. Boundary use is not proof that a stronger theorem is impossible.",
+            "sources": [
+              {
+                "label": "Actual initial affine moment contract",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Moment/InitialAffineContract.lean#L25"
+              },
+              {
+                "label": "Physical affine capacity and source gates",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Physical/Capacity.lean#L11"
+              },
+              {
+                "label": "Detector region and source-window guards",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Affine/Region.lean#L151"
+              }
+            ],
+            "expression": "2m + Λzmax = B"
+          },
+          {
+            "id": "physical-slot-upper",
+            "label": "Physical source slot upper gate",
+            "dimensions": [
+              "moment",
+              "geometry"
+            ],
+            "gateId": "geometry",
+            "kind": "certified-lower-bound",
+            "comparisonGroup": "physical-length-guard",
+            "relation": "≥",
+            "unit": "normalized source prime-length gap",
+            "domain": "d∈[159/200,1989/2500+10⁻¹⁰], free shift t∈[0,1/1000], zA(d,t)=(B−2(1−y/d+t))/Λ.",
+            "formula": "37/1000 − zA(d,t) ≥ 85471/5418720000",
+            "detail": "A positive gap to the stricter actual physical source upper gate. This uses the source-capacity exact bound; it is not interchangeable with the final-row exponent reserve or the wider theorem gate z≤.04.",
+            "sources": [
+              {
+                "label": "Physical affine capacity and source gates",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Physical/Capacity.lean#L11"
+              }
+            ],
+            "margin": {
+              "numerator": "85471",
+              "denominator": "5418720000"
+            }
+          },
+          {
+            "id": "junction-capacity",
+            "label": "New/old capacity at the junction",
+            "dimensions": [
+              "moment",
+              "geometry"
+            ],
+            "gateId": "geometry",
+            "kind": "exact-source-residual",
+            "comparisonGroup": "junction-capacity",
+            "relation": "=",
+            "unit": "source capacity difference at κ*",
+            "domain": "d₋=159/200 and κ*=9371/12500; Cnew=[2y−(2−B)d]/Λ, Cold=min(d,2y−d)/(6κ*).",
+            "formula": "Cnew(d₋) − Cold(d₋) = 224982742097/191618208000000",
+            "detail": "Exact positive difference at the recorded junction. It enables the inherited old-junction row estimate to pass to the new-capacity branch; it is a capacity gap, not θ−E.",
+            "sources": [
+              {
+                "label": "Exact junction capacity identity",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Arithmetic/Bernstein/Endpoint.lean#L289"
+              }
+            ],
+            "margin": {
+              "numerator": "224982742097",
+              "denominator": "191618208000000"
+            }
+          },
+          {
+            "id": "detector-crossing-window",
+            "label": "Detector crossing stays inside local moment window",
+            "dimensions": [
+              "detector",
+              "moment"
+            ],
+            "gateId": "detector",
+            "kind": "certified-lower-bound",
+            "comparisonGroup": "detector-window-guard",
+            "relation": "≥",
+            "unit": "normalized plain-length gap",
+            "domain": "δ∈[89/200,97/200], p∈[199/400,1/2]; m₀=(B−Λ/25)/2 and mN=tN−rN(tN).",
+            "formula": "mN − m₀ ≥ 1/100000",
+            "detail": "An actual certified source-window guard. The affine detector count is only used on this local region. Old marked/unmarked/inverse branches cover its complement; no global minimum improvement in detector R is asserted.",
+            "sources": [
+              {
+                "label": "Detector region and source-window guards",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Affine/Region.lean#L151"
+              }
+            ],
+            "margin": {
+              "numerator": "1",
+              "denominator": "100000"
+            }
+          },
+          {
+            "id": "detector-region-scope",
+            "label": "Detector improvement has local scope",
+            "dimensions": [
+              "detector"
+            ],
+            "gateId": "detector",
+            "kind": "unquantified",
+            "comparisonGroup": "detector-scope",
+            "relation": "≤",
+            "unit": "comparison of detector exponents on the licensed region",
+            "domain": "Raff≤Rold on the certified δ,p rectangle; old branches remain outside it.",
+            "formula": "Raff(δ,p) ≤ Rold(δ,p) on the certified region",
+            "detail": "A global strictly positive count gain has not been extracted, and no fixed numerical slack is assigned to this dimension. Increasing the region requires new source-window, cutoff, tail and row certificates.",
+            "sources": [
+              {
+                "label": "Detector region and source-window guards",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Affine/Region.lean#L151"
+              }
+            ],
+            "expression": "Local count domination; no global fixed gain claimed"
+          },
+          {
+            "id": "recovery-common-gap",
+            "label": "Recovery has a conditional common gap",
+            "dimensions": [
+              "recovery"
+            ],
+            "gateId": "recovery",
+            "kind": "conditional-positive",
+            "comparisonGroup": "continuation-gap",
+            "relation": ">",
+            "unit": "analytic continuation width under β>θ",
+            "domain": "β is the global family supremum. A common positive reserve σ and loss=(β−θ)/2 are fixed before per-target heights τψ.",
+            "formula": "εcont = min((β−θ)/2, σ) > 0",
+            "detail": "The gap is uniform over primitive targets, but it can shrink as β approachesθ. The proof does not supply a fixed numerical continuation gap independent of β−θ; this is a quantifier obligation, not a spare arithmetic budget.",
+            "sources": [
+              {
+                "label": "Common gap before target-dependent heights",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Assembly/MeshChoice.lean#L47"
+              },
+              {
+                "label": "Global reflected-probe LOW bound",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Assembly/Final/SourceProbe.lean#L18"
+              }
+            ],
+            "expression": "min((β−θ)/2, σ) > 0"
+          }
+        ],
+        "dimensions": [
+          {
+            "id": "moment",
+            "status": "boundary-used",
+            "label": "Capacity boundary used",
+            "summary": "The limiting local affine plane is used; its actual source proof retains small positive internal reserves. Those internal LOW/HIGH branches are not the global probe estimates.",
+            "constraintIds": [
+              "moment-capacity-boundary",
+              "source-low-terminal",
+              "source-high-payment",
+              "physical-slot-upper",
+              "detector-crossing-window"
+            ],
+            "direction": "A larger source-paid intercept or smaller prime cost would raise legal capacity, provided all actual source and selection payments remain valid.",
+            "gateId": "plain"
+          },
+          {
+            "id": "low",
+            "status": "endpoint-balance",
+            "label": "Balanced at endpoint",
+            "summary": "Its nominal complete-probe exponent equals the signal exponent at θ. Strict separation comes from the contradiction β>θ and a chosen smaller loss.",
+            "constraintIds": [
+              "global-low-balance"
+            ],
+            "direction": "A lower endpoint requires jointly changing the physical geometry and preserving all HIGH/source gates, or proving a stronger complete reflected-probe estimate.",
+            "gateId": "low"
+          },
+          {
+            "id": "high",
+            "status": "certified-positive",
+            "label": "Top rows have least certified row reserve",
+            "summary": "The top, middle and lower physical rows have positive comparable θ−E certificates. The top guarantee is smallest; the true optimized minimum is not known from these certificates.",
+            "constraintIds": [
+              "final-top-row",
+              "final-middle-row",
+              "final-lower-row"
+            ],
+            "direction": "Decrease the licensed detector population exponent R or increase legally available numerator capacity C; pay all coupled changes.",
+            "gateId": "high"
+          },
+          {
+            "id": "detector",
+            "status": "domain-limited",
+            "label": "Improvement is local",
+            "summary": "The affine count uses a certified local δ,p region, a positive crossing-window guard and old-count fallbacks. No single global reserve number is extracted.",
+            "constraintIds": [
+              "detector-crossing-window",
+              "detector-region-scope",
+              "moment-capacity-boundary"
+            ],
+            "direction": "Lower R on the influential region or enlarge the certified region, with actual finite-dictionary source supply and all fallback cases rechecked.",
+            "gateId": "detector"
+          },
+          {
+            "id": "geometry",
+            "status": "coupled-gates",
+            "label": "Positive gates; coupled parameters",
+            "summary": "The LOW boundary, final rows, source-slot upper gate and old/new junction must hold simultaneously. Their different margins are not a common score.",
+            "constraintIds": [
+              "global-low-balance",
+              "final-top-row",
+              "physical-slot-upper",
+              "junction-capacity"
+            ],
+            "direction": "Retune ℓ, h and the junction together and regenerate every continuous row and actual-source guard.",
+            "gateId": "geometry"
+          },
+          {
+            "id": "recovery",
+            "status": "conditional-positive",
+            "label": "Common gap under β > θ",
+            "summary": "A positive continuation gap exists before target-dependent heights are chosen. It is conditional on β−θ, not a fixed numerical reserve to optimize separately.",
+            "constraintIds": [
+              "recovery-common-gap"
+            ],
+            "direction": "Preserve the uniform quantifier order when improving inputs; a numerical gain is useful only after complete source recovery and transfer.",
+            "gateId": "recovery"
+          }
+        ],
+        "directions": [
+          {
+            "id": "reduce-detector-R",
+            "title": "Reduce the detector population exponent",
+            "detail": "At a frozen legal row, lowering R lowers the reconstructed exponent. A stronger local count or a larger source-licensed affine count region can help; every changed cutoff, tail and domain must be recertified. This identity alone does not predict a new endpoint.",
+            "formula": "∂E/∂R = 3d/4;  ΔE = (3d/4)ΔR with other row inputs fixed",
+            "gateId": "detector",
+            "sources": [
+              {
+                "label": "Complete row exponent with revised detector",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Arithmetic/Bernstein/Endpoint.lean#L203"
+              },
+              {
+                "label": "Detector region and source-window guards",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Affine/Region.lean#L151"
+              }
+            ]
+          },
+          {
+            "id": "increase-legal-C",
+            "title": "Increase the source-paid moment capacity",
+            "detail": "At a frozen legal row, a larger C improves the numerator payment. Increasing B or decreasing Λ can increase C, but these are proved source parameters, not free controls. Preserve the internal source payments, local box, actual masks and selection rules.",
+            "formula": "∂E/∂C = −δp/2;  Cnew(d) = [2y−(2−B)d]/Λ",
+            "gateId": "plain",
+            "sources": [
+              {
+                "label": "Complete row exponent with revised detector",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Arithmetic/Bernstein/Endpoint.lean#L203"
+              },
+              {
+                "label": "Actual initial affine moment contract",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Moment/InitialAffineContract.lean#L25"
+              },
+              {
+                "label": "Internal source-LOW paid excess",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Physical/TerminalLedger.lean#L20"
+              },
+              {
+                "label": "Internal source-HIGH paid reserve",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Physical/MarkedHighReserve.lean#L29"
+              }
+            ]
+          },
+          {
+            "id": "retune-complete-geometry",
+            "title": "Retune geometry with the LOW boundary",
+            "detail": "The current LOW/signal exponents balance exactly at θ. Moving θ downward through this geometry increases ℓ and changes the physical scales; the top-row certificate, physical slot upper gate and junction must all be reproved. Positive displayed certificates are not a guarantee of a feasible next parameter point.",
+            "formula": "ℓ = 11/3 − 4θ;  signal(θ) = x/2 + (y−x)/12",
+            "gateId": "geometry",
+            "sources": [
+              {
+                "label": "Global LOW and signal balance",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Assembly/Geometry.lean#L19"
+              },
+              {
+                "label": "Physical affine capacity and source gates",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Physical/Capacity.lean#L11"
+              },
+              {
+                "label": "Full row intervals and endpoint extension",
+                "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Cycle63/Arithmetic/Bernstein/Feedback.lean#L326"
+              }
+            ]
+          }
+        ]
+      }
     },
     "certb-local-20261013": {
       "status": "framework-verified",

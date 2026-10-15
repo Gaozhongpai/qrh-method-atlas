@@ -1,3 +1,4 @@
+import {mountBottleneck} from './bottleneck-view.js?v=bottleneck-1';
 import {capacityAt,capacityPoint,CAPACITY_EXAMPLE} from './capacity-model.js?v=capacity-example-2';
 export {capacityAt};
 const TRACKER = 'https://gtimg.github.io/QuasiRiemannTracker/';
@@ -10,7 +11,7 @@ const palette = {a:'#287a72', b:'#c86b44', ink:'#244238', muted:'#879481', grid:
 const state = {a:'openai-baseline', b:null, pending:false, dimension:null, gate:'detector', query:'', view:'matrix', fullRange:false};
 let catalogue, evidence, proof, reviewed = null, syncStatus = null;
 let allRecords = [], records = [], byId = new Map();
-let proofLayoutObserver=null;
+let proofLayoutObserver=null,bottleneckResize=null;
 const shortLabels = {moment:'Moments',low:'LOW',high:'HIGH',detector:'Detector',geometry:'Geometry',recovery:'Recovery',verification:'Check'};
 const gateForDimension={moment:'plain',low:'low',high:'high',detector:'detector',geometry:'geometry',recovery:'recovery',verification:'recovery'};
 const statusText = {changed:'New',reused:'Use',retuned:'Tune',foundation:'Base',unknown:'—',verified:'✓',pending:'Wait',inherited:'Kept'};
@@ -78,7 +79,7 @@ function choose(id, dimension){
   if(dimension){state.dimension=dimension;state.gate=gateForDimension[dimension]||state.gate;}
   $('#method-b').value=id;
   renderComparison();
-  try{history.replaceState(null,'',`?method=${encodeURIComponent(state.b)}${state.pending?'&proposals=1':''}#compare`);}catch{}
+  try{history.replaceState(null,'',`?method=${encodeURIComponent(state.b)}${state.pending?'&proposals=1':''}${state.view==='bottlenecks'?'&view=bottlenecks':''}#compare`);}catch{}
 }
 
 function renderEndpoint(){
@@ -191,7 +192,8 @@ function renderMethodRoute(){
   const known=evidence.dimensions.filter(d=>cell(r,d.id).status!=='unknown').length;
   const route=(method?.route||[]).filter(step=>proof.nodes.some(n=>n.id===step.nodeId));
   const roles=route.length?route:(method?.changes||[]).filter(intervention).map(c=>({nodeId:c.nodeId,text:c.detail})).filter((c,i,a)=>a.findIndex(x=>x.nodeId===c.nodeId)===i);
-  $('#method-route').innerHTML=`<div class="route-header"><span class="eyebrow">SELECTED METHOD · ${route.length?'HOW THE GAIN TRAVELS':'DOCUMENTED ROLES'}</span><span class="review-coverage ${isReviewed(r)?'reviewed':''}">${isReviewed(r)?`${known}/7 dimensions extracted`:'Dimension review pending'}</span><a href="#anatomy">Explore dependencies ↓</a></div>${roles.length?`<ol class="route-steps ${route.length?'causal-route':'role-list'}">${roles.map(step=>`<li><button type="button" data-route-gate="${esc(step.nodeId)}"><strong>${esc(step.label||conciseNode[step.nodeId])}</strong><span>${esc(step.text)}</span></button></li>`).join('')}</ol>`:`<p class="route-pending">${isReviewed(r)?'No separate analytic intervention has been extracted. Select a dimension to inspect the documented evidence.':'The endpoint is synchronized from the tracker. Analytic roles need source review before attribution.'}</p>`}`;
+  $('#method-route').innerHTML=`<div class="route-header"><span class="eyebrow">SELECTED METHOD · ${route.length?'HOW THE GAIN TRAVELS':'DOCUMENTED ROLES'}</span><span class="review-coverage ${isReviewed(r)?'reviewed':''}">${isReviewed(r)?`${known}/7 dimensions extracted`:'Dimension review pending'}</span><button type="button" id="route-bottlenecks">Bottlenecks →</button><a href="#anatomy">Explore dependencies ↓</a></div>${roles.length?`<ol class="route-steps ${route.length?'causal-route':'role-list'}">${roles.map(step=>`<li><button type="button" data-route-gate="${esc(step.nodeId)}"><strong>${esc(step.label||conciseNode[step.nodeId])}</strong><span>${esc(step.text)}</span></button></li>`).join('')}</ol>`:`<p class="route-pending">${isReviewed(r)?'No separate analytic intervention has been extracted. Select a dimension to inspect the documented evidence.':'The endpoint is synchronized from the tracker. Analytic roles need source review before attribution.'}</p>`}`;
+  $('#route-bottlenecks').onclick=()=>{setComparisonView('bottlenecks');$('.matrix-panel').scrollIntoView({behavior:'smooth',block:'start'});};
   $('#method-route').querySelectorAll('[data-route-gate]').forEach(b=>b.onclick=()=>focusGate(b.dataset.routeGate,{scroll:true}));
 }
 function renderProofMap(){
@@ -319,7 +321,26 @@ function renderCapacity(){
   };
 }
 
-function renderComparison(){renderMethodRoute();renderMatrix();renderRadar();renderDetail();renderLineage();renderProofMap();renderEndpoint();}
+const comparisonViews=['matrix','lineage','bottlenecks'];
+function renderBottlenecks(){
+  bottleneckResize=null;
+  if(state.view!=='bottlenecks')return;
+  const r=selected(),profile=proof.perMethod[r.id]?.bottleneck;
+  bottleneckResize=mountBottleneck($('#bottlenecks-view'),{record:r,profile,reviewed:isReviewed(r),onGate:id=>focusGate(id,{scroll:true}),onSelectMethod:id=>{choose(id);setComparisonView('bottlenecks');}});
+}
+function applyComparisonView(){
+  for(const v of comparisonViews){$('#'+v+'-view').hidden=v!==state.view;$('#'+v+'-tab').classList.toggle('active',v===state.view);$('#'+v+'-tab').setAttribute('aria-pressed',String(v===state.view));}
+  const diagnostics=state.view==='bottlenecks';
+  $('.comparison-layout').classList.toggle('bottleneck-active',diagnostics);
+  $('.radar-panel').hidden=diagnostics;$('.search').hidden=diagnostics;
+  $('#matrix-legend').hidden=diagnostics;$('#matrix-footer').hidden=diagnostics;
+}
+function setComparisonView(view){
+  if(!comparisonViews.includes(view))return;
+  state.view=view;applyComparisonView();renderBottlenecks();
+  history.replaceState(null,'',`?method=${encodeURIComponent(state.b)}${state.pending?'&proposals=1':''}${view==='bottlenecks'?'&view=bottlenecks':''}#compare`);
+}
+function renderComparison(){renderMethodRoute();renderMatrix();renderRadar();renderDetail();renderLineage();renderProofMap();renderEndpoint();applyComparisonView();renderBottlenecks();}
 function notice(message){$('#notice').textContent=message;$('#notice').hidden=false;clearTimeout(notice.timer);notice.timer=setTimeout(()=>$('#notice').hidden=true,6500);}
 function download(file,contents,type){const u=URL.createObjectURL(new Blob([contents],{type}));const a=document.createElement('a');a.href=u;a.download=file;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
 function exportCSV(){
@@ -396,9 +417,7 @@ function bindControls(){
   $('#show-pending').onchange=e=>{state.pending=e.target.checked;rebuildRecords();renderSelects();renderComparison();};
   $('#method-search').oninput=e=>{state.query=e.target.value;renderMatrix();};
   $('#clear-dimension').onclick=()=>{state.dimension=null;renderComparison();};
-  for(const view of ['matrix','lineage'])$('#'+view+'-tab').onclick=()=>{
-    state.view=view;for(const v of ['matrix','lineage']){$('#'+v+'-view').hidden=v!==view;$('#'+v+'-tab').classList.toggle('active',v===view);$('#'+v+'-tab').setAttribute('aria-pressed',String(v===view));}
-  };
+  for(const view of comparisonViews)$('#'+view+'-tab').onclick=()=>setComparisonView(view);
   Object.keys(capacityDefaults).forEach(id=>{
     $('#'+id).oninput=event=>{setCapacityParameter(id,Number(event.target.value));renderCapacity();};
     $('#'+id+'-number').oninput=event=>{if(event.target.value!==''&&event.target.validity.valid){setCapacityParameter(id,event.target.valueAsNumber);renderCapacity();}};
@@ -408,14 +427,14 @@ function bindControls(){
   $('#export-csv').onclick=exportCSV;
   $('#export-json').onclick=()=>download('qrh-atlas-evidence.json',JSON.stringify({catalogue,evidence,proof},null,2),'application/json');
   $('#refresh-data').onclick=refresh;
-  addEventListener('resize',()=>{drawProofEdges();renderCapacity();});
+  addEventListener('resize',()=>{drawProofEdges();renderCapacity();bottleneckResize?.();});
 }
 
 async function init(){
   try{
     [catalogue,evidence,proof]=await Promise.all(['catalogue','method-evidence','proof-dimensions'].map(async file=>{const r=await fetch(`data/${file}.json${SNAPSHOT_VERSION}`);if(!r.ok)throw new Error(`Missing ${file}`);return r.json();}));
     [reviewed,syncStatus]=await Promise.all(['reviewed-sources','sync-status'].map(async file=>{try{const r=await fetch(`data/${file}.json${SNAPSHOT_VERSION}`);return r.ok?await r.json():null;}catch{return null;}}));
-    const params=new URLSearchParams(location.search);state.pending=params.get('proposals')==='1';state.b=params.get('method');$('#show-pending').checked=state.pending;
+    const params=new URLSearchParams(location.search);state.pending=params.get('proposals')==='1';state.b=params.get('method');state.view=comparisonViews.includes(params.get('view'))?params.get('view'):'matrix';$('#show-pending').checked=state.pending;
     renderHeader(rebuildRecords());renderSelects();bindControls();renderComparison();renderCapacity();
     document.documentElement.dataset.ready='true';
     window.qrhAtlas={state,capacityAt,capacityPoint,compareRational,get records(){return records;},get catalogue(){return catalogue;}};

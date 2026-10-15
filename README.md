@@ -10,6 +10,7 @@ Website: **https://gaozhongpai.github.io/qrh-method-atlas/**
 - Open the [dimension guide](https://gaozhongpai.github.io/qrh-method-atlas/#dimensions) when needed. Definitions, examples, and the relationship between LOW and HIGH appear in a side panel, preserving your place in the comparison.
 - Inspect declared proof dependencies and nine required proof gates.
 - Follow the selected method’s documented improvement route. The dependency map separates the LOW branch, detector-to-HIGH flow, compatibility, recovery, and verification; selecting a gate highlights its inputs and consumers. Method-specific formulas override representative framework examples.
+- Open **Bottlenecks** for a reviewed six-dimension constraint ledger, grouped certified reserve bounds, and an explicitly numerical upper-row diagnostic. Global LOW’s endpoint balance, internal source payments, final HIGH row margins, and conditional continuation gaps keep their separate meanings and units. The numerical map is not an endpoint solver or a certificate.
 - Use a categorical radar footprint. Its area is **not** a mathematical strength score; verification is separate.
 - Explore a worked moment-capacity example: adjust equal plain length m, the conditional standard parameter κ, and a test prime length z with sliders, exact-value fields, or by clicking the plot. The plot distinguishes the affine local window from its inequality and does not represent the complete endpoint requirements.
 - Keep proposed endpoints separate from the verified catalogue.
@@ -48,7 +49,7 @@ Refresh data and check the sync behavior:
 python3 scripts/sync_catalogue.py
 python3 -m unittest discover -s scripts -p 'test_*.py'
 node --check dist/app.js
-node --test scripts/test_capacity.mjs
+node --test scripts/test_capacity.mjs scripts/test_bottleneck.mjs
 ```
 
 For a fresh checkout that has never established its initial reviewed snapshot:
