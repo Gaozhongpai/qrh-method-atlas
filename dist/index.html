@@ -3,48 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f7f8f6">
+  <meta name="theme-color" content="#f7f8f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121917" media="(prefers-color-scheme: dark)">
   <meta name="description" content="A source-backed atlas of quasi-Riemann methods: moment estimates, LOW and HIGH bounds, proof dependencies, and exact endpoints.">
   <title>QRH · Method Atlas</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=bottleneck-1">
-  <script src="app.js?v=bottleneck-1" type="module"></script>
+  <script>try{var t=localStorage.getItem('qrh-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}</script>
+  <link rel="stylesheet" href="styles.css?v=atlas-2">
+  <link rel="stylesheet" href="theme.css?v=atlas-2">
+  <script src="theme.js?v=atlas-2" type="module"></script>
+  <script src="app.js?v=atlas-2" type="module"></script>
 </head>
 <body>
   <a class="skip-link" href="#compare">Skip to method comparison</a>
   <header class="topbar">
     <a class="brand" href="#"><span class="brand-symbol">ζ</span><span>QRH <span class="brand-divider">/</span> <strong>Method Atlas</strong></span><span class="beta-tag">RESEARCH VIEW</span></a>
     <nav aria-label="Main navigation"><a href="#compare">Compare</a><a href="#dimensions" aria-haspopup="dialog" aria-controls="dimension-dialog">Guide</a><a href="#anatomy">Proof map</a><a href="#capacity">Capacity lab</a><a class="external-link" href="https://gtimg.github.io/QuasiRiemannTracker/" target="_blank" rel="noopener">Leaderboard <span aria-hidden="true">↗</span></a></nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Colour theme: system">◐ <span>Auto</span></button>
   </header>
   <main>
     <section class="hero">
-      <div class="hero-copy"><div class="eyebrow"><span class="status-dot"></span> THE ESTIMATES BEHIND THE ENDPOINT</div><h1>See what moves<br>the <em>boundary.</em></h1><p>Follow each method from moment estimates through LOW, HIGH, and recovery. Compare what changed, what was reused, and which conditions still control the endpoint.</p><div class="hero-links"><a href="#compare" class="button primary">Explore the methods <span aria-hidden="true">↓</span></a><span class="quiet" id="snapshot-label">Loading source snapshot…</span></div></div>
-      <div class="frontier-card"><div class="frontier-top"><span class="eyebrow">VERIFIED FRONTIER</span><span class="verified-pill"><span></span> Framework verified</span></div><div class="frontier-number" id="best-theta">—</div><div class="frontier-method" id="best-name">Reading the catalogue</div><div class="frontier-divider"></div><div class="frontier-stats"><div><strong id="method-count">—</strong><span>verified methods</span></div><div><strong id="best-gain">—</strong><span>gain over 7/8 · ×10⁻⁶</span></div><div><strong>θ ↓</strong><span>smaller is stronger</span></div></div><div id="pending-note" class="pending-note" hidden></div></div>
+      <div class="hero-copy"><div class="eyebrow"><span class="status-dot"></span> THE ESTIMATES BEHIND THE ENDPOINT</div><h1>See what moves<br>the <em>boundary.</em></h1><p>Trace each method from its estimates to the endpoint, and see exactly what it changed.</p><div class="hero-links"><a href="#compare" class="button primary">Explore the methods <span aria-hidden="true">↓</span></a><span class="quiet" id="snapshot-label">Loading source snapshot…</span></div></div>
+      <div class="frontier-card"><div class="frontier-top"><span class="eyebrow">VERIFIED FRONTIER</span><span class="verified-pill"><span></span> Framework verified</span></div><div class="frontier-number" id="best-theta">—</div><div class="frontier-method" id="best-name">Reading the catalogue</div><div class="frontier-divider"></div><div class="frontier-stats"><div><strong id="method-count">—</strong><span>verified methods</span></div><div><strong id="best-gain">—</strong><span>gain over 7/8 · ×10⁻⁶</span></div><div><strong id="best-exact" class="exact-stat">—</strong><span>exact θ · smaller is stronger</span></div></div><div id="pending-note" class="pending-note" hidden></div></div>
     </section>
 
     <section class="endpoint-strip panel" aria-labelledby="endpoint-heading"><div class="section-line"><div><div class="eyebrow">THE NUMERICAL OUTCOME</div><h2 id="endpoint-heading">An endpoint is the result. The proof has dimensions.</h2></div><span class="chart-unit">Improvement over 7/8, in millionths →</span></div><div id="endpoint-chart" class="endpoint-chart" aria-live="polite"></div></section>
 
     <section id="compare" class="compare-section" aria-labelledby="compare-title">
-      <div class="section-heading"><div><div class="eyebrow">01 / METHOD COMPARISON</div><h2 id="compare-title">Which part of the proof changed?</h2><p>Choose two methods. Click a dimension or a row to inspect its evidence.</p></div><div class="section-actions"><a id="open-dimension-guide" class="button guide-trigger" href="#dimensions" aria-haspopup="dialog" aria-controls="dimension-dialog"><span aria-hidden="true">i</span> Dimensions</a><button id="refresh-data" class="button subtle"><span aria-hidden="true">↻</span> Refresh catalogue</button><button id="export-csv" class="icon-button" title="Download comparison as CSV" aria-label="Download comparison as CSV">↓ CSV</button></div></div>
+      <div class="section-heading"><div><div class="eyebrow">01 / METHOD COMPARISON</div><h2 id="compare-title">Which part of the proof changed?</h2><p>Pick two methods. Click any cell for its evidence.</p></div><div class="section-actions"><a id="open-dimension-guide" class="button guide-trigger" href="#dimensions" aria-haspopup="dialog" aria-controls="dimension-dialog"><span aria-hidden="true">i</span> Dimensions</a><button id="refresh-data" class="button subtle"><span aria-hidden="true">↻</span> Refresh catalogue</button><button id="export-csv" class="icon-button" title="Download comparison as CSV" aria-label="Download comparison as CSV">↓ CSV</button></div></div>
       <div class="comparison-controls panel"><label class="compare-select"><span><i class="method-dot a"></i> Compare A</span><select id="method-a" aria-label="Comparison method A"></select></label><span class="compare-versus" aria-hidden="true">↔</span><label class="compare-select"><span><i class="method-dot b"></i> Compare B</span><select id="method-b" aria-label="Comparison method B"></select></label><label class="proposal-toggle"><input type="checkbox" id="show-pending"><span>Include proposals<small>Separate from verified records</small></span></label></div>
       <div id="method-route" class="method-route panel" aria-label="Selected method proof route"></div>
       <div class="comparison-layout">
-        <div class="matrix-panel panel"><div class="matrix-toolbar"><div class="segmented" aria-label="Comparison view"><button class="active" id="matrix-tab" aria-pressed="true">Dimension matrix</button><button id="lineage-tab" aria-pressed="false">Proof lineage</button><button id="bottlenecks-tab" aria-pressed="false">Bottlenecks</button></div><label class="search"><span aria-hidden="true">⌕</span><input id="method-search" type="search" placeholder="Find a method or author" aria-label="Find a method or author"></label></div><div id="matrix-legend" class="matrix-legend"><span><i class="legend-mark changed"></i> Changed</span><span><i class="legend-mark reused"></i> Uses</span><span><i class="legend-mark retuned"></i> Retuned</span><span><i class="legend-mark foundation"></i> Foundation</span><span><i class="legend-mark unknown"></i> Not extracted</span><button id="clear-dimension" hidden>Clear focus ×</button></div><div id="matrix-view" class="table-scroll"><table id="method-table"><caption class="sr-only">Methods and their documented changes by proof dimension</caption><thead></thead><tbody></tbody></table></div><div id="lineage-view" class="lineage-view" hidden></div><div id="bottlenecks-view" class="bottlenecks-view" hidden></div><div id="matrix-footer" class="matrix-footer"><span id="matrix-count">Loading methods…</span><span>Compared rows first · labels describe attribution, not strength.</span></div></div>
-        <aside class="radar-panel panel" aria-labelledby="radar-title"><div class="eyebrow">AT A GLANCE</div><h3 id="radar-title">Method footprint</h3><p class="small-copy">Documented changes and reused ingredients.</p><div id="radar-chart" class="radar-chart"></div><div id="radar-legend" class="radar-legend"></div><div class="chart-note"><strong>Read the axes, not the area.</strong> Outer: changed or retuned. Middle: explicitly reused. Inner: foundation or inherited context. “—”: not extracted. These are categories, not numerical strength scores. Verification is shown separately.</div></aside>
+        <div class="matrix-panel panel"><div class="matrix-toolbar"><div class="segmented" aria-label="Comparison view"><button class="active" id="matrix-tab" aria-pressed="true">Dimension matrix</button><button id="lineage-tab" aria-pressed="false">Proof lineage</button><button id="bottlenecks-tab" aria-pressed="false">Bottlenecks</button></div><label class="search"><span aria-hidden="true">⌕</span><input id="method-search" type="search" placeholder="Find a method or author" aria-label="Find a method or author"></label></div><div id="matrix-legend" class="matrix-legend"><span><i class="legend-mark changed"></i> Changed</span><span><i class="legend-mark reused"></i> Uses</span><span><i class="legend-mark retuned"></i> Retuned</span><span><i class="legend-mark foundation"></i> Foundation</span><span><i class="legend-mark unknown"></i> Not extracted</span><button id="clear-dimension" hidden>Clear focus ×</button></div><div id="matrix-view" class="table-scroll" tabindex="0" aria-label="Method matrix, scrolls horizontally on small screens"><table id="method-table"><caption class="sr-only">Methods and their documented changes by proof dimension</caption><thead></thead><tbody></tbody></table></div><div id="lineage-view" class="lineage-view" hidden></div><div id="bottlenecks-view" class="bottlenecks-view" hidden></div><div id="matrix-footer" class="matrix-footer"><span id="matrix-count">Loading methods…</span><span>Compared rows first, then strongest θ first · baselines last · labels describe attribution, not strength.</span></div></div>
+        <aside class="radar-panel panel" aria-labelledby="radar-title"><div class="eyebrow">AT A GLANCE</div><h3 id="radar-title">Method footprint</h3><div id="radar-chart" class="radar-chart"></div><div id="radar-legend" class="radar-legend"></div><details class="chart-note"><summary><strong>Read the axes, not the area.</strong></summary>Outer: changed or retuned. Middle: reused. Inner: foundation or inherited. “—”: not extracted. Categories, not strength scores.</details></aside>
       </div>
       <div id="method-detail" class="method-detail panel" aria-live="polite"></div>
     </section>
 
     <section id="anatomy" aria-labelledby="anatomy-title">
-      <div class="section-heading"><div><div class="eyebrow">02 / HOW THE DIMENSIONS CONNECT</div><h2 id="anatomy-title">Follow the estimates to the endpoint.</h2><p id="graph-subtitle">Choose a node to trace its inputs and the estimates that use it.</p></div></div>
+      <div class="section-heading"><div><div class="eyebrow">02 / HOW THE DIMENSIONS CONNECT</div><h2 id="anatomy-title">Follow the estimates to the endpoint.</h2><p id="graph-subtitle">Choose a node to trace its inputs and consumers.</p></div></div>
       <div class="proof-layout">
         <div class="proof-flow-panel panel">
-          <div class="source-context"><div><span class="context-kind">THE OBJECT</span><strong>Actual arithmetic source</strong><p>Character sums, prime slots, weights, and their exact normalizations.</p></div><div><span class="context-kind">THE BOUNDS</span><strong>Estimates control that source</strong><p>Moment → row count → HIGH. LOW independently bounds the complete probe.</p></div></div>
-          <div class="proof-identity"><span>Complete probe</span><b>=</b><span>Principal signal</span><b>+</b><span>Complementary source</span><small>LOW controls the probe · HIGH controls the complement</small></div>
+                    <div class="proof-identity"><span>Complete probe</span><b>=</b><span>Principal signal</span><b>+</b><span>Complementary source</span><small>LOW controls the probe · HIGH controls the complement</small></div>
           <div class="flow-legend"><span><i class="flow-key selected"></i> Selected</span><span><i class="flow-key upstream"></i> Required inputs</span><span><i class="flow-key downstream"></i> Uses this result</span><span><i class="flow-key intervention"></i> Method changes / retunes</span></div>
           <div id="proof-map" class="proof-map" aria-label="Analytic dependencies"></div>
           <div id="proof-endpoint" class="proof-endpoint"></div>
-          <p class="proof-map-note">Arrows mean “used by”, not the chronological order of parameter choices. Other branches remain required. Papers and receipts are linked as <strong>Evidence</strong>.</p>
+          <p class="proof-map-note">Arrows mean “used by”. Every branch remains required.</p>
         </div>
         <aside id="gate-detail" class="gate-detail panel" aria-live="polite"></aside>
       </div>
@@ -52,19 +56,19 @@
 
     <section id="capacity" class="capacity-section" aria-labelledby="capacity-title">
       <div class="section-heading">
-        <div><div class="eyebrow">03 / WORKED EXAMPLE</div><h2 id="capacity-title">Comparing moment-capacity regions.</h2><p>Standard marked moment vs Cycle61’s local affine moment, with equal plain lengths n₁ = n₂ = m.</p><p class="capacity-scope">This example checks length constraints. LOW, HIGH, detector, and recovery requirements are separate.</p></div>
+        <div><div class="eyebrow">03 / WORKED EXAMPLE</div><h2 id="capacity-title">Comparing moment-capacity regions.</h2><p>Standard marked moment vs Cycle61’s local affine moment (n₁ = n₂ = m). Length constraints only.</p></div>
         <span class="outline-tag">One example · Moment constraints</span>
       </div>
       <div class="capacity-layout">
         <div class="capacity-plot-panel panel">
           <div class="plot-heading"><span><i class="line-key teal"></i> Standard · conditional</span><span><i class="line-key orange"></i> Cycle61 · local gates</span><span><i class="point-key" aria-hidden="true"></i> Test point</span></div>
           <div id="capacity-chart" class="capacity-chart" aria-describedby="capacity-chart-help"></div>
-          <p id="capacity-chart-help" class="capacity-chart-help">Click or tap the plot to move the test point, or adjust the controls.</p>
+          <p id="capacity-chart-help" class="capacity-chart-help">Tap the plot to move the test point.</p>
           <div id="capacity-point-summary" class="capacity-point-summary" aria-live="polite">
             <div><span>Standard length inequality</span><strong id="standard-point-status">—</strong><small id="standard-point-detail"></small></div>
             <div><span>Cycle61 local length gates</span><strong id="affine-point-status">—</strong><small id="affine-point-detail"></small></div>
           </div>
-          <p class="capacity-caption">Shading shows the displayed length regions. The affine region is clipped to the dashed box: 0.41 ≤ m ≤ 0.44 and 0.034 ≤ z ≤ 0.04. The dashed orange line beyond the local gates is the extrapolated formula.</p>
+          <p class="capacity-caption">Dashed box: Cycle61’s local window (0.41 ≤ m ≤ 0.44, 0.034 ≤ z ≤ 0.04); the orange line outside it is extrapolated.</p>
         </div>
         <div class="capacity-controls panel">
           <div class="capacity-control-heading"><div class="eyebrow">ADJUST THE PARAMETERS</div><button id="capacity-reset" type="button">Reset ↺</button></div>
@@ -72,7 +76,7 @@
           <div class="parameter-label"><label for="plain-length">Equal plain length m</label><input id="plain-length-number" type="number" min="0.405" max="0.445" step="0.00001" value="0.41825" aria-label="Exact equal plain length m"></div>
           <input id="plain-length" type="range" min="0.405" max="0.445" step="0.00001" value="0.41825" aria-describedby="plain-length-hint">
           <div class="range-labels"><span>0.405</span><span>0.445</span></div>
-          <p id="plain-length-hint" class="parameter-hint">Both plain lengths equal m. Cycle61’s local m window is 0.41–0.44.</p>
+          <p id="plain-length-hint" class="parameter-hint">Cycle61’s local window: 0.41–0.44.</p>
           <div class="parameter-label"><label for="kappa-value">Standard parameter κ</label><input id="kappa-value-number" type="number" min="0.7" max="0.75" step="0.0001" value="0.75" aria-label="Exact standard parameter kappa"></div>
           <input id="kappa-value" type="range" min="0.7" max="0.75" step="0.0001" value="0.75" aria-describedby="kappa-premise">
           <div class="range-labels"><span>0.7000</span><span>0.7500</span></div>
@@ -80,7 +84,7 @@
           <div class="parameter-label"><label for="prime-length">Test prime length z</label><input id="prime-length-number" type="number" min="0.03" max="0.046" step="0.00001" value="0.0375" aria-label="Exact test prime length z"></div>
           <input id="prime-length" type="range" min="0.03" max="0.046" step="0.00001" value="0.0375" aria-describedby="prime-length-hint">
           <div class="range-labels"><span>0.030</span><span>0.046</span></div>
-          <p id="prime-length-hint" class="parameter-hint">Move the point above a boundary or outside the local box to see which gate fails.</p>
+          <p id="prime-length-hint" class="parameter-hint">Move past a boundary to see which gate fails.</p>
           <div class="capacity-metrics"><div><span>Standard maximum z · conditional</span><strong id="standard-capacity">—</strong></div><div><span>Cycle61 maximum z · local</span><strong id="affine-capacity">—</strong></div><div class="capacity-delta"><span>Capacity difference at this m</span><strong id="capacity-difference">—</strong></div></div>
           <p class="small-copy" id="capacity-validity"></p>
           <details><summary>Formulas, assumptions, and sources</summary><div class="formula">Standard: 2m + 6κz ≤ 1</div><div class="formula">Cycle61: 2m + (19312/4787)z ≤ 14200/14361 − 1/100000</div><p class="small-copy">The standard gate assumes β* ≥ 0.51, 2β* − 1 ≤ κ, and the documented source and slot restrictions. The affine example fixes source width M = 1 and moving width 0, and requires the local m and z box. Values are compared before display rounding. Passing these length gates alone does not certify a new endpoint.</p><div class="capacity-source-links"><a href="https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/cycle25-quartic-20261010/paper.tex" target="_blank" rel="noopener">Standard gate · B0.5 ↗</a><a href="https://haileystorm.github.io/research/cycle61-qrh-boundary/" target="_blank" rel="noopener">Cycle61 · Theorem 2.2 ↗</a></div></details>
@@ -88,7 +92,7 @@
       </div>
     </section>
 
-    <section class="reading-note panel"><span class="note-icon" aria-hidden="true">↗</span><div><h3>Use the right chart for the question.</h3><p>The matrix tells you <strong>where</strong> a method intervenes. The proof map explains <strong>how</strong> that input reaches the endpoint. Capacity regions compare estimates in meaningful units. The spider plot is a compact footprint; its area is not mathematical strength.</p></div><a href="#compare" class="text-link">Back to comparison ↑</a></section>
+    <section class="reading-note panel"><span class="note-icon" aria-hidden="true">↗</span><div><h3>Use the right chart for the question.</h3><p>Matrix: <strong>where</strong> a method intervenes. Proof map: <strong>how</strong> it reaches the endpoint. Capacity: estimates in real units. Spider-plot area is not strength.</p></div><a href="#compare" class="text-link">Back to comparison ↑</a></section>
     <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
   </main>
   <footer><a class="brand" href="#"><span class="brand-symbol small">ζ</span><strong>QRH · Method Atlas</strong></a><p id="provenance">Loading source provenance.</p><div><a href="https://gtimg.github.io/QuasiRiemannTracker/catalogue.json" target="_blank" rel="noopener">Catalogue ↗</a><button id="export-json">Download evidence ↓</button></div></footer>

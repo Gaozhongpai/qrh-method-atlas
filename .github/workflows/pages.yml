@@ -27,7 +27,9 @@ jobs:
       - name: Refresh the official catalogue
         run: python3 scripts/sync_catalogue.py
       - name: Check the website JavaScript
-        run: node --check dist/app.js
+        run: node --check dist/app.js && node --check dist/theme.js
+      - name: Check the generated colour themes are current
+        run: python3 scripts/build_dark_theme.py && git diff --exit-code dist/theme.css dist/theme-map.js
       - name: Check mathematical visualization models
         run: node --test scripts/test_capacity.mjs scripts/test_bottleneck.mjs
       - name: Configure GitHub Pages

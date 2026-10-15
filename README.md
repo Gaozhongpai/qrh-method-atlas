@@ -15,6 +15,8 @@ Website: **https://gaozhongpai.github.io/qrh-method-atlas/**
 - Explore a worked moment-capacity example: adjust equal plain length m, the conditional standard parameter κ, and a test prime length z with sliders, exact-value fields, or by clicking the plot. The plot distinguishes the affine local window from its inequality and does not represent the complete endpoint requirements.
 - Keep proposed endpoints separate from the verified catalogue.
 - Download the comparison as CSV or all source evidence as JSON.
+- Matrix rows list the two compared methods first, then the rest from strongest endpoint θ to weakest, with reference baselines last. Endpoints use a fixed eight-digit decimal plus the gain over 7/8 in millionths; the exact rational appears on hover and in the detail panel.
+- Choose a light or dark theme with the ◐ button (Auto follows the system setting). Phone layouts stack the comparison controls, keep the method column fixed while the matrix scrolls sideways, and let the endpoint chart scroll.
 
 ## Automatic synchronization
 
@@ -37,6 +39,8 @@ The source-reported catalogue date is displayed verbatim. Refresh times and the 
 
 ## Local development
 
+`dist/styles.css` is the only hand-edited stylesheet. `dist/theme.css` (WCAG AA contrast repairs and the dark theme) and `dist/theme-map.js` (dark colours for the SVG charts) are generated from it and from the chart colour literals by `scripts/build_dark_theme.py`; CI fails if they are stale.
+
 No build or package installation is needed. Serve `dist` over HTTP:
 
 ```sh
@@ -49,6 +53,7 @@ Refresh data and check the sync behavior:
 python3 scripts/sync_catalogue.py
 python3 -m unittest discover -s scripts -p 'test_*.py'
 node --check dist/app.js
+python3 scripts/build_dark_theme.py   # after editing styles.css or chart colours
 node --test scripts/test_capacity.mjs scripts/test_bottleneck.mjs
 ```
 

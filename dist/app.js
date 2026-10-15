@@ -1,5 +1,5 @@
-import {mountBottleneck} from './bottleneck-view.js?v=bottleneck-1';
-import {capacityAt,capacityPoint,CAPACITY_EXAMPLE} from './capacity-model.js?v=capacity-example-2';
+import {mountBottleneck} from './bottleneck-view.js?v=atlas-2';
+import {capacityAt,capacityPoint,CAPACITY_EXAMPLE} from './capacity-model.js?v=atlas-2';
 export {capacityAt};
 const TRACKER = 'https://gtimg.github.io/QuasiRiemannTracker/';
 const SNAPSHOT_VERSION = new URL(import.meta.url).search;
@@ -24,6 +24,10 @@ export function compareRational(a,b){
 const theta = r => Number(r.theta.numerator)/Number(r.theta.denominator);
 const gain = r => (.875-theta(r))*1e6;
 const decimal = r => theta(r).toFixed(10).replace(/0+$/,'').replace(/\.$/,'');
+// Fixed width so endpoints line up in lists; the exact rational is kept in titles.
+const fixed = r => theta(r).toFixed(8);
+const gainLabel = r => {const g=gain(r);return g>0?`+${g<10?g.toFixed(2):g.toFixed(1)} ppm`:g===0?'= 7/8':'wider than 7/8';};
+const isBaseline = r => theta(r)>=.875;
 const exact = r => `${r.theta.numerator}/${r.theta.denominator}`;
 const ordered = value => Array.isArray(value)?value.map(ordered):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(k=>[k,ordered(value[k])])):value;
 function isReviewed(r){
@@ -59,15 +63,16 @@ function renderHeader(best){
   $('#best-name').textContent=`${name(best)} · ${author(best)}`;
   $('#method-count').textContent=catalogue.records.filter(r=>r.status==='framework-verified').length;
   $('#best-gain').textContent=gain(best).toFixed(1);
-  $('#snapshot-label').textContent=`Source-reported date ${catalogue.as_of}`;
+  $('#best-exact').textContent=exact(best);
+  $('#snapshot-label').innerHTML=`Source-reported date <span class="nowrap">${esc(catalogue.as_of)}</span>`;
   const pending=(evidence.pending || []).filter(p=>!catalogue.records.some(r=>r.id===p.id||(p.pr&&r.pr===p.pr)));
   $('#pending-note').hidden=!pending.length;
   if(pending.length) $('#pending-note').innerHTML=`<span class="mini-proposal">PENDING</span><a href="${esc(sourceURL(pending[0].sources?.[0]?.url || `https://github.com/GTimG/QuasiRiemannTracker/pull/${pending[0].pr}`))}" target="_blank" rel="noopener">${esc(decimal(pending[0]))} proposal</a><span>Official acceptance is separate.</span>`;
-  $('#provenance').textContent=`Official QRH tracker · source date ${catalogue.as_of}. Last catalogue sync ${syncStatus?.fetched_at||evidence.retrieved_at||'with this snapshot'}. GitHub Pages refreshes hourly; this page also checks for updates while open. Component annotations are reviewed separately.`;
+  $('#provenance').textContent=`Official QRH tracker · source date ${catalogue.as_of} · synced ${syncStatus?.fetched_at||evidence.retrieved_at||'with this snapshot'} · refreshes hourly.`;
 }
 
 function renderSelects(){
-  const options=records.map(r=>`<option value="${esc(r.id)}">${esc(name(r))} · ${esc(decimal(r))}${isProposal(r)?' · PENDING':''}</option>`).join('');
+  const options=[...records].sort((a,b)=>isBaseline(a)-isBaseline(b)||compareRational(a.theta,b.theta)).map(r=>`<option value="${esc(r.id)}">${esc(fixed(r))} · ${esc(name(r))}${isProposal(r)?' · PENDING':''}</option>`).join('');
   $('#method-a').innerHTML=options;$('#method-b').innerHTML=options;
   $('#method-a').value=state.a;$('#method-b').value=state.b;
 }
@@ -83,23 +88,25 @@ function choose(id, dimension){
 }
 
 function renderEndpoint(){
-  const W=1100,H=118,left=35,right=32,axisY=83;
+  const narrow=innerWidth<=640,W=narrow?720:1100,H=118,left=35,right=32,axisY=83,fs=narrow?11:9;
   const plotted=records.filter(r=>state.fullRange || theta(r)<=.875);
   const min=state.fullRange?Math.min(...records.map(gain))-4000:0;
   const max=Math.max(160,...plotted.map(gain))+4;
   const x=g=>left+(g-min)/(max-min)*(W-left-right);
   let out='';
-  const ticks=state.fullRange?[min, min/2,0,max]:[0,25,50,75,100,125,150];
-  ticks.forEach(t=>{out+=`<line x1="${x(t)}" y1="19" x2="${x(t)}" y2="${axisY}" stroke="${palette.grid}" stroke-dasharray="2 4"/>${text(x(t),105,state.fullRange?Math.round(t).toLocaleString():t,`text-anchor="middle" fill="${palette.muted}" font-size="9"`)}`;});
+  const ticks=state.fullRange?[min, min/2,0,max]:narrow?[0,50,100,150]:[0,25,50,75,100,125,150];
+  ticks.forEach(t=>{out+=`<line x1="${x(t)}" y1="19" x2="${x(t)}" y2="${axisY}" stroke="${palette.grid}" stroke-dasharray="2 4"/>${text(x(t),105,state.fullRange?Math.round(t).toLocaleString():t,`text-anchor="middle" fill="${palette.muted}" font-size="${fs}"`)}`;});
   out+=`<line x1="${left}" y1="${axisY}" x2="${W-right}" y2="${axisY}" stroke="${palette.grid}"/>`;
   const bins=new Map();
   plotted.forEach(r=>{
     const px=x(gain(r)),bin=Math.round(px/24),layer=bins.get(bin)||0;bins.set(bin,layer+1);
     const py=66-(layer%4)*13,active=r.id===state.a||r.id===state.b,c=r.id===state.b?palette.b:r.id===state.a?palette.a:'#b7c6ad';
-    out+=`<g class="endpoint-node" role="button" tabindex="0" data-method="${esc(r.id)}" aria-label="${esc(`${name(r)}, θ ${decimal(r)}, gain ${gain(r).toFixed(6)} millionths`)}"><title>${esc(`${name(r)}\nθ = ${decimal(r)}\n${exact(r)}${isProposal(r)?'\nPending proposal':''}`)}</title><line x1="${px}" y1="${py}" x2="${px}" y2="${axisY}" stroke="${c}" opacity=".5"/><circle cx="${px}" cy="${py}" r="${active?5:3.5}" fill="${isProposal(r)?'white':c}" stroke="${c}" stroke-width="${isProposal(r)?1.8:1}"/>${active?text(Math.min(W-right-5,Math.max(left+10,px)),py-10,(r.id===state.b?'B · ':'A · ')+decimal(r),`fill="${c}" font-size="9" text-anchor="${px>W-170?'end':px<120?'start':'middle'}"`):''}</g>`;
+    out+=`<g class="endpoint-node" role="button" tabindex="0" data-method="${esc(r.id)}" aria-label="${esc(`${name(r)}, θ ${decimal(r)}, gain ${gain(r).toFixed(6)} millionths`)}"><title>${esc(`${name(r)}\nθ = ${decimal(r)}\n${exact(r)}${isProposal(r)?'\nPending proposal':''}`)}</title><line x1="${px}" y1="${py}" x2="${px}" y2="${axisY}" stroke="${c}" opacity=".5"/><circle cx="${px}" cy="${py}" r="${active?5:3.5}" fill="${isProposal(r)?'white':c}" stroke="${c}" stroke-width="${isProposal(r)?1.8:1}"/>${active?text(Math.min(W-right-5,Math.max(left+10,px)),py-10,(r.id===state.b?'B · ':'A · ')+decimal(r),`fill="${c}" font-size="${fs+1}" font-weight="500" text-anchor="${px>W-170?'end':px<120?'start':'middle'}"`):''}</g>`;
   });
-  $('#endpoint-chart').innerHTML=svg(out,`0 0 ${W} ${H}`,'Verified endpoint improvements over seven eighths')+`<button id="range-toggle" class="chart-range-toggle">${state.fullRange?'Refinement zoom':'Full range · includes 2 wider baselines'}</button>`;
+  $('#endpoint-chart').innerHTML=svg(out,`0 0 ${W} ${H}`,'Verified endpoint improvements over seven eighths')+`<button id="range-toggle" class="chart-range-toggle">${state.fullRange?'Refinement zoom':'Full range · includes 2 wider baselines'}</button>`+(narrow?'<span class="chart-scroll-hint" aria-hidden="true">Swipe for the full axis ↔</span>':'');
   $('#range-toggle').onclick=()=>{state.fullRange=!state.fullRange;renderEndpoint();};
+  // On phones the chart scrolls sideways; start with the selected method in view.
+  if(narrow){const chart=$('#endpoint-chart'),sel=records.find(r=>r.id===state.b);if(sel&&(state.fullRange||theta(sel)<=.875))chart.scrollLeft=Math.max(0,x(gain(sel))*chart.querySelector('svg').getBoundingClientRect().width/W-chart.clientWidth*.6);}
   bindMethods($('#endpoint-chart'));
 }
 
@@ -112,12 +119,13 @@ function bindMethods(container){
 
 function renderMatrix(){
   const dims=evidence.dimensions;
-  $('#method-table thead').innerHTML=`<tr><th scope="col">Method <span style="font-weight:400;color:#9ba995">/ endpoint θ</span></th>${dims.map(d=>`<th scope="col" class="${state.dimension===d.id?'cell-focused':''}"><button data-dimension="${esc(d.id)}" aria-pressed="${state.dimension===d.id}" title="${esc(d.description)}">${esc(shortLabels[d.id])}</button></th>`).join('')}</tr>`;
+  $('#method-table thead').innerHTML=`<tr><th scope="col">Method <span class="th-sub">/ θ · gain over 7/8</span></th>${dims.map(d=>`<th scope="col" class="${state.dimension===d.id?'cell-focused':''}"><button data-dimension="${esc(d.id)}" aria-pressed="${state.dimension===d.id}" title="${esc(d.description)}">${esc(shortLabels[d.id])}</button></th>`).join('')}</tr>`;
   const query=state.query.trim().toLowerCase();
   const matching=records.filter(r=>(name(r)+' '+r.title+' '+author(r)+' '+decimal(r)+' '+(enrichment(r).what_changed||r.method||'')).toLowerCase().includes(query));
   const compared=[...new Set([state.a,state.b])];
-  const filtered=[...compared.map(id=>matching.find(r=>r.id===id)).filter(Boolean),...matching.filter(r=>!compared.includes(r.id))];
-  $('#method-table tbody').innerHTML=filtered.length?filtered.map(r=>`<tr data-method="${esc(r.id)}" tabindex="0" role="row" aria-label="Inspect ${esc(name(r))}" class="${r.id===state.a?'selected-a ':''}${r.id===state.b?'selected-b':''}"><td><div class="method-title">${r.id===state.a?'<i class="method-dot a"></i>':''}${r.id===state.b?'<i class="method-dot b"></i>':''}${esc(name(r))}${isProposal(r)?'<span class="mini-proposal">PROPOSAL</span>':''}</div><div class="method-meta"><span class="theta">${esc(decimal(r))}</span><span>${esc(author(r)).slice(0,38)}</span></div></td>${dims.map(d=>{const c=cell(r,d.id);return `<td class="${state.dimension===d.id?'cell-focused':''}"><button class="cell-badge ${esc(c.status)}" data-method="${esc(r.id)}" data-dimension="${esc(d.id)}" aria-label="${esc(`${name(r)} — ${d.label}: ${statusFull[c.status] || c.status}. ${c.text}`)}" title="${esc(`${statusFull[c.status] || c.status}: ${c.text}`)}">${esc(statusText[c.status]||c.status)}</button></td>`;}).join('')}</tr>`).join(''):`<tr><td colspan="8"><div class="empty-message">No methods match “${esc(state.query)}”. Try an author or endpoint.</div></td></tr>`;
+  const rest=matching.filter(r=>!compared.includes(r.id)).sort((a,b)=>isBaseline(a)-isBaseline(b)||compareRational(a.theta,b.theta));
+  const filtered=[...compared.map(id=>matching.find(r=>r.id===id)).filter(Boolean),...rest];
+  $('#method-table tbody').innerHTML=filtered.length?filtered.map(r=>`<tr data-method="${esc(r.id)}" tabindex="0" role="row" aria-label="Inspect ${esc(name(r))}" class="${r.id===state.a?'selected-a ':''}${r.id===state.b?'selected-b ':''}${isBaseline(r)?'baseline-row':''}"><td><div class="method-title">${r.id===state.a?'<i class="method-dot a"></i>':''}${r.id===state.b?'<i class="method-dot b"></i>':''}${esc(name(r))}${isProposal(r)?'<span class="mini-proposal">PROPOSAL</span>':''}</div><div class="method-meta"><span class="theta" title="${esc(exact(r))}">${esc(fixed(r))}</span><span class="gain ${isBaseline(r)?'baseline':''}">${esc(isBaseline(r)?'reference':gainLabel(r))}</span><span class="author">${esc(author(r)).slice(0,38)}</span></div></td>${dims.map(d=>{const c=cell(r,d.id);return `<td class="${state.dimension===d.id?'cell-focused':''}"><button class="cell-badge ${esc(c.status)}" data-method="${esc(r.id)}" data-dimension="${esc(d.id)}" aria-label="${esc(`${name(r)} — ${d.label}: ${statusFull[c.status] || c.status}. ${c.text}`)}" title="${esc(`${statusFull[c.status] || c.status}: ${c.text}`)}">${esc(statusText[c.status]||c.status)}</button></td>`;}).join('')}</tr>`).join(''):`<tr><td colspan="8"><div class="empty-message">No methods match “${esc(state.query)}”. Try an author or endpoint.</div></td></tr>`;
   $('#matrix-count').textContent=`${filtered.length} of ${records.length} methods · ${state.pending?'proposals included':'verified catalogue only'}`;
   $('#clear-dimension').hidden=!state.dimension;
   $('#method-table thead').querySelectorAll('button').forEach(b=>b.onclick=()=>{state.dimension=state.dimension===b.dataset.dimension?null:b.dataset.dimension;if(state.dimension)state.gate=gateForDimension[state.dimension];renderComparison();});
@@ -134,7 +142,7 @@ function renderRadar(){
   const pts=values=>values.map((r,i)=>point(i,r).join(',')).join(' ');
   let out='';
   [.3,.65,1].forEach(radius=>out+=`<polygon points="${pts(Array(N).fill(radius))}" fill="${radius===1?'#f7f9f4':'none'}" stroke="${palette.grid}" stroke-dasharray="${radius===.65?'2 4':'none'}"/>`);
-  dims.forEach((d,i)=>{const [x,y]=point(i,1),[lx,ly]=point(i,1.24);out+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="${palette.grid}"/>${text(lx,ly+3,shortLabels[d.id],`fill="${palette.muted}" font-size="9" text-anchor="${i===0||i===N/2?'middle':i<N/2?'start':'end'}"`)}`;});
+  dims.forEach((d,i)=>{const [x,y]=point(i,1),[lx,ly]=point(i,1.24);out+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="${palette.grid}"/>${text(lx,ly+3,shortLabels[d.id],`fill="${palette.muted}" font-size="11" text-anchor="${i===0||i===N/2?'middle':i<N/2?'start':'end'}"`)}`;});
   [state.a,state.b].forEach((id,index)=>{
     const record=byId.get(id);if(!record)return;
     const color=index?palette.b:palette.a;
@@ -159,7 +167,7 @@ function renderDetail(){
   const verified=r.status==='framework-verified';
   const proofChange=isReviewed(r)?proof.perMethod[r.id]?.changes?.filter(x=>gateDimension(x.nodeId)===d) || []:[];
   const links=[...(c.sources||[]),...(e.sources||[]),...(r.references||[])];
-  $('#method-detail').innerHTML=`<div><div class="eyebrow">SELECTED METHOD B · ${verified?'CATALOGUE VERIFIED':'PENDING PROPOSAL'}</div><div class="detail-title"><h3>${esc(name(r))}</h3></div><div class="detail-boundary">θ = ${esc(decimal(r))} <span style="font-size:9px;color:#97a18d">· ${esc(exact(r))}</span></div><div class="detail-summary">${esc(e.what_changed||r.method||r.title)}</div><div class="source-links"><span class="evidence-label">Evidence</span>${sourceLinks(links)}</div>${r.exact_bound?`<div class="small-copy" style="margin-top:10px">Source exact boundary: ${esc(r.exact_bound)}. The rational coordinate is the catalogue’s certified rendering value.</div>`:''}</div><div class="detail-right"><h4>${esc(dimension.label)} <span class="cell-badge ${esc(c.status)}" style="margin-left:7px">${esc(statusText[c.status]||c.status)}</span></h4><p class="dimension-explanation">${esc(c.text)}</p><a class="inline-help" href="#dimension-${esc(d)}">What does this dimension mean? ↗</a>${proofChange.map(p=>`<p class="small-copy" style="margin-top:9px">${esc(p.detail)}</p>`).join('')}<div class="metric-list">${metrics.map(m=>`<div class="metric"><span>${esc(m.label)}</span><span class="value">${esc(m.value)}</span><small>${esc(m.scope||'')}</small></div>`).join('')}</div>${d==='verification'?`<p class="small-copy" style="margin-top:12px">${esc(r.verification_note||e.source_status_note||'Inspect the linked receipt for the exact target family, statement, source commit and kernel checks.')}</p>`:''}</div>`;
+  $('#method-detail').innerHTML=`<div><div class="eyebrow">SELECTED METHOD B · ${verified?'CATALOGUE VERIFIED':'PENDING PROPOSAL'}</div><div class="detail-title"><h3>${esc(name(r))}</h3></div><div class="detail-boundary">θ = ${esc(decimal(r))} <span class="exact-rational">· ${esc(exact(r))}</span></div><div class="detail-summary">${esc(e.what_changed||r.method||r.title)}</div><div class="source-links"><span class="evidence-label">Evidence</span>${sourceLinks(links)}</div>${r.exact_bound?`<div class="small-copy" style="margin-top:10px">Source exact boundary: ${esc(r.exact_bound)}. The rational coordinate is the catalogue’s certified rendering value.</div>`:''}</div><div class="detail-right"><h4>${esc(dimension.label)} <span class="cell-badge ${esc(c.status)}" style="margin-left:7px">${esc(statusText[c.status]||c.status)}</span></h4><p class="dimension-explanation">${esc(c.text)}</p><a class="inline-help" href="#dimension-${esc(d)}">What does this dimension mean? ↗</a>${proofChange.map(p=>`<p class="small-copy" style="margin-top:9px">${esc(p.detail)}</p>`).join('')}<div class="metric-list">${metrics.map(m=>`<div class="metric"><span>${esc(m.label)}</span><span class="value">${esc(m.value)}</span><small>${esc(m.scope||'')}</small></div>`).join('')}</div>${d==='verification'?`<p class="small-copy" style="margin-top:12px">${esc(r.verification_note||e.source_status_note||'Inspect the linked receipt for the exact target family, statement, source commit and kernel checks.')}</p>`:''}</div>`;
 }
 
 function renderLineage(){
@@ -427,7 +435,8 @@ function bindControls(){
   $('#export-csv').onclick=exportCSV;
   $('#export-json').onclick=()=>download('qrh-atlas-evidence.json',JSON.stringify({catalogue,evidence,proof},null,2),'application/json');
   $('#refresh-data').onclick=refresh;
-  addEventListener('resize',()=>{drawProofEdges();renderCapacity();bottleneckResize?.();});
+  let wasNarrow=innerWidth<=640;
+  addEventListener('resize',()=>{drawProofEdges();renderCapacity();bottleneckResize?.();const narrow=innerWidth<=640;if(narrow!==wasNarrow){wasNarrow=narrow;renderEndpoint();}});
 }
 
 async function init(){
