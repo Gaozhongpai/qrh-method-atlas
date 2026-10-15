@@ -1,6 +1,7 @@
 import {capacityAt,capacityPoint,CAPACITY_EXAMPLE} from './capacity-model.js?v=capacity-example-2';
 export {capacityAt};
 const TRACKER = 'https://gtimg.github.io/QuasiRiemannTracker/';
+const SNAPSHOT_VERSION = new URL(import.meta.url).search;
 const $ = (selector) => document.querySelector(selector);
 const esc = (value = '') => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const svg = (content, viewBox, label) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" role="img" aria-label="${esc(label)}">${content}</svg>`;
@@ -412,8 +413,8 @@ function bindControls(){
 
 async function init(){
   try{
-    [catalogue,evidence,proof]=await Promise.all(['catalogue','method-evidence','proof-dimensions'].map(async file=>{const r=await fetch(`data/${file}.json`);if(!r.ok)throw new Error(`Missing ${file}`);return r.json();}));
-    [reviewed,syncStatus]=await Promise.all(['reviewed-sources','sync-status'].map(async file=>{try{const r=await fetch(`data/${file}.json`);return r.ok?await r.json():null;}catch{return null;}}));
+    [catalogue,evidence,proof]=await Promise.all(['catalogue','method-evidence','proof-dimensions'].map(async file=>{const r=await fetch(`data/${file}.json${SNAPSHOT_VERSION}`);if(!r.ok)throw new Error(`Missing ${file}`);return r.json();}));
+    [reviewed,syncStatus]=await Promise.all(['reviewed-sources','sync-status'].map(async file=>{try{const r=await fetch(`data/${file}.json${SNAPSHOT_VERSION}`);return r.ok?await r.json():null;}catch{return null;}}));
     const params=new URLSearchParams(location.search);state.pending=params.get('proposals')==='1';state.b=params.get('method');$('#show-pending').checked=state.pending;
     renderHeader(rebuildRecords());renderSelects();bindControls();renderComparison();renderCapacity();
     document.documentElement.dataset.ready='true';
