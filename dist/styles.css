@@ -42,3 +42,38 @@ html.guide-open{overflow:hidden}
 @keyframes guide-enter{from{transform:translateX(24px);opacity:.7}to{transform:translateX(0);opacity:1}}
 @media(max-width:640px){.dimension-dialog{width:100vw;border-left:0}.guide-header{padding:20px 19px 17px;gap:12px}.guide-header h2{font-size:31px}.guide-header p{font-size:9px;max-width:270px}.guide-nav{padding:12px 17px;gap:6px}.guide-scroll{padding:17px 16px 25px}.dimension-dialog .dimension-body{padding:3px 17px 19px}.dimension-dialog .dimension-body p{font-size:11px}.guide-trigger{padding:8px 10px;font-size:9px}.guide-trigger>span{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.dimension-dialog[open]{animation:none}}
+.section-heading .capacity-scope{font-size:10px;color:#7d8b77;max-width:740px}
+.capacity-plot-panel{padding:23px}
+.plot-heading{gap:15px;font-size:10px}
+.point-key{display:inline-block;width:8px;height:8px;background:var(--ink);transform:rotate(45deg);margin:0 3px}
+.capacity-chart{height:350px;cursor:crosshair}
+.capacity-chart-help{font-size:10px;color:#71856b;margin:6px 0 0;line-height:1.7}
+.capacity-caption{margin:17px 0 0;font-size:10px;line-height:1.8}
+.capacity-point-summary{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border);border-radius:7px;margin-top:18px;overflow:hidden}
+.capacity-point-summary>div{padding:13px;min-width:0}
+.capacity-point-summary>div+div{border-left:1px solid var(--border)}
+.capacity-point-summary span{display:block;font-size:10px;color:#75856e;margin-bottom:7px}
+.capacity-point-summary strong{display:inline-block;font-size:10px;font-weight:550;padding:3px 6px;border-radius:4px;line-height:1.7}
+.capacity-point-summary strong[data-state=pass]{color:#347358;background:#eaf4ed}
+.capacity-point-summary strong[data-state=fail]{color:#9a683e;background:#fbefdf}
+.capacity-point-summary strong[data-state=outside]{color:#7a8474;background:#f0f2ec}
+.capacity-point-summary small{display:block;font-size:9px;line-height:1.8;color:#7a8975;margin-top:7px}
+.capacity-control-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}
+#capacity-reset{background:none;border:0;font-size:10px;color:var(--teal);padding:3px 0 3px 7px;white-space:nowrap}
+#capacity-reset:hover{text-decoration:underline;text-underline-offset:3px}
+.capacity-controls h3{margin:6px 0 13px}
+.parameter-label{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:20px}
+.parameter-label label{font-size:11px;color:#657b60}
+.parameter-label input{width:107px;min-width:0;border:1px solid #dce5d7;border-radius:5px;background:#f9fbf6;padding:6px 7px;text-align:right;font-family:var(--mono);font-size:11px;color:var(--ink)}
+.parameter-hint{font-size:9px;line-height:1.8;color:#819077;margin:6px 0 0}
+.capacity-metrics{gap:11px}
+.capacity-metrics>div{font-size:9px;gap:10px}
+.capacity-metrics strong{font-size:12px;white-space:nowrap}
+#affine-capacity{white-space:normal;text-align:right}
+.capacity-controls details .small-copy{margin-top:11px}
+.capacity-source-links{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:10px;color:var(--teal);margin-top:12px}
+.capacity-source-links a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:#ccd9c4}
+@media(max-width:900px){.capacity-layout{grid-template-columns:minmax(0,1fr) 285px}.capacity-plot-panel{padding:18px}.capacity-point-summary{grid-template-columns:1fr}.capacity-point-summary>div+div{border-left:0;border-top:1px solid var(--border)}}
+@media(max-width:640px){.capacity-layout{grid-template-columns:1fr}.capacity-plot-panel{padding:18px 14px}.plot-heading{font-size:9px;gap:9px 14px}.capacity-chart{height:320px;margin-top:17px}.capacity-chart-help,.capacity-caption{font-size:10px}.capacity-point-summary{grid-template-columns:1fr 1fr}.capacity-point-summary>div+div{border-top:0;border-left:1px solid var(--border)}.capacity-point-summary>div{padding:12px 10px}.capacity-point-summary span,.capacity-point-summary strong{font-size:9px}.capacity-point-summary small{font-size:9px}.parameter-label{margin-top:19px}.parameter-label input{font-size:12px;width:114px;padding:7px 8px}.parameter-hint{font-size:10px}.capacity-metrics strong{font-size:14px}.capacity-metrics .capacity-delta strong{font-size:13px}.capacity-source-links{font-size:10px}}
+@media(max-width:370px){.capacity-point-summary{grid-template-columns:1fr}.capacity-point-summary>div+div{border-left:0;border-top:1px solid var(--border)}}
+@media(max-width:640px){#affine-capacity{text-align:left}}

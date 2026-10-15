@@ -1,3 +1,5 @@
+import {capacityAt,capacityPoint,CAPACITY_EXAMPLE} from './capacity-model.js?v=capacity-example-2';
+export {capacityAt};
 const TRACKER = 'https://gtimg.github.io/QuasiRiemannTracker/';
 const $ = (selector) => document.querySelector(selector);
 const esc = (value = '') => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -216,31 +218,58 @@ function renderGateDetail(){
   $('#gate-detail').innerHTML=`<div class="eyebrow">PROOF GATE · ${esc(shortLabels[gateDimension(node.id)])}</div><h3>${esc(node.label)}</h3><p class="gate-description">${esc(node.description)}</p>${change?`<div class="gate-notice"><strong>${esc(name(r))} · ${esc(change.kind.replaceAll('-',' '))}</strong><br>${esc(change.detail)}</div>`:`<div class="gate-notice">Representative framework contract. A method-specific change for ${esc(name(r))} has not been extracted at this gate.</div>`}${formulas.map(f=>`<div class="formula" title="${esc(f.tex)}">${esc(readableFormula(f))}</div><p class="formula-context"><strong>Domain.</strong> ${esc(f.domain)}</p><p class="formula-context" style="margin-top:7px">${esc(f.scope)}</p>`).join('')}${!formulas.length?`<p class="small-copy" style="margin-top:13px">${esc(node.formulaStatus || 'The required checks are method-specific.')}</p>`:''}<ul class="gate-checks">${node.requiredChecks.map(c=>`<li>${esc(c)}</li>`).join('')}</ul><div class="source-links">${sourceLinks(gateSources(linkedSources))}</div>`;
 }
 
-export function capacityAt(m,kappa){const Lambda=19312/4787,B=14200/14361-1/100000,affine=(B-2*m)/Lambda;return {standard:(1-2*m)/(6*kappa),affine,allowedAffine:m>=.41&&m<=.44&&affine>=.034?Math.min(.04,affine):null,Lambda,B};}
+const capacityDefaults={'plain-length':.41825,'kappa-value':.75,'prime-length':.0375};
+function setCapacityParameter(id,value){
+  const range=$('#'+id),min=Number(range.min),max=Number(range.max),step=Number(range.step);
+  if(!Number.isFinite(value))value=Number(range.value);
+  const digits=(range.step.split('.')[1]||'').length;
+  range.value=(min+Math.round((Math.min(max,Math.max(min,value))-min)/step)*step).toFixed(digits);
+  $('#'+id+'-number').value=range.value;
+}
 function renderCapacity(){
-  const m=Number($('#plain-length').value),kappa=Number($('#kappa-value').value),v=capacityAt(m,kappa);
-  $('#plain-value').textContent=`m = ${m.toFixed(5)}`;$('#kappa-display').textContent=`κ = ${kappa.toFixed(4)}`;
-  $('#standard-capacity').textContent=v.standard.toFixed(6);$('#affine-capacity').textContent=v.allowedAffine===null?'Outside local gate':v.allowedAffine.toFixed(6);
-  const delta=(v.allowedAffine??v.affine)-v.standard;$('#capacity-difference').textContent=`${delta>=0?'+':''}${delta.toFixed(6)}`;
-  const within=v.allowedAffine!==null;
-  $('#capacity-validity').textContent=!within?'No affine capacity in the required local z window at this slice.':v.affine>.04?'The raw affine boundary exceeds 0.04, so the local upper gate caps admissible capacity at 0.04.':'The affine boundary is inside its local length window at this slice. Both individual plain lengths equal m.';
-  const W=650,H=330,L=60,R=28,T=26,B=49,x0=.405,x1=.445,y0=.028,y1=.047;
+  const m=Number($('#plain-length').value),kappa=Number($('#kappa-value').value),z=Number($('#prime-length').value);
+  const v=capacityPoint(m,kappa,z),{mMin,mMax,zMin,zMax}=CAPACITY_EXAMPLE;
+  $('#kappa-premise').textContent=`Assumes 0.51 ≤ β* ≤ ${v.betaPremise.toFixed(5)}. Lowering κ requires a stronger zero bound; the slider does not prove it.`;
+  $('#standard-capacity').textContent=v.standard.toFixed(6);
+  $('#affine-capacity').textContent=v.allowedAffine===null?'No local capacity':v.allowedAffine.toFixed(6);
+  const delta=v.allowedAffine===null?null:v.allowedAffine-v.standard;
+  $('#capacity-difference').textContent=delta===null?'—':`${delta>=0?'+':''}${delta.toFixed(6)}`;
+  $('#capacity-validity').textContent=v.allowedAffine===null?'No affine length in its local z window is available at this m.':v.affine>zMax?'The affine maximum is capped by the local upper gate z = 0.04.':'The affine maximum is set by its length inequality inside the local window.';
+  const setStatus=(id,label,kind)=>{const node=$('#'+id);node.textContent=label;node.dataset.state=kind;};
+  setStatus('standard-point-status',v.standardFits?'Meets inequality':'Exceeds boundary',v.standardFits?'pass':'fail');
+  setStatus('affine-point-status',!v.affineWindow?'Outside local window':v.affineFits?'Meets length gates':'Exceeds boundary',!v.affineWindow?'outside':v.affineFits?'pass':'fail');
+  const standardBudget=2*m+6*kappa*z,affineBudget=2*m+v.Lambda*z;
+  const precision=(a,b)=>Math.abs(a-b)>1e-12&&Math.abs(a-b)<1e-8?12:9;
+  $('#standard-point-detail').textContent=`2m + 6κz ≈ ${standardBudget.toFixed(precision(standardBudget,1))} ${v.standardFits?'≤':'>'} 1 · conditional on the stated premise.`;
+  $('#affine-point-detail').textContent=!v.affineWindow?`Requires ${mMin} ≤ m ≤ ${mMax} and ${zMin} ≤ z ≤ ${zMax}.`:`2m + Λz ≈ ${affineBudget.toFixed(precision(affineBudget,v.B))} ${v.affineFits?'≤':'>'} B ≈ ${v.B.toFixed(precision(affineBudget,v.B))}.`;
+  const chart=$('#capacity-chart'),W=Math.max(260,Math.round(chart.getBoundingClientRect().width)),H=Number.parseFloat(getComputedStyle(chart).height)||360;
+  const L=W<400?44:55,R=15,T=29,B=46,x0=.405,x1=.445,y0=.03,y1=.046;
   const x=t=>L+(t-x0)/(x1-x0)*(W-L-R),y=t=>H-B-(t-y0)/(y1-y0)*(H-T-B);
-  let out=`<defs><clipPath id="capacity-clip"><rect x="${L}" y="${T}" width="${W-L-R}" height="${H-T-B}"/></clipPath></defs>`;
-  out+=`<rect x="${x(.41)}" y="${y(.04)}" width="${x(.44)-x(.41)}" height="${y(.034)-y(.04)}" fill="#fdfbf7" stroke="#ebd6be" stroke-dasharray="4 4"/>`;
-  const allowed=[];
-  for(let i=0;i<=160;i++){const xx=.41+.03*i/160,c=capacityAt(xx,kappa);if(c.allowedAffine!==null)allowed.push([x(xx),y(c.allowedAffine)]);}
-  if(allowed.length)out+=`<polygon points="${[[allowed[0][0],y(.034)],...allowed,[allowed[allowed.length-1][0],y(.034)]].map(p=>p.join(',')).join(' ')}" fill="#f5d9b9" fill-opacity=".4"/>`;
-  [.03,.034,.038,.042,.046].forEach(t=>{out+=`<line x1="${L}" y1="${y(t)}" x2="${W-R}" y2="${y(t)}" stroke="${palette.grid}" stroke-dasharray="2 4"/>${text(L-10,y(t)+3,t.toFixed(3),`fill="${palette.muted}" text-anchor="end" font-size="9"`)}`;});
-  [.41,.42,.43,.44].forEach(t=>{out+=`<line x1="${x(t)}" y1="${T}" x2="${x(t)}" y2="${H-B}" stroke="${palette.grid}" stroke-dasharray="2 4"/>${text(x(t),H-B+18,t.toFixed(2),`fill="${palette.muted}" text-anchor="middle" font-size="9"`)}`;});
-  const standardPoints=[],affinePoints=[];
-  for(let i=0;i<=150;i++){const xx=x0+(x1-x0)*i/150,c=capacityAt(xx,kappa);standardPoints.push([x(xx),y(c.standard)]);affinePoints.push([x(xx),y(c.affine)]);}
   const path=points=>points.map(([xx,yy],i)=>`${i?'L':'M'}${xx.toFixed(3)},${yy.toFixed(3)}`).join('');
-  const local=affinePoints.filter((_,i)=>{const xx=x0+(x1-x0)*i/150,c=capacityAt(xx,kappa);return xx>=.41&&xx<=.44&&c.affine>=.034&&c.affine<=.04;});
-  out+=`<g clip-path="url(#capacity-clip)"><path d="${path(affinePoints)}" fill="none" stroke="${palette.b}" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/><path d="${path(standardPoints)}" fill="none" stroke="${palette.a}" stroke-width="2"/><path d="${path(local)}" fill="none" stroke="${palette.b}" stroke-width="2.5"/><line x1="${x(m)}" y1="${T}" x2="${x(m)}" y2="${H-B}" stroke="#98ac8f" stroke-dasharray="3 4"/><circle cx="${x(m)}" cy="${y(v.standard)}" r="4" fill="white" stroke="${palette.a}" stroke-width="2"/><circle cx="${x(m)}" cy="${y(v.allowedAffine??v.affine)}" r="4" fill="${within?palette.b:'white'}" stroke="${palette.b}" stroke-width="2"/></g>`;
-  out+=text(L,T-12,'Prime length z',`fill="${palette.muted}" font-size="9"`)+text((W+L-R)/2,H-8,'Equal plain length m = n₁ = n₂',`fill="${palette.muted}" font-size="10" text-anchor="middle"`);
-  out+=text(x(.412),y(.0394),'LOCAL LENGTH WINDOW',`fill="#bc956b" font-size="8" letter-spacing="1"`);
-  $('#capacity-chart').innerHTML=svg(out,`0 0 ${W} ${H}`,'Admissible prime length against equal plain length, including the local affine domain');
+  const standardPoints=[],affinePoints=[];
+  for(let i=0;i<=100;i++){const xx=x0+(x1-x0)*i/100,c=capacityAt(xx,kappa);standardPoints.push([x(xx),y(c.standard)]);affinePoints.push([x(xx),y(c.affine)]);}
+  const capStart=(v.B-v.Lambda*zMax)/2,capEnd=(v.B-v.Lambda*zMin)/2;
+  const localBoundary=[[mMin,zMax],[capStart,zMax],[capEnd,zMin]].map(([xx,yy])=>[x(xx),y(yy)]);
+  const localPolygon=[[x(mMin),y(zMin)],...localBoundary];
+  let out=`<defs><clipPath id="capacity-clip"><rect x="${L}" y="${T}" width="${W-L-R}" height="${H-T-B}"/></clipPath></defs>`;
+  out+=`<g clip-path="url(#capacity-clip)"><path d="${path([[L,H-B],...standardPoints,[W-R,H-B]])}Z" fill="${palette.a}" fill-opacity=".07"/><polygon points="${localPolygon.map(p=>p.join(',')).join(' ')}" fill="${palette.b}" fill-opacity=".13"/></g>`;
+  [.03,.034,.038,.042,.046].forEach(t=>{out+=`<line x1="${L}" y1="${y(t)}" x2="${W-R}" y2="${y(t)}" stroke="${palette.grid}" stroke-dasharray="2 4"/>${text(L-9,y(t)+3,t.toFixed(3),`fill="${palette.muted}" text-anchor="end" font-size="10"`)}`;});
+  [.41,.42,.43,.44].forEach(t=>{out+=`<line x1="${x(t)}" y1="${T}" x2="${x(t)}" y2="${H-B}" stroke="${palette.grid}" stroke-dasharray="2 4"/>${text(x(t),H-B+19,t.toFixed(2),`fill="${palette.muted}" text-anchor="middle" font-size="10"`)}`;});
+  out+=`<rect x="${x(mMin)}" y="${y(zMax)}" width="${x(mMax)-x(mMin)}" height="${y(zMin)-y(zMax)}" fill="none" stroke="#d8b68f" stroke-dasharray="5 4"/>`;
+  out+=`<g clip-path="url(#capacity-clip)"><path d="${path(affinePoints)}" fill="none" stroke="${palette.b}" stroke-width="1.3" stroke-dasharray="4 4" opacity=".55"/><path d="${path(standardPoints)}" fill="none" stroke="${palette.a}" stroke-width="2"/><path d="${path(localBoundary)}" fill="none" stroke="${palette.b}" stroke-width="2.5"/><line x1="${x(m)}" y1="${T}" x2="${x(m)}" y2="${H-B}" stroke="#98ac8f" stroke-dasharray="3 4"/><line x1="${L}" y1="${y(z)}" x2="${x(m)}" y2="${y(z)}" stroke="#98ac8f" stroke-dasharray="3 4"/>`;
+  if(v.allowedAffine!==null)out+=`<line x1="${x(m)}" y1="${y(v.standard)}" x2="${x(m)}" y2="${y(v.allowedAffine)}" stroke="${palette.ink}" stroke-width="2" opacity=".35"/><circle cx="${x(m)}" cy="${y(v.allowedAffine)}" r="4" fill="white" stroke="${palette.b}" stroke-width="2"/>`;
+  out+=`<circle cx="${x(m)}" cy="${y(v.standard)}" r="4" fill="white" stroke="${palette.a}" stroke-width="2"/><path d="M${x(m)},${y(z)-6}l6,6 -6,6 -6,-6Z" fill="${palette.ink}" stroke="white" stroke-width="1.5"/></g>`;
+  out+=text(L,T-13,'Prime length z',`fill="${palette.muted}" font-size="10"`)+text((W+L-R)/2,H-7,'Equal plain length m = n₁ = n₂',`fill="${palette.muted}" font-size="10" text-anchor="middle"`);
+  out+=text(x(.44)-7,y(.04)-8,'LOCAL WINDOW',`fill="#a9835a" font-size="9" text-anchor="end" letter-spacing=".6"`);
+  chart.innerHTML=svg(out,`0 0 ${W} ${H}`,`Worked moment-capacity example. Test point m=${m.toFixed(5)}, z=${z.toFixed(5)}, κ=${kappa.toFixed(4)}. Standard inequality ${v.standardFits?'met':'not met'}; affine local gates ${v.affineFits?'met':v.affineWindow?'not met':'outside window'}.`);
+  chart.onclick=event=>{
+    const graphic=chart.querySelector('svg'),point=graphic.createSVGPoint();point.x=event.clientX;point.y=event.clientY;
+    const position=point.matrixTransform(graphic.getScreenCTM().inverse());
+    if(position.x<L||position.x>W-R||position.y<T||position.y>H-B)return;
+    setCapacityParameter('plain-length',x0+(position.x-L)/(W-L-R)*(x1-x0));
+    setCapacityParameter('prime-length',y0+(H-B-position.y)/(H-T-B)*(y1-y0));
+    renderCapacity();
+  };
 }
 
 function renderComparison(){renderMatrix();renderRadar();renderDetail();renderLineage();renderProofMap();renderEndpoint();}
@@ -323,11 +352,16 @@ function bindControls(){
   for(const view of ['matrix','lineage'])$('#'+view+'-tab').onclick=()=>{
     state.view=view;for(const v of ['matrix','lineage']){$('#'+v+'-view').hidden=v!==view;$('#'+v+'-tab').classList.toggle('active',v===view);$('#'+v+'-tab').setAttribute('aria-pressed',String(v===view));}
   };
-  $('#plain-length').oninput=renderCapacity;$('#kappa-value').oninput=renderCapacity;
+  Object.keys(capacityDefaults).forEach(id=>{
+    $('#'+id).oninput=event=>{setCapacityParameter(id,Number(event.target.value));renderCapacity();};
+    $('#'+id+'-number').oninput=event=>{if(event.target.value!==''&&event.target.validity.valid){setCapacityParameter(id,event.target.valueAsNumber);renderCapacity();}};
+    $('#'+id+'-number').onchange=event=>{setCapacityParameter(id,event.target.valueAsNumber);renderCapacity();};
+  });
+  $('#capacity-reset').onclick=()=>{Object.entries(capacityDefaults).forEach(([id,value])=>setCapacityParameter(id,value));renderCapacity();};
   $('#export-csv').onclick=exportCSV;
   $('#export-json').onclick=()=>download('qrh-atlas-evidence.json',JSON.stringify({catalogue,evidence,proof},null,2),'application/json');
   $('#refresh-data').onclick=refresh;
-  addEventListener('resize',drawProofEdges);
+  addEventListener('resize',()=>{drawProofEdges();renderCapacity();});
 }
 
 async function init(){
@@ -337,7 +371,7 @@ async function init(){
     const params=new URLSearchParams(location.search);state.pending=params.get('proposals')==='1';state.b=params.get('method');$('#show-pending').checked=state.pending;
     renderHeader(rebuildRecords());renderSelects();bindControls();renderComparison();renderCapacity();
     document.documentElement.dataset.ready='true';
-    window.qrhAtlas={state,capacityAt,compareRational,get records(){return records;},get catalogue(){return catalogue;}};
+    window.qrhAtlas={state,capacityAt,capacityPoint,compareRational,get records(){return records;},get catalogue(){return catalogue;}};
     refresh({silent:true});
     setInterval(()=>{if(document.visibilityState==='visible')refresh({silent:true});},300000);
   }catch(error){$('#snapshot-label').textContent='Source data could not be loaded.';notice('Unable to load the atlas source data. Please reload the page.');console.error(error);}

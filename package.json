@@ -6,6 +6,7 @@
   "description": "A source-backed atlas of QRH proof methods and their endpoint dependencies.",
   "scripts": {
     "check": "node --check dist/app.js",
+    "test": "node --test scripts/test_capacity.mjs",
     "serve": "python3 -m http.server 8000 --directory dist"
   }
 }
