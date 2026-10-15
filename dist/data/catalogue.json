@@ -1018,6 +1018,200 @@
           "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/43"
         }
       ]
+    },
+    {
+      "id": "certb-local-20261013",
+      "title": "CertB-pushed affine local moment and formal cubic-theta limit hierarchy (10935831/12500000 = 0.87486648)",
+      "theta": {
+        "numerator": "10935831",
+        "denominator": "12500000"
+      },
+      "authors": [
+        {
+          "name": "Devin Watson",
+          "url": "https://github.com/DevinWatson"
+        }
+      ],
+      "method": "Tightens the reserve-balanced affine local-moment defect from g = 1/250 = 400/100000 to g = 429/100000 by utilizing the available slack in the extracted-error B026/B025 budget (leaving 19/15000000 > 0 on Face 2) and tightening final analytic/endpoint reserves to 1/50000000. Regenerates the dyadic Bernstein enclosure certificates in B028, B030, B038, and B116 at h = 397/500, ell = 1567507/9375000, ly = 4308736/9375000, and kappa = 4685831/6250000, yielding theta = 10935831/12500000 = 0.87486648. Also adds B127.lean proving the formal multi-regime hard-limit hierarchy across the cubic-theta strip architecture (fixed-plane single-cell wall 10935831/12500000, B026 four-face ceiling g <= 36/8375, variable-slope pivot domination, truncated-sieve no-go, multi-regime base-contract closure walls down to 0.874835, Regime V interior coupled variable-slope physical envelope down to 328/375 = 0.87466667, and the universal 13/15 low-side LP floor). Builds on Kari Roegnvaldsson's reserve-local-20261013 and affine-local-20261013, nielstron's local44-20261013, Zhongpai Gao's local-moment work, Hailey Collet's Cycle25 framework, Akash Levy's weighted numerator, and OpenAI/math.",
+      "license": "Apache-2.0 (inherited notices retained)",
+      "builds_on": [
+        "reserve-local-20261013",
+        "affine-local-20261013",
+        "local44-20261013"
+      ],
+      "status": "framework-verified",
+      "submitted_at": "2026-10-14T20:34:45Z",
+      "published_at": "",
+      "merged_at": "2026-10-15T09:14:58Z",
+      "pr": 53,
+      "repository": "GTimG/QuasiRiemannTracker",
+      "source_commit": "df08a83bd6d336d50c9243a86d3234e29877097c",
+      "first_verified_at": "2026-10-15T08:34:27.618778+00:00",
+      "timeline_at": "2026-10-14T20:34:45Z",
+      "date_label": "PR submitted",
+      "entrypoint": {
+        "module": "Candidate.Main",
+        "declaration": "Candidate.bound"
+      },
+      "verification_note": "Comparator checked the canonical all-Dirichlet statement at 10935831/12500000 for the submitted commit. Lean, NanoDa and con-ron accepted the proof in the standard sandbox.",
+      "certificate_url": "certificates/certb-local-20261013.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Candidate/Main.lean",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/certb-local-20261013.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Reviewed submission",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/53"
+        },
+        {
+          "label": "Reserve-balanced affine local moment predecessor",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/38"
+        },
+        {
+          "label": "Verified affine-capacity predecessor",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/37"
+        },
+        {
+          "label": "Local 22/5 predecessor",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/26"
+        }
+      ]
+    },
+    {
+      "id": "detector-affine-c0125154",
+      "title": "Cycle61 with the affine moment in the detector count",
+      "theta": {
+        "numerator": "437423",
+        "denominator": "500000"
+      },
+      "authors": [
+        {
+          "name": "DaysSky",
+          "url": "https://github.com/DaysSky"
+        }
+      ],
+      "method": "Builds on Hailey Collet's Cycle61 (874861/1000000). Cycle61's initial affine moment (Theorem 2.2), previously used only in the source row, is also applied in the detector's per-fiber count. For plain lengths m in [0.4137, 0.4235], the marked plain capacity (1-2m)/(6κ) becomes (B-2m)/Λ. On the critical region δ ∈ [0.445, 0.485], p ∈ [0.495, 0.5], this replaces Cycle25's countingR κ* by a κ-independent closed form and moves the endpoint to 437423/500000 with h = 15903/20000. The detector moment is supplied by Cycle61's generic paid main and error families at each dictionary character, with heights chosen per character. All other estimates are Cycle61's, rechecked at the new endpoint with exact rational certificates. AI disclosure: DaysSky with Claude assistance.",
+      "license": "Apache-2.0",
+      "builds_on": [
+        "cycle61-c0125139"
+      ],
+      "status": "framework-verified",
+      "submitted_at": "2026-10-14T23:49:00Z",
+      "published_at": "",
+      "merged_at": "2026-10-15T03:57:21Z",
+      "pr": 56,
+      "repository": "GTimG/QuasiRiemannTracker",
+      "source_commit": "67edfb7a1161008b37ff32aadec35cecaa711731",
+      "first_verified_at": "2026-10-15T03:53:47.992181+00:00",
+      "timeline_at": "2026-10-14T23:49:00Z",
+      "date_label": "PR submitted",
+      "entrypoint": {
+        "module": "Candidate.Main",
+        "declaration": "Candidate.bound"
+      },
+      "verification_note": "Comparator checked the canonical all-Dirichlet statement at 437423/500000 for the submitted commit. Lean, NanoDa and con-ron accepted the proof in the standard sandbox.",
+      "certificate_url": "certificates/detector-affine-c0125154.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/67edfb7a1161008b37ff32aadec35cecaa711731/submissions/detector-affine-c0125154/src/Candidate/Main.lean",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/detector-affine-c0125154.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/67edfb7a1161008b37ff32aadec35cecaa711731/submissions/detector-affine-c0125154/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Reviewed submission",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+        },
+        {
+          "label": "Original manuscript, provenance, licenses and supporting verification material",
+          "url": "https://github.com/DaysSky/QuasiRiemannTracker/tree/a0efd9ee546b417de650f36bc8403f781706a94e/proofs/detector-affine-c0125154"
+        }
+      ]
+    },
+    {
+      "id": "gao-affine-asymmetric-20261015",
+      "title": "Affine detector counting with asymmetric marked reserves at 0.874840",
+      "theta": {
+        "numerator": "21871",
+        "denominator": "25000"
+      },
+      "authors": [
+        {
+          "name": "Zhongpai Gao",
+          "url": "https://github.com/Gaozhongpai"
+        }
+      ],
+      "method": "Submission of the canonical all-moduli Dirichlet bound 21871/25000 (0.874840); official admission remains pending. Combines timbalud's asymmetric marked counting and coupled radical allocation (PR50) with DaysSky's affine detector-count source integration (PR56), using Hailey Collet's Cycle61 interior affine moment theorem for each detector character. Uses h=1989/2500 and lower height 159/200. Prepared with AI assistance; inherited mathematical attribution and source notices retained.",
+      "license": "Apache-2.0; inherited source notices and dependency licenses retained.",
+      "builds_on": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator",
+        "cycle25-quartic-20261010",
+        "cycle61-c0125139",
+        "gao-cycle61-plane-20261013",
+        "radical-asymmetric-count-20261014",
+        "detector-affine-c0125154"
+      ],
+      "status": "framework-verified",
+      "submitted_at": "2026-10-15T03:51:26Z",
+      "published_at": "",
+      "merged_at": "2026-10-15T10:56:12Z",
+      "pr": 60,
+      "repository": "GTimG/QuasiRiemannTracker",
+      "source_commit": "3874f3e75de18ff5806dcb9519fc260e034ef0e9",
+      "first_verified_at": "2026-10-15T09:17:19.521444+00:00",
+      "timeline_at": "2026-10-15T03:51:26Z",
+      "date_label": "PR submitted",
+      "entrypoint": {
+        "module": "Candidate.Main",
+        "declaration": "Candidate.bound"
+      },
+      "verification_note": "Comparator checked the canonical all-Dirichlet statement at 21871/25000 for the submitted commit. Lean, NanoDa and con-ron accepted the proof in the standard sandbox.",
+      "certificate_url": "certificates/gao-affine-asymmetric-20261015.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Main.lean",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/gao-affine-asymmetric-20261015.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Reviewed submission",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/60"
+        },
+        {
+          "label": "Asymmetric marked counting and coupled radical allocation (timbalud)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/50"
+        },
+        {
+          "label": "Affine detector count source integration (DaysSky)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+        },
+        {
+          "label": "Cycle61 interior affine moment theorem (Hailey Collet)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/42"
+        },
+        {
+          "label": "Earlier affine plane refinement (Zhongpai Gao)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/43"
+        },
+        {
+          "label": "Related affine detector arithmetic proposal (liqsweep; incomplete integration)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/52"
+        }
+      ]
     }
   ],
   "historical_records": [

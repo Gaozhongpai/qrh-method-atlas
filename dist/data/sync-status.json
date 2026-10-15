@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "fetched_at": "2026-10-15T02:23:05.404314+00:00",
+  "fetched_at": "2026-10-15T12:43:47.102051+00:00",
   "source_as_of": "2026-10-15",
   "sources": {
     "catalogue_url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json",
     "site_url": "https://gtimg.github.io/QuasiRiemannTracker/site.json"
   },
   "digests": {
-    "catalogue_sha256": "9a2be108362dedb0e7192f3f1f7812c8526473568da9538a121261a9615c4d82",
+    "catalogue_sha256": "943e1f77f71fa429c53e88df3f167a33203ee94fd655927e660c3dc6e31f9015",
     "site_sha256": "a30c765ad865a9cf554180be0aeb312db209dcb54c9e4fa82461aebae69fcadb"
   },
-  "record_count": 17,
+  "record_count": 20,
   "new_ids": [],
   "unreviewed_ids": [],
   "changed_source_ids": [],
@@ -19,9 +19,12 @@
     "affine-local-20261013",
     "akashlevy-20261009-weighted-numerator",
     "argonaut-20261008",
+    "certb-local-20261013",
     "classical-euler-product",
     "cycle25-quartic-20261010",
     "cycle61-c0125139",
+    "detector-affine-c0125154",
+    "gao-affine-asymmetric-20261015",
     "gao-asymmetric-reserves-20261013",
     "gao-cycle61-plane-20261013",
     "liu-20261008",

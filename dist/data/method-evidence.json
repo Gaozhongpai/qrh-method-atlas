@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "retrieved_at": "2026-10-15T02:10:35.767607+00:00",
+  "retrieved_at": "2026-10-15T12:37:55.307152+00:00",
   "source_catalogue": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json",
   "source_as_of": "2026-10-15",
   "editorial_scope": "Mechanism tags are conservative editorial readings of cited primary descriptions, not a new proof audit or numerical performance score. Unknown means unspecified, not absent or unchanged. Endpoint verification does not independently verify this crosswalk.",
@@ -2109,142 +2109,579 @@
           ]
         }
       ]
-    }
-  },
-  "pending": [
-    {
-      "id": "detector-affine-c0125154",
+    },
+    "detector-affine-c0125154": {
       "short_name": "DaysSky detector-affine",
-      "title": "Cycle61 affine moment in the detector count",
-      "status": "pending",
-      "theta": {
-        "numerator": "437423",
-        "denominator": "500000"
-      },
-      "authors": [
-        {
-          "name": "DaysSky",
-          "url": "https://github.com/DaysSky"
-        }
-      ],
-      "pr": 56,
-      "builds_on": [
-        "cycle61-c0125139"
-      ],
+      "what_changed": "Uses the existing Cycle61 affine moment inside the detector and rechecks the complete endpoint.",
+      "status": "framework-verified",
       "parents": [
         "cycle61-c0125139"
       ],
-      "source_commit": "67edfb7a1161008b37ff32aadec35cecaa711731",
-      "pr_status": {
-        "number": 56,
-        "state": "open",
-        "merged": false,
-        "merged_at": null,
-        "updated_at": "2026-10-15T01:34:57Z",
-        "head": "67edfb7a1161008b37ff32aadec35cecaa711731",
-        "api_url": "https://api.github.com/repos/GTimG/QuasiRiemannTracker/pulls/56"
-      },
-      "what_changed": "Reuses a proved affine moment in a new detector-count consumer.",
+      "parent_edges": [
+        {
+          "id": "cycle61-c0125139",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Live tracker catalogue and admission status",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
       "dimensions": {
         "moment": {
           "status": "reused",
-          "text": "Reuses Cycle61’s initial affine moment at each detector character; it does not claim a new moment theorem.",
+          "text": "Reuses Cycle61’s initial affine moment, with Λ=19312/4787 and B=14200/14361−10⁻⁵; the change is a new detector consumer.",
           "sources": [
             {
-              "label": "Submission PR 56",
-              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+              "label": "DaysSky detector-affine notes, §§1–5",
+              "url": "https://github.com/DaysSky/QuasiRiemannTracker/blob/a0efd9ee546b417de650f36bc8403f781706a94e/proofs/detector-affine-c0125154/manuscript/notes.md"
             }
           ]
         },
         "low": {
-          "status": "unknown",
-          "text": "No separate change established here.",
-          "sources": []
+          "status": "reused",
+          "text": "Retains Cycle61’s complete LOW estimate and checks its source design gates at the revised endpoint.",
+          "sources": [
+            {
+              "label": "DaysSky detector-affine notes, §§1–5",
+              "url": "https://github.com/DaysSky/QuasiRiemannTracker/blob/a0efd9ee546b417de650f36bc8403f781706a94e/proofs/detector-affine-c0125154/manuscript/notes.md"
+            }
+          ]
         },
         "high": {
           "status": "retuned",
-          "text": "Uses the revised count on its stated critical HIGH region and rechecks the endpoint inequalities.",
+          "text": "Feeds the revised row count into the inherited physical numerator; retains all complementary count branches.",
           "sources": [
             {
-              "label": "Submission PR 56",
-              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+              "label": "DaysSky detector-affine notes, §§1–5",
+              "url": "https://github.com/DaysSky/QuasiRiemannTracker/blob/a0efd9ee546b417de650f36bc8403f781706a94e/proofs/detector-affine-c0125154/manuscript/notes.md"
             }
           ]
         },
         "detector": {
           "status": "changed",
-          "text": "Applies that affine moment inside the detector’s per-fiber count.",
+          "text": "Applies the actual affine energy to finite detector dictionaries, improving the count on δ∈[.445,.485], p∈[.495,.5].",
           "sources": [
             {
-              "label": "Submission PR 56",
-              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+              "label": "DaysSky detector-affine notes, §§1–5",
+              "url": "https://github.com/DaysSky/QuasiRiemannTracker/blob/a0efd9ee546b417de650f36bc8403f781706a94e/proofs/detector-affine-c0125154/manuscript/notes.md"
+            },
+            {
+              "label": "Checked Lean solution: detector-affine-c0125154",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/67edfb7a1161008b37ff32aadec35cecaa711731/submissions/detector-affine-c0125154/src/Candidate/Main.lean"
             }
           ]
         },
         "geometry": {
           "status": "retuned",
-          "text": "Chooses h = 15903/20000 and a revised exact endpoint.",
+          "text": "Rebalances the cutoff and regenerates exact row certificates at h=15903/20000 and θ=437423/500000.",
           "sources": [
             {
-              "label": "Submission PR 56",
-              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+              "label": "DaysSky detector-affine notes, §§1–5",
+              "url": "https://github.com/DaysSky/QuasiRiemannTracker/blob/a0efd9ee546b417de650f36bc8403f781706a94e/proofs/detector-affine-c0125154/manuscript/notes.md"
             }
           ]
         },
         "recovery": {
           "status": "reused",
-          "text": "Retains Cycle61’s other estimates and endpoint architecture.",
+          "text": "Retains Cycle61’s continuation and transfer; supplies actual per-character energies with finite dictionary heights.",
           "sources": [
             {
-              "label": "Submission PR 56",
-              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+              "label": "DaysSky detector-affine notes, §§1–5",
+              "url": "https://github.com/DaysSky/QuasiRiemannTracker/blob/a0efd9ee546b417de650f36bc8403f781706a94e/proofs/detector-affine-c0125154/manuscript/notes.md"
+            },
+            {
+              "label": "Checked Lean solution: detector-affine-c0125154",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/67edfb7a1161008b37ff32aadec35cecaa711731/submissions/detector-affine-c0125154/src/Candidate/Main.lean"
             }
           ]
         },
         "verification": {
-          "status": "pending",
-          "text": "The PR reports a local Lean build; independent Comparator / three-kernel acceptance is not claimed.",
+          "status": "verified",
+          "text": "Official Comparator checked the canonical all-Dirichlet bound 437423/500000; Lean, NanoDa and con-ron accepted the recorded source.",
           "sources": [
             {
-              "label": "Submission PR 56",
-              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+              "label": "Official canonical verification: detector-affine-c0125154",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/detector-affine-c0125154.json"
             }
           ]
         }
       },
       "sources": [
         {
-          "label": "Submission PR 56",
-          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+          "label": "DaysSky detector-affine notes, §§1–5",
+          "url": "https://github.com/DaysSky/QuasiRiemannTracker/blob/a0efd9ee546b417de650f36bc8403f781706a94e/proofs/detector-affine-c0125154/manuscript/notes.md"
+        },
+        {
+          "label": "Checked Lean solution: detector-affine-c0125154",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/67edfb7a1161008b37ff32aadec35cecaa711731/submissions/detector-affine-c0125154/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Official canonical verification: detector-affine-c0125154",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/detector-affine-c0125154.json"
         }
       ],
-      "source_status_note": "Open proposal when consulted; not present among the 17 official framework-verified records.",
       "metrics": [
         {
-          "label": "h",
+          "label": "Height h",
           "value": "15903/20000",
           "dimension": "geometry",
-          "scope": "Parameter of the submitted proposal.",
+          "scope": "Revised complete-proof parameter.",
           "sources": [
             {
-              "label": "Submission PR 56",
-              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+              "label": "DaysSky detector-affine notes, §§1–5",
+              "url": "https://github.com/DaysSky/QuasiRiemannTracker/blob/a0efd9ee546b417de650f36bc8403f781706a94e/proofs/detector-affine-c0125154/manuscript/notes.md"
             }
           ]
         },
         {
-          "label": "Plain length window",
-          "value": "[0.4137, 0.4235]",
+          "label": "Detector plain-length upper gate",
+          "value": "847/2000",
           "dimension": "detector",
-          "scope": "Window where the affine moment is used by the detector.",
+          "scope": "The lower gate is m₀=(B−Λ/25)/2≈.41370435; old moments cover the complementary cases.",
           "sources": [
             {
-              "label": "Submission PR 56",
-              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+              "label": "DaysSky detector-affine notes, §§1–5",
+              "url": "https://github.com/DaysSky/QuasiRiemannTracker/blob/a0efd9ee546b417de650f36bc8403f781706a94e/proofs/detector-affine-c0125154/manuscript/notes.md"
+            }
+          ]
+        }
+      ]
+    },
+    "gao-affine-asymmetric-20261015": {
+      "short_name": "Gao affine + asymmetric",
+      "what_changed": "Combines source-paid affine capacity with actual detector counting, then rebalances the full proof to 0.874840.",
+      "status": "framework-verified",
+      "parents": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator",
+        "cycle25-quartic-20261010",
+        "cycle61-c0125139",
+        "gao-cycle61-plane-20261013",
+        "radical-asymmetric-count-20261014",
+        "detector-affine-c0125154"
+      ],
+      "parent_edges": [
+        {
+          "id": "openai-baseline",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Live tracker catalogue and admission status",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "akashlevy-20261009-weighted-numerator",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Live tracker catalogue and admission status",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "cycle25-quartic-20261010",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Live tracker catalogue and admission status",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "cycle61-c0125139",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Live tracker catalogue and admission status",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "gao-cycle61-plane-20261013",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Live tracker catalogue and admission status",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "radical-asymmetric-count-20261014",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Live tracker catalogue and admission status",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "detector-affine-c0125154",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Live tracker catalogue and admission status",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "reused",
+          "text": "Uses the inherited initial-affine construction with source-paid B=14200/14361+7/10000 and Λ=19312/4787; retains the inverse moments.",
+          "sources": [
+            {
+              "label": "Gao affine/asymmetric paper, §§2–5",
+              "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/e2c0a0ef90185eb6f539bb1af1cabf0bfb948cd7/papers/gao-affine-asymmetric-20261015/paper.pdf"
+            },
+            {
+              "label": "Checked Lean solution: gao-affine-asymmetric-20261015",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Main.lean"
+            }
+          ]
+        },
+        "low": {
+          "status": "reused",
+          "text": "Retains the complete LOW estimate and its reserves; checks the actual source gates at the revised height junction.",
+          "sources": [
+            {
+              "label": "Gao affine/asymmetric paper, §§2–5",
+              "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/e2c0a0ef90185eb6f539bb1af1cabf0bfb948cd7/papers/gao-affine-asymmetric-20261015/paper.pdf"
+            }
+          ]
+        },
+        "high": {
+          "status": "changed",
+          "text": "Combines inherited asymmetric marked/common-radical savings with the improved detector count in the full physical numerator.",
+          "sources": [
+            {
+              "label": "Gao affine/asymmetric paper, §§2–5",
+              "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/e2c0a0ef90185eb6f539bb1af1cabf0bfb948cd7/papers/gao-affine-asymmetric-20261015/paper.pdf"
+            }
+          ]
+        },
+        "detector": {
+          "status": "changed",
+          "text": "Uses the stronger source-paid affine moment inside actual finite detector dictionaries, with old branches outside the certified region.",
+          "sources": [
+            {
+              "label": "Gao affine/asymmetric paper, §§2–5",
+              "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/e2c0a0ef90185eb6f539bb1af1cabf0bfb948cd7/papers/gao-affine-asymmetric-20261015/paper.pdf"
+            },
+            {
+              "label": "Checked Lean solution: gao-affine-asymmetric-20261015",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Main.lean"
+            }
+          ]
+        },
+        "geometry": {
+          "status": "retuned",
+          "text": "Chooses h=1989/2500, d₋=159/200 and regenerates continuous exact row certificates for θ=21871/25000.",
+          "sources": [
+            {
+              "label": "Gao affine/asymmetric paper, §§2–5",
+              "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/e2c0a0ef90185eb6f539bb1af1cabf0bfb948cd7/papers/gao-affine-asymmetric-20261015/paper.pdf"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "reused",
+          "text": "Retains the complete continuation and character transfer; verifies source supply and a common positive continuation gap before target-dependent heights.",
+          "sources": [
+            {
+              "label": "Gao affine/asymmetric paper, §§2–5",
+              "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/e2c0a0ef90185eb6f539bb1af1cabf0bfb948cd7/papers/gao-affine-asymmetric-20261015/paper.pdf"
+            },
+            {
+              "label": "Checked Lean solution: gao-affine-asymmetric-20261015",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Main.lean"
+            }
+          ]
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Official Comparator checked the canonical all-moduli Dirichlet statement at 21871/25000; Lean, NanoDa and con-ron accepted the recorded source.",
+          "sources": [
+            {
+              "label": "Official canonical verification: gao-affine-asymmetric-20261015",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/gao-affine-asymmetric-20261015.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Gao affine/asymmetric paper, §§2–5",
+          "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/e2c0a0ef90185eb6f539bb1af1cabf0bfb948cd7/papers/gao-affine-asymmetric-20261015/paper.pdf"
+        },
+        {
+          "label": "Checked Lean solution: gao-affine-asymmetric-20261015",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Official canonical verification: gao-affine-asymmetric-20261015",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/gao-affine-asymmetric-20261015.json"
+        },
+        {
+          "label": "Asymmetric marked/radical count, reviewed PR 50",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/50"
+        },
+        {
+          "label": "Reviewed affine detector count, PR 56",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+        }
+      ],
+      "metrics": [
+        {
+          "label": "Affine source intercept B",
+          "value": "14200/14361 + 7/10000",
+          "dimension": "moment",
+          "scope": "Source-paid value in this method; different from the older Cycle61 worked-example intercept. Its local source gates remain essential.",
+          "sources": [
+            {
+              "label": "Gao affine/asymmetric paper, §§2–5",
+              "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/e2c0a0ef90185eb6f539bb1af1cabf0bfb948cd7/papers/gao-affine-asymmetric-20261015/paper.pdf"
+            }
+          ]
+        },
+        {
+          "label": "Inherited source saving before losses",
+          "value": "37/10000",
+          "dimension": "high",
+          "scope": "Asymmetric/common-radical source ledger from the predecessor; not an endpoint gain. Charging ≤1/20000 leaves 73/20000.",
+          "sources": [
+            {
+              "label": "Gao affine/asymmetric paper, §§2–5",
+              "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/e2c0a0ef90185eb6f539bb1af1cabf0bfb948cd7/papers/gao-affine-asymmetric-20261015/paper.pdf"
+            }
+          ]
+        },
+        {
+          "label": "Height / lower junction",
+          "value": "h = 1989/2500; d₋ = 159/200",
+          "dimension": "geometry",
+          "scope": "Both are checked against actual source design gates.",
+          "sources": [
+            {
+              "label": "Gao affine/asymmetric paper, §§2–5",
+              "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/e2c0a0ef90185eb6f539bb1af1cabf0bfb948cd7/papers/gao-affine-asymmetric-20261015/paper.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    "certb-local-20261013": {
+      "short_name": "Watson CertB local",
+      "what_changed": "Uses extracted-error reserve slack to enlarge local source capacity and rechecks the full endpoint.",
+      "status": "framework-verified",
+      "parents": [
+        "reserve-local-20261013",
+        "affine-local-20261013",
+        "local44-20261013"
+      ],
+      "parent_edges": [
+        {
+          "id": "reserve-local-20261013",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Live tracker catalogue and admission status",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "affine-local-20261013",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Live tracker catalogue and admission status",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "local44-20261013",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Live tracker catalogue and admission status",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "retuned",
+          "text": "Enlarges the inherited local affine defect from 1/250 to 429/100000, retaining slope 9/2, the amplifier and source-volume cap.",
+          "sources": [
+            {
+              "label": "CertB extracted-error reserve, B026",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B026.lean#L699"
+            },
+            {
+              "label": "CertB local capacity and transport, B006",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B006.lean#L439"
+            },
+            {
+              "label": "CertB actual source region, B029",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B029.lean#L49"
+            }
+          ]
+        },
+        "low": {
+          "status": "retuned",
+          "text": "Rebalances inherited LOW/extracted-error reserves, retaining 19/15000000 on the critical error-budget face.",
+          "sources": [
+            {
+              "label": "CertB extracted-error reserve, B026",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B026.lean#L699"
+            }
+          ]
+        },
+        "high": {
+          "status": "retuned",
+          "text": "The larger legal source-local capacity strengthens the inherited physical numerator payment and HIGH reconstruction.",
+          "sources": [
+            {
+              "label": "CertB physical numerator, B038",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B038.lean#L41"
+            },
+            {
+              "label": "CertB local capacity and transport, B006",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B006.lean#L439"
+            }
+          ]
+        },
+        "detector": {
+          "status": "reused",
+          "text": "Retains the Cycle25 row-count mechanism; the affine source moment is not newly applied inside this detector.",
+          "sources": [
+            {
+              "label": "CertB physical numerator, B038",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B038.lean#L41"
+            }
+          ]
+        },
+        "geometry": {
+          "status": "retuned",
+          "text": "Regenerates exact transport and endpoint certificates at h=397/500 with final reserve 1/50000000.",
+          "sources": [
+            {
+              "label": "CertB local capacity and transport, B006",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B006.lean#L439"
+            },
+            {
+              "label": "CertB physical numerator, B038",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B038.lean#L41"
+            },
+            {
+              "label": "CertB actual source assembly and endpoint, B126",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B126.lean#L426"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "reused",
+          "text": "Retains and rechecks actual source identities, local/old source selection, complete probe assembly and all-Dirichlet continuation.",
+          "sources": [
+            {
+              "label": "CertB actual source assembly and endpoint, B126",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B126.lean#L426"
+            },
+            {
+              "label": "Checked Lean solution: certb-local-20261013",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Candidate/Main.lean"
+            }
+          ]
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Official Comparator checked the canonical all-Dirichlet statement at 10935831/12500000; Lean, NanoDa and con-ron accepted the recorded source.",
+          "sources": [
+            {
+              "label": "Official canonical verification: certb-local-20261013",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/certb-local-20261013.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "CertB extracted-error reserve, B026",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B026.lean#L699"
+        },
+        {
+          "label": "CertB local capacity and transport, B006",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B006.lean#L439"
+        },
+        {
+          "label": "CertB physical numerator, B038",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B038.lean#L41"
+        },
+        {
+          "label": "CertB actual source assembly and endpoint, B126",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B126.lean#L426"
+        },
+        {
+          "label": "Official canonical verification: certb-local-20261013",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/certb-local-20261013.json"
+        }
+      ],
+      "metrics": [
+        {
+          "label": "Allowed local capacity defect g",
+          "value": "429/100000",
+          "dimension": "moment",
+          "scope": "Increases predecessor 1/250 using the actual error-budget slack; not a global moment exponent.",
+          "sources": [
+            {
+              "label": "CertB extracted-error reserve, B026",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B026.lean#L699"
+            },
+            {
+              "label": "CertB local capacity and transport, B006",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B006.lean#L439"
+            }
+          ]
+        },
+        {
+          "label": "Remaining critical error reserve",
+          "value": "19/15000000",
+          "dimension": "low",
+          "scope": "Positive reserve on Face 2 of the inherited extracted-error budget.",
+          "sources": [
+            {
+              "label": "CertB extracted-error reserve, B026",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B026.lean#L699"
+            }
+          ]
+        },
+        {
+          "label": "Final analytic reserve",
+          "value": "1/50000000",
+          "dimension": "geometry",
+          "scope": "Checked in complete endpoint assembly; not the endpoint improvement.",
+          "sources": [
+            {
+              "label": "CertB actual source assembly and endpoint, B126",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B126.lean#L426"
             }
           ]
         }
       ]
     }
-  ]
+  },
+  "pending": []
 }

@@ -9,7 +9,9 @@ const palette = {a:'#287a72', b:'#c86b44', ink:'#244238', muted:'#879481', grid:
 const state = {a:'openai-baseline', b:null, pending:false, dimension:null, gate:'detector', query:'', view:'matrix', fullRange:false};
 let catalogue, evidence, proof, reviewed = null, syncStatus = null;
 let allRecords = [], records = [], byId = new Map();
+let proofLayoutObserver=null;
 const shortLabels = {moment:'Moments',low:'LOW',high:'HIGH',detector:'Detector',geometry:'Geometry',recovery:'Recovery',verification:'Check'};
+const gateForDimension={moment:'plain',low:'low',high:'high',detector:'detector',geometry:'geometry',recovery:'recovery',verification:'recovery'};
 const statusText = {changed:'New',reused:'Use',retuned:'Tune',foundation:'Base',unknown:'—',verified:'✓',pending:'Wait',inherited:'Kept'};
 const statusFull = {changed:'Changed estimate or construction',reused:'New use / reused ingredient',retuned:'Parameter or reserve retuning',foundation:'Framework foundation',unknown:'Distinct change not extracted',verified:'Framework verified',pending:'Pending verification',inherited:'Inherited'};
 
@@ -34,7 +36,7 @@ const name = r => enrichment(r).short_name || r.title;
 const author = r => (r.authors || []).map(a => a.name).join(', ') || 'Source catalogue';
 const cell = (r,d) => d==='verification'&&r.status==='framework-verified'?{status:'verified',text:'Listed as framework-verified by the official catalogue. Inspect its receipt for exact target scope.',sources:[{label:'Catalogue / receipt',url:r.certificate_url||r.references?.[0]?.url||TRACKER+'catalogue.json'}]}:enrichment(r).dimensions?.[d] || {status:'unknown',text:isReviewed(r)?'This component has not been extracted from the cited sources.':'This method is new or its source changed. Component annotations await review.',sources:[]};
 const sourceURL = value => {try {const url = new URL(value,TRACKER); return url.protocol==='https:' ? url.href : TRACKER;}catch{return TRACKER;}};
-const sourceLinks = links => [...new Map((links || []).map(s => [s.url,s])).values()].slice(0,5).map(s => `<a href="${esc(sourceURL(s.url))}" target="_blank" rel="noopener">${esc(s.label || 'Source')} ↗</a>`).join('');
+const sourceLinks = links => [...new Map((links || []).map(s => [s.url,s])).values()].slice(0,5).map(s => `<a href="${esc(sourceURL(s.url))}" target="_blank" rel="noopener">${esc(s.label || 'Evidence')} ↗</a>`).join('');
 const gateSources = ids => (ids || []).map(id => proof.sources[id]).filter(Boolean);
 const selected = () => byId.get(state.b) || records[records.length-1];
 const isProposal = r => r.status !== 'framework-verified';
@@ -72,7 +74,7 @@ function choose(id, dimension){
   if(!byId.has(id)) return;
   if(isProposal(byId.get(id)) && !state.pending){state.pending=true;$('#show-pending').checked=true;rebuildRecords();renderSelects();}
   state.b=id;
-  if(dimension)state.dimension=dimension;
+  if(dimension){state.dimension=dimension;state.gate=gateForDimension[dimension]||state.gate;}
   $('#method-b').value=id;
   renderComparison();
   try{history.replaceState(null,'',`?method=${encodeURIComponent(state.b)}${state.pending?'&proposals=1':''}#compare`);}catch{}
@@ -110,11 +112,13 @@ function renderMatrix(){
   const dims=evidence.dimensions;
   $('#method-table thead').innerHTML=`<tr><th scope="col">Method <span style="font-weight:400;color:#9ba995">/ endpoint θ</span></th>${dims.map(d=>`<th scope="col" class="${state.dimension===d.id?'cell-focused':''}"><button data-dimension="${esc(d.id)}" aria-pressed="${state.dimension===d.id}" title="${esc(d.description)}">${esc(shortLabels[d.id])}</button></th>`).join('')}</tr>`;
   const query=state.query.trim().toLowerCase();
-  const filtered=records.filter(r=>(name(r)+' '+r.title+' '+author(r)+' '+decimal(r)+' '+(enrichment(r).what_changed||r.method||'')).toLowerCase().includes(query));
+  const matching=records.filter(r=>(name(r)+' '+r.title+' '+author(r)+' '+decimal(r)+' '+(enrichment(r).what_changed||r.method||'')).toLowerCase().includes(query));
+  const compared=[...new Set([state.a,state.b])];
+  const filtered=[...compared.map(id=>matching.find(r=>r.id===id)).filter(Boolean),...matching.filter(r=>!compared.includes(r.id))];
   $('#method-table tbody').innerHTML=filtered.length?filtered.map(r=>`<tr data-method="${esc(r.id)}" tabindex="0" role="row" aria-label="Inspect ${esc(name(r))}" class="${r.id===state.a?'selected-a ':''}${r.id===state.b?'selected-b':''}"><td><div class="method-title">${r.id===state.a?'<i class="method-dot a"></i>':''}${r.id===state.b?'<i class="method-dot b"></i>':''}${esc(name(r))}${isProposal(r)?'<span class="mini-proposal">PROPOSAL</span>':''}</div><div class="method-meta"><span class="theta">${esc(decimal(r))}</span><span>${esc(author(r)).slice(0,38)}</span></div></td>${dims.map(d=>{const c=cell(r,d.id);return `<td class="${state.dimension===d.id?'cell-focused':''}"><button class="cell-badge ${esc(c.status)}" data-method="${esc(r.id)}" data-dimension="${esc(d.id)}" aria-label="${esc(`${name(r)} — ${d.label}: ${statusFull[c.status] || c.status}. ${c.text}`)}" title="${esc(`${statusFull[c.status] || c.status}: ${c.text}`)}">${esc(statusText[c.status]||c.status)}</button></td>`;}).join('')}</tr>`).join(''):`<tr><td colspan="8"><div class="empty-message">No methods match “${esc(state.query)}”. Try an author or endpoint.</div></td></tr>`;
   $('#matrix-count').textContent=`${filtered.length} of ${records.length} methods · ${state.pending?'proposals included':'verified catalogue only'}`;
   $('#clear-dimension').hidden=!state.dimension;
-  $('#method-table thead').querySelectorAll('button').forEach(b=>b.onclick=()=>{state.dimension=state.dimension===b.dataset.dimension?null:b.dataset.dimension;renderComparison();});
+  $('#method-table thead').querySelectorAll('button').forEach(b=>b.onclick=()=>{state.dimension=state.dimension===b.dataset.dimension?null:b.dataset.dimension;if(state.dimension)state.gate=gateForDimension[state.dimension];renderComparison();});
   // Row and cell handlers are separate so a cell's dimension is not overwritten by bubbling.
   $('#method-table tbody').querySelectorAll('tr[data-method]').forEach(row=>{
     row.onclick=e=>{const b=e.target.closest('button[data-dimension]');choose(row.dataset.method,b?.dataset.dimension);};
@@ -138,7 +142,7 @@ function renderRadar(){
     values.forEach((value,i)=>{
       const [x,y]=point(i,value??.64),next=values[(i+1)%N];
       if(!known&&value!==null&&next!==null){const [nx,ny]=point((i+1)%N,next);out+=`<line x1="${x}" y1="${y}" x2="${nx}" y2="${ny}" stroke="${color}" stroke-width="1.5"/>`;}
-      if(value===null)out+=text(x+(index?4:-4),y+(index?6:-4),'?',`text-anchor="middle" fill="${color}" font-size="11"`);
+      if(value===null)out+=text(x+(index?4:-4),y+(index?6:-4),'—',`text-anchor="middle" fill="${color}" font-size="11"`);
       else out+=`<circle cx="${x}" cy="${y}" r="${index?3:2.5}" fill="${index?color:'white'}" stroke="${color}" stroke-width="1.3"><title>${esc(name(record)+': '+dims[i].label+' — '+statusFull[cell(record,dims[i].id).status])}</title></circle>`;
     });
   });
@@ -153,7 +157,7 @@ function renderDetail(){
   const verified=r.status==='framework-verified';
   const proofChange=isReviewed(r)?proof.perMethod[r.id]?.changes?.filter(x=>gateDimension(x.nodeId)===d) || []:[];
   const links=[...(c.sources||[]),...(e.sources||[]),...(r.references||[])];
-  $('#method-detail').innerHTML=`<div><div class="eyebrow">SELECTED METHOD B · ${verified?'CATALOGUE VERIFIED':'PENDING PROPOSAL'}</div><div class="detail-title"><h3>${esc(name(r))}</h3></div><div class="detail-boundary">θ = ${esc(decimal(r))} <span style="font-size:9px;color:#97a18d">· ${esc(exact(r))}</span></div><div class="detail-summary">${esc(e.what_changed||r.method||r.title)}</div><div class="source-links">${sourceLinks(links)}</div>${r.exact_bound?`<div class="small-copy" style="margin-top:10px">Source exact boundary: ${esc(r.exact_bound)}. The rational coordinate is the catalogue’s certified rendering value.</div>`:''}</div><div class="detail-right"><h4>${esc(dimension.label)} <span class="cell-badge ${esc(c.status)}" style="margin-left:7px">${esc(statusText[c.status]||c.status)}</span></h4><p class="dimension-explanation">${esc(c.text)}</p><a class="inline-help" href="#dimension-${esc(d)}">What does this dimension mean? ↗</a>${proofChange.map(p=>`<p class="small-copy" style="margin-top:9px">${esc(p.detail)}</p>`).join('')}<div class="metric-list">${metrics.map(m=>`<div class="metric"><span>${esc(m.label)}</span><span class="value">${esc(m.value)}</span><small>${esc(m.scope||'')}</small></div>`).join('')}</div>${d==='verification'?`<p class="small-copy" style="margin-top:12px">${esc(r.verification_note||e.source_status_note||'Inspect the linked receipt for the exact target family, statement, source commit and kernel checks.')}</p>`:''}</div>`;
+  $('#method-detail').innerHTML=`<div><div class="eyebrow">SELECTED METHOD B · ${verified?'CATALOGUE VERIFIED':'PENDING PROPOSAL'}</div><div class="detail-title"><h3>${esc(name(r))}</h3></div><div class="detail-boundary">θ = ${esc(decimal(r))} <span style="font-size:9px;color:#97a18d">· ${esc(exact(r))}</span></div><div class="detail-summary">${esc(e.what_changed||r.method||r.title)}</div><div class="source-links"><span class="evidence-label">Evidence</span>${sourceLinks(links)}</div>${r.exact_bound?`<div class="small-copy" style="margin-top:10px">Source exact boundary: ${esc(r.exact_bound)}. The rational coordinate is the catalogue’s certified rendering value.</div>`:''}</div><div class="detail-right"><h4>${esc(dimension.label)} <span class="cell-badge ${esc(c.status)}" style="margin-left:7px">${esc(statusText[c.status]||c.status)}</span></h4><p class="dimension-explanation">${esc(c.text)}</p><a class="inline-help" href="#dimension-${esc(d)}">What does this dimension mean? ↗</a>${proofChange.map(p=>`<p class="small-copy" style="margin-top:9px">${esc(p.detail)}</p>`).join('')}<div class="metric-list">${metrics.map(m=>`<div class="metric"><span>${esc(m.label)}</span><span class="value">${esc(m.value)}</span><small>${esc(m.scope||'')}</small></div>`).join('')}</div>${d==='verification'?`<p class="small-copy" style="margin-top:12px">${esc(r.verification_note||e.source_status_note||'Inspect the linked receipt for the exact target family, statement, source commit and kernel checks.')}</p>`:''}</div>`;
 }
 
 function renderLineage(){
@@ -166,25 +170,64 @@ function renderLineage(){
 
 const gateDimension=id=>({inverse:'moment',plain:'moment',amplitude:'detector',detector:'detector',low:'low',high:'high',principal:'geometry',geometry:'geometry',recovery:'recovery'})[id]||'geometry';
 function gateChange(nodeId){return isReviewed(selected())?proof.perMethod[selected().id]?.changes?.find(c=>c.nodeId===nodeId):undefined;}
-const conciseNode={inverse:'Inverse moment',plain:'Plain + prime moment',amplitude:'Prime amplitude',detector:'Witness → row count',low:'LOW contribution',high:'HIGH numerator',principal:'Principal + other gates',geometry:'Geometry + endpoint',recovery:'Recovery + verification'};
+const conciseNode={inverse:'Inverse moment',plain:'Plain + prime moment',amplitude:'Prime amplitudes',detector:'Detector / row count',low:'LOW · complete probe',high:'HIGH · complement',principal:'Principal + other gates',geometry:'Geometry / reserves',recovery:'Full recovery'};
+const nodeJob={inverse:'Bound the inverse witness.',plain:'Bound plain and prime-slot energy.',amplitude:'Supply legal prime-slot gains.',detector:'Count rows supporting a zero.',low:'Direct bound on the whole probe.',high:'Bound the zero-sensitive complement.',principal:'Keep the signal; pay other branches.',geometry:'Make every budget fit together.',recovery:'Return to the full L-function claim.'};
+const intervention=change=>!!change&&!/^(inherited|reused|existing)(-|$)/.test(change.kind)&&!['reused','inherited','foundation'].includes(cell(selected(),gateDimension(change.nodeId)).status);
+function traceGates(seed,upstream){
+  const found=new Set(),queue=[seed];
+  while(queue.length){const id=queue.shift();proof.edges.filter(e=>(upstream?e.to:e.from)===id).forEach(e=>{const next=upstream?e.from:e.to;if(next!==seed&&!found.has(next)){found.add(next);queue.push(next);}});}
+  return found;
+}
+function focusGate(id,{scroll=false,detail=false}={}){
+  if(!proof.nodes.some(n=>n.id===id))return;
+  state.gate=id;state.dimension=gateDimension(id);renderComparison();
+  if(scroll){$('#anatomy').scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'',location.pathname+location.search+'#anatomy');}
+  const target=detail?$('#gate-detail h3'):$('#proof-map').querySelector(`[data-gate="${id}"]`);
+  target?.focus({preventScroll:true});
+}
+function renderMethodRoute(){
+  const r=selected(),e=enrichment(r),method=isReviewed(r)?proof.perMethod[r.id]:null;
+  const known=evidence.dimensions.filter(d=>cell(r,d.id).status!=='unknown').length;
+  const route=(method?.route||[]).filter(step=>proof.nodes.some(n=>n.id===step.nodeId));
+  const roles=route.length?route:(method?.changes||[]).filter(intervention).map(c=>({nodeId:c.nodeId,text:c.detail})).filter((c,i,a)=>a.findIndex(x=>x.nodeId===c.nodeId)===i);
+  $('#method-route').innerHTML=`<div class="route-header"><span class="eyebrow">SELECTED METHOD · ${route.length?'HOW THE GAIN TRAVELS':'DOCUMENTED ROLES'}</span><span class="review-coverage ${isReviewed(r)?'reviewed':''}">${isReviewed(r)?`${known}/7 dimensions extracted`:'Dimension review pending'}</span><a href="#anatomy">Explore dependencies ↓</a></div>${roles.length?`<ol class="route-steps ${route.length?'causal-route':'role-list'}">${roles.map(step=>`<li><button type="button" data-route-gate="${esc(step.nodeId)}"><strong>${esc(step.label||conciseNode[step.nodeId])}</strong><span>${esc(step.text)}</span></button></li>`).join('')}</ol>`:`<p class="route-pending">${isReviewed(r)?'No separate analytic intervention has been extracted. Select a dimension to inspect the documented evidence.':'The endpoint is synchronized from the tracker. Analytic roles need source review before attribution.'}</p>`}`;
+  $('#method-route').querySelectorAll('[data-route-gate]').forEach(b=>b.onclick=()=>focusGate(b.dataset.routeGate,{scroll:true}));
+}
 function renderProofMap(){
-  const lanes=[['Analytic inputs',['inverse','plain','amplitude']],['Estimate consumers',['detector','low','high']],['Global compatibility',['principal','geometry']],['The full theorem',['recovery']]];
-  $('#proof-map').innerHTML=`<svg aria-hidden="true"><defs><marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#c3d1bc" stroke-width="1"/></marker></defs><g id="proof-edges"></g></svg>`+lanes.map(([title,ids],i)=>`<div class="proof-lane"><span class="lane-label">${i+1}. ${esc(title.toUpperCase())}</span>${ids.map(id=>{const node=proof.nodes.find(n=>n.id===id),change=gateChange(id);return `<button class="proof-node ${state.gate===id?'active ':''}${change?'contribution':''}" data-gate="${id}" aria-pressed="${state.gate===id}"><strong>${esc(conciseNode[id]||node.label)}</strong><span>${esc(node.description.split('.')[0]).slice(0,72)}</span>${change?`<span class="node-tag">${esc(change.kind.replaceAll('-',' '))}</span>`:''}</button>`;}).join('')}${i===3?`<div class="endpoint-gate"><span>${isProposal(selected())?'PROPOSED ENDPOINT':'CATALOGUE ENDPOINT'}</span><strong>${esc(decimal(selected()))}</strong></div>`:''}</div>`).join('');
-  $('#proof-map').querySelectorAll('[data-gate]').forEach(b=>b.onclick=()=>{state.gate=b.dataset.gate;state.dimension=gateDimension(state.gate);renderComparison();});
-  $('#graph-subtitle').textContent=`${name(selected())}: highlighted gates have a specifically documented contribution. Click a gate for its domain and checks.`;
-  requestAnimationFrame(drawProofEdges);
-  renderGateDetail();
+  const lanes=[['Arithmetic estimates',['inverse','plain','amplitude']],['Row population',['detector']],['Bounds to compare',['low','high','principal']],['Compatibility',['geometry']],['Complete theorem',['recovery']]];
+  const upstream=traceGates(state.gate,true),downstream=traceGates(state.gate,false);
+  $('#proof-map').innerHTML=`<svg aria-hidden="true"><defs>${[['base','#b8c6b0'],['input','#7188a9'],['output','#398b80']].map(([id,color])=>`<marker id="flow-arrow-${id}" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" fill="${color}"/></marker>`).join('')}</defs><g id="proof-edges"></g></svg>`+lanes.map(([title,ids],i)=>`<div class="proof-lane" data-stage="${i}"><span class="lane-label">${i+1}. ${esc(title)}</span>${ids.map(id=>{const change=gateChange(id),relation=state.gate===id?'selected':upstream.has(id)?'upstream':downstream.has(id)?'downstream':'other',dim=cell(selected(),gateDimension(id));return `<button type="button" class="proof-node relation-${relation} ${intervention(change)?'contribution':''}" data-gate="${id}" data-stage="${i}" data-relation="${relation}" aria-pressed="${state.gate===id}"><strong>${esc(conciseNode[id])}</strong><span>${esc(nodeJob[id])}</span><small class="node-role ${intervention(change)?'intervention-role':''}">${intervention(change)?'● ':''}${esc(change?(intervention(change)?'Changed / retuned':'Inherited / reused'):'Role not extracted')}</small></button>`;}).join('')}</div>`).join('');
+  $('#proof-map').querySelectorAll('[data-gate]').forEach(b=>b.onclick=()=>focusGate(b.dataset.gate));
+  const r=selected(),receipt=(r.references||[]).find(s=>/verification/i.test(s.label||''))?.url||r.certificate_url;
+  $('#proof-endpoint').innerHTML=`<div><span>RECOVERED ENDPOINT θ</span><strong>${esc(decimal(r))}</strong></div><div><span>VERIFICATION · SEPARATE CHECK</span>${receipt?`<a href="${esc(sourceURL(receipt))}" target="_blank" rel="noopener">${isProposal(r)?'Proposal / local evidence':'Framework-verified · receipt'} ↗</a>`:`<a href="${esc(TRACKER+'catalogue.json')}" target="_blank" rel="noopener">${isProposal(r)?'Proposed':'Catalogue-verified'} · inspect scope ↗</a>`}</div>`;
+  $('#graph-subtitle').textContent=`${name(r)} · select a node to see what it needs and where its result is used.`;
+  proofLayoutObserver?.disconnect();
+  if(typeof ResizeObserver!=='undefined'){
+    proofLayoutObserver=new ResizeObserver(()=>requestAnimationFrame(drawProofEdges));
+    proofLayoutObserver.observe($('#proof-map'));
+    $('#proof-map').querySelectorAll('[data-gate]').forEach(node=>proofLayoutObserver.observe(node));
+  }
+  requestAnimationFrame(drawProofEdges);renderGateDetail();
 }
 function drawProofEdges(){
   const container=$('#proof-map'),group=$('#proof-edges');if(!group)return;
-  const box=container.getBoundingClientRect(),small=innerWidth<=640;
-  group.innerHTML=proof.edges.map(edge=>{
+  const box=container.getBoundingClientRect(),vertical=innerWidth<=640;
+  group.innerHTML=proof.edges.map((edge,index)=>{
     const a=container.querySelector(`[data-gate="${edge.from}"]`),b=container.querySelector(`[data-gate="${edge.to}"]`);if(!a||!b)return '';
-    const p=a.getBoundingClientRect(),q=b.getBoundingClientRect();
-    const x1=p.right-box.left,y1=p.top+p.height/2-box.top,x2=q.left-box.left,y2=q.top+q.height/2-box.top;
-    if(small&&x2<x1) return '';
-    const dx=Math.max(12,Math.abs(x2-x1)*.45);
-    return `<path d="M${x1},${y1}C${x1+dx},${y1} ${x2-dx},${y2} ${x2},${y2}" fill="none" stroke="#d6e0cf" stroke-width="1" marker-end="url(#arrowhead)"><title>${esc(edge.label)}</title></path>`;
+    const p=a.getBoundingClientRect(),q=b.getBoundingClientRect(),skip=Number(b.dataset.stage)-Number(a.dataset.stage)>1;
+    const kind=edge.to===state.gate||traceGates(state.gate,true).has(edge.to)?'input':edge.from===state.gate||traceGates(state.gate,false).has(edge.from)?'output':'base';
+    const color={input:'#7188a9',output:'#398b80',base:'#c9d4c2'}[kind];
+    let d,labelX,labelY;
+    if(vertical){
+      const x1=p.left+p.width/2-box.left,y1=p.bottom-box.top,x2=q.left+q.width/2-box.left,y2=q.top-box.top;
+      if(skip){const rail=box.width-8-(index%3)*6;d=`M${x1},${y1}V${y1+10}H${rail}V${y2-11}H${x2}V${y2}`;labelX=rail-5;labelY=(y1+y2)/2;}
+      else{d=`M${x1},${y1}C${x1},${y1+17} ${x2},${y2-17} ${x2},${y2}`;labelX=(x1+x2)/2;labelY=(y1+y2)/2;}
+    }else{
+      const x1=p.right-box.left,y1=p.top+p.height/2-box.top,x2=q.left-box.left,y2=q.top+q.height/2-box.top;
+      if(skip){const rail=Math.min(box.height-12,Math.max(p.bottom-box.top,q.bottom-box.top)+18+(index%3)*7);d=`M${x1},${y1}H${x1+8}V${rail}H${x2-9}V${y2}H${x2}`;labelX=(x1+x2)/2;labelY=rail-5;}
+      else{const dx=Math.max(10,(x2-x1)*.4);d=`M${x1},${y1}C${x1+dx},${y1} ${x2-dx},${y2} ${x2},${y2}`;labelX=(x1+x2)/2;labelY=(y1+y2)/2-5;}
+    }
+    return `<g data-edge-from="${edge.from}" data-edge-to="${edge.to}" class="flow-edge ${kind}"><path d="${d}" fill="none" stroke="${color}" stroke-width="${kind==='base'?1.1:1.8}" opacity="${kind==='base'?.65:1}" marker-end="url(#flow-arrow-${kind})"><title>${esc(edge.label)}</title></path></g>`;
   }).join('');
 }
 function readableFormula(f){
@@ -210,12 +253,15 @@ function readableFormula(f){
 }
 function renderGateDetail(){
   const node=proof.nodes.find(n=>n.id===state.gate)||proof.nodes[0],change=gateChange(node.id),r=selected();
-  let formulas=node.formulas || [];
-  if(change?.formulaIds?.length) formulas=formulas.filter(f=>change.formulaIds.includes(f.id));
-  // Display at most two representative formulas; all exact formulas remain in the evidence download.
+  const localFormulas=change?.formulas;
+  let formulas=localFormulas?.length?localFormulas:node.formulas||[];
+  if(!localFormulas?.length&&change?.formulaIds?.length)formulas=formulas.filter(f=>change.formulaIds.includes(f.id));
   formulas=formulas.slice(0,2);
-  const linkedSources=[...(node.sourceIds||[]),...formulas.flatMap(f=>f.sourceIds||[]),...(change?.sourceIds||[])];
-  $('#gate-detail').innerHTML=`<div class="eyebrow">PROOF GATE · ${esc(shortLabels[gateDimension(node.id)])}</div><h3>${esc(node.label)}</h3><p class="gate-description">${esc(node.description)}</p>${change?`<div class="gate-notice"><strong>${esc(name(r))} · ${esc(change.kind.replaceAll('-',' '))}</strong><br>${esc(change.detail)}</div>`:`<div class="gate-notice">Representative framework contract. A method-specific change for ${esc(name(r))} has not been extracted at this gate.</div>`}${formulas.map(f=>`<div class="formula" title="${esc(f.tex)}">${esc(readableFormula(f))}</div><p class="formula-context"><strong>Domain.</strong> ${esc(f.domain)}</p><p class="formula-context" style="margin-top:7px">${esc(f.scope)}</p>`).join('')}${!formulas.length?`<p class="small-copy" style="margin-top:13px">${esc(node.formulaStatus || 'The required checks are method-specific.')}</p>`:''}<ul class="gate-checks">${node.requiredChecks.map(c=>`<li>${esc(c)}</li>`).join('')}</ul><div class="source-links">${sourceLinks(gateSources(linkedSources))}</div>`;
+  const linkedSources=[...(change?.sourceIds||[]),...formulas.flatMap(f=>f.sourceIds||[]),...(node.sourceIds||[])];
+  const needs=proof.edges.filter(e=>e.to===node.id),feeds=proof.edges.filter(e=>e.from===node.id);
+  const relations=(edges,input)=>edges.length?edges.map(edge=>{const id=input?edge.from:edge.to;return `<button type="button" data-related-gate="${id}"><strong>${esc(conciseNode[id])}</strong><span>${esc(edge.label)}</span><b aria-hidden="true">${input?'↗':'→'}</b></button>`;}).join(''):`<p>${input?'An analytic input; inspect its source and assumptions.':'Feeds the recovered endpoint and verification.'}</p>`;
+  $('#gate-detail').innerHTML=`<div class="eyebrow">SELECTED DIMENSION · ${esc(shortLabels[gateDimension(node.id)])}</div><h3 tabindex="-1">${esc(node.label)}</h3><p class="gate-description">${esc(node.description)}</p><div class="gate-notice ${change&&!intervention(change)?'inherited-notice':''}"><strong>${change?esc(intervention(change)?'Changed / retuned in this method':'Inherited / reused in this method'):'Method-specific role not extracted'}</strong><p>${esc(change?.detail||'The framework contract is shown below. No separate contribution is attributed without reviewed source evidence.')}</p></div><div class="gate-relations"><div><h4>Needs these inputs</h4>${relations(needs,true)}</div><div><h4>Used by</h4>${relations(feeds,false)}</div></div><details class="gate-technical"><summary>${localFormulas?.length?'Method-specific formulas':'Representative formulas'}, domain & required checks</summary>${formulas.map(f=>`<div class="formula" title="${esc(f.tex)}">${esc(f.display||readableFormula(f))}</div><p class="formula-context"><strong>Domain.</strong> ${esc(f.domain)}</p><p class="formula-context">${esc(f.scope)}</p>`).join('')}${!formulas.length?`<p class="small-copy">${esc(node.formulaStatus||'Exact gates are method-specific; follow the evidence below.')}</p>`:''}<ul class="gate-checks">${node.requiredChecks.map(c=>`<li>${esc(c)}</li>`).join('')}</ul></details><div class="source-links"><span class="evidence-label">Evidence</span>${sourceLinks(gateSources(linkedSources))}</div>`;
+  $('#gate-detail').querySelectorAll('[data-related-gate]').forEach(b=>b.onclick=()=>focusGate(b.dataset.relatedGate,{detail:true}));
 }
 
 const capacityDefaults={'plain-length':.41825,'kappa-value':.75,'prime-length':.0375};
@@ -272,7 +318,7 @@ function renderCapacity(){
   };
 }
 
-function renderComparison(){renderMatrix();renderRadar();renderDetail();renderLineage();renderProofMap();renderEndpoint();}
+function renderComparison(){renderMethodRoute();renderMatrix();renderRadar();renderDetail();renderLineage();renderProofMap();renderEndpoint();}
 function notice(message){$('#notice').textContent=message;$('#notice').hidden=false;clearTimeout(notice.timer);notice.timer=setTimeout(()=>$('#notice').hidden=true,6500);}
 function download(file,contents,type){const u=URL.createObjectURL(new Blob([contents],{type}));const a=document.createElement('a');a.href=u;a.download=file;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
 function exportCSV(){

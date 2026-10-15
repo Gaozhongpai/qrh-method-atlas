@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-10-14",
+  "asOf": "2026-10-15",
   "title": "Required proof dimensions and their method-specific gates",
   "scopeNotes": [
     "A smaller numerical endpoint does not imply every analytic dimension improved.",
@@ -77,12 +77,68 @@
       "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/50"
     },
     "detector-affine": {
-      "label": "Detector-affine proposal, PR 56",
+      "label": "Reviewed affine detector count, PR 56",
       "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
     },
     "catalogue": {
       "label": "Live tracker catalogue and admission status",
       "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+    },
+    "certb-local-20261013-receipt": {
+      "label": "Official canonical verification: certb-local-20261013",
+      "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/certb-local-20261013.json"
+    },
+    "certb-local-20261013-source": {
+      "label": "Checked Lean solution: certb-local-20261013",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Candidate/Main.lean"
+    },
+    "detector-affine-c0125154-receipt": {
+      "label": "Official canonical verification: detector-affine-c0125154",
+      "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/detector-affine-c0125154.json"
+    },
+    "detector-affine-c0125154-source": {
+      "label": "Checked Lean solution: detector-affine-c0125154",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/67edfb7a1161008b37ff32aadec35cecaa711731/submissions/detector-affine-c0125154/src/Candidate/Main.lean"
+    },
+    "gao-affine-asymmetric-20261015-receipt": {
+      "label": "Official canonical verification: gao-affine-asymmetric-20261015",
+      "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/gao-affine-asymmetric-20261015.json"
+    },
+    "gao-affine-asymmetric-20261015-source": {
+      "label": "Checked Lean solution: gao-affine-asymmetric-20261015",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/3874f3e75de18ff5806dcb9519fc260e034ef0e9/submissions/gao-affine-asymmetric-20261015/src/Candidate/Main.lean"
+    },
+    "detector-affine-notes": {
+      "label": "DaysSky detector-affine notes, §§1–5",
+      "url": "https://github.com/DaysSky/QuasiRiemannTracker/blob/a0efd9ee546b417de650f36bc8403f781706a94e/proofs/detector-affine-c0125154/manuscript/notes.md"
+    },
+    "gao-affine-asymmetric-paper": {
+      "label": "Gao affine/asymmetric paper, §§2–5",
+      "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/e2c0a0ef90185eb6f539bb1af1cabf0bfb948cd7/papers/gao-affine-asymmetric-20261015/paper.pdf"
+    },
+    "certb-budget": {
+      "label": "CertB extracted-error reserve, B026",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B026.lean#L699"
+    },
+    "certb-capacity": {
+      "label": "CertB local capacity and transport, B006",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B006.lean#L439"
+    },
+    "certb-region": {
+      "label": "CertB actual source region, B029",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B029.lean#L49"
+    },
+    "certb-numerator": {
+      "label": "CertB physical numerator, B038",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B038.lean#L41"
+    },
+    "certb-assembly": {
+      "label": "CertB actual source assembly and endpoint, B126",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B126.lean#L426"
+    },
+    "certb-limits": {
+      "label": "CertB conditional arithmetic limits, B127",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/df08a83bd6d336d50c9243a86d3234e29877097c/submissions/certb-local-20261013/src/Submissions/certb_local_20261013/Bundles/B127.lean"
     }
   },
   "nodes": [
@@ -1065,48 +1121,170 @@
       ]
     },
     "detector-affine-c0125154": {
-      "status": "proposal-pending",
+      "status": "framework-verified",
       "changes": [
+        {
+          "nodeId": "inverse",
+          "kind": "inherited-estimate",
+          "detail": "Retains Cycle61’s inverse moments and long inverse branch.",
+          "sourceIds": [
+            "detector-affine-notes"
+          ],
+          "formulaIds": [
+            "inverse-marked",
+            "inverse-long"
+          ]
+        },
         {
           "nodeId": "plain",
           "kind": "inherited-estimate",
-          "detail": "Reuses Cycle61 Theorem 2.2; no new affine moment theorem is claimed.",
-          "formulaIds": [
-            "cycle61-affine"
-          ],
+          "detail": "Reuses the existing actual initial affine theorem with its full local box.",
           "sourceIds": [
-            "detector-affine"
+            "detector-affine-notes"
+          ],
+          "formulas": [
+            {
+              "id": "dayssky-affine-plane",
+              "tex": "2m+\\Lambda z\\le B,\\quad\\Lambda=19312/4787,\\quad B=14200/14361-10^{-5}",
+              "display": "2m + Λz ≤ B;  Λ = 19312/4787;  B = 14200/14361 − 10⁻⁵",
+              "plain": "2m + Λz ≤ B;  Λ = 19312/4787;  B = 14200/14361 − 10⁻⁵",
+              "domain": "Fixed source width 1, moving width 0; .41≤m≤.44 and .034≤z≤.04. Actual canonical slots, masks, profiles and eligibility.",
+              "scope": "The same initial affine estimate is used in a new detector consumer; this is not a global slope-only replacement.",
+              "sourceIds": [
+                "detector-affine-notes",
+                "cycle61-paper"
+              ]
+            }
+          ]
+        },
+        {
+          "nodeId": "amplitude",
+          "kind": "inherited-construction",
+          "detail": "Retains canonical prime slots and amplitude classes; proves monotonicity needed for the revised masked count.",
+          "sourceIds": [
+            "detector-affine-notes"
+          ],
+          "formulaIds": [
+            "prime-amplitude",
+            "slot-selection"
           ]
         },
         {
           "nodeId": "detector",
           "kind": "new-consumer",
-          "detail": "Applies the existing affine moment inside the per-fiber detector count.",
-          "formulaIds": [
-            "detector-affine-capacity"
-          ],
+          "detail": "Uses the initial affine energy inside the per-fiber count, with actual finite-dictionary source supply.",
           "sourceIds": [
-            "detector-affine"
+            "detector-affine-notes",
+            "detector-affine-c0125154-source"
+          ],
+          "formulas": [
+            {
+              "id": "dayssky-affine-count",
+              "tex": "R_{\\rm aff}=1-\\delta+\\frac{(5/6-\\delta)\\delta(1-p)(1-2pB/\\Lambda)}{(5/6-\\delta)(3-p-4p/\\Lambda)+\\delta(1-p)(2-4p/\\Lambda)}",
+              "display": "R_aff = 1 − δ + (5/6−δ)δ(1−p)(1−2pB/Λ) / J",
+              "plain": "R_aff = 1 − δ + (5/6−δ)δ(1−p)(1−2pB/Λ) / J",
+              "domain": "J=(5/6−δ)(3−p−4p/Λ)+δ(1−p)(2−4p/Λ)>0; δ∈[89/200,97/200], p∈[99/200,1/2], κ≥2θ−1.",
+              "scope": "Selected-row count is ≲U^(R_aff+ε), with the documented mesh costs. Outside the region, or outside the affine source window, the old moment/count branches apply.",
+              "sourceIds": [
+                "detector-affine-notes",
+                "detector-affine-c0125154-source"
+              ]
+            }
+          ]
+        },
+        {
+          "nodeId": "low",
+          "kind": "inherited-estimate",
+          "detail": "Retains Cycle61 LOW and checks the source design gates at the revised endpoint.",
+          "sourceIds": [
+            "detector-affine-notes"
+          ],
+          "formulaIds": [
+            "low-subsets"
+          ]
+        },
+        {
+          "nodeId": "high",
+          "kind": "retuning",
+          "detail": "Uses the improved selected-row count in the inherited numerator and retains fallback branches.",
+          "sourceIds": [
+            "detector-affine-notes"
+          ],
+          "formulaIds": [
+            "weighted-numerator",
+            "cycle61-source-capacity"
+          ]
+        },
+        {
+          "nodeId": "principal",
+          "kind": "inherited-construction",
+          "detail": "Retains Cycle61 principal, floor, amplifier and tail estimates; recomputes endpoint-dependent source gates.",
+          "sourceIds": [
+            "detector-affine-notes"
           ]
         },
         {
           "nodeId": "geometry",
           "kind": "retuning",
-          "detail": "Proposed θ=437423/500000=.874846, h=15903/20000; all other Cycle61 gates are retuned.",
-          "formulaIds": [],
+          "detail": "Exact region and complementary row certificates close θ=437423/500000 with h=15903/20000.",
           "sourceIds": [
-            "detector-affine"
+            "detector-affine-notes"
+          ],
+          "formulas": [
+            {
+              "id": "dayssky-endpoint-parameters",
+              "tex": "\\vartheta=437423/500000,\\quad h=15903/20000,\\quad\\ell=62731/375000",
+              "display": "θ = 437423/500000;  h = 15903/20000;  ℓ = 62731/375000",
+              "plain": "θ = 437423/500000;  h = 15903/20000;  ℓ = 62731/375000",
+              "domain": "Complete region and complementary-row certificates at the source-licensed affine and old branch parameters.",
+              "scope": "The endpoint follows only after all LOW, HIGH, principal, source-supply and recovery gates are checked.",
+              "sourceIds": [
+                "detector-affine-notes"
+              ]
+            }
+          ]
+        },
+        {
+          "nodeId": "recovery",
+          "kind": "source-integration",
+          "detail": "Supplies the actual initial energy at each detector dictionary character; retains common-probe continuation and all-Dirichlet transfer.",
+          "sourceIds": [
+            "detector-affine-notes",
+            "detector-affine-c0125154-source"
           ]
         }
       ],
       "inherited": [
-        "Cycle61 actual source, local affine moment and physical numerator"
+        "Cycle61 initial affine moment and generic paid main/error source families",
+        "Cycle61 inverse, LOW, physical numerator, continuation and transfer"
       ],
-      "unknown": [
-        "Official exact-head Comparator and three-kernel acceptance was pending in the inspected snapshot."
-      ],
+      "unknown": [],
       "sourceIds": [
-        "detector-affine"
+        "detector-affine-notes",
+        "detector-affine-c0125154-source",
+        "detector-affine-c0125154-receipt"
+      ],
+      "route": [
+        {
+          "nodeId": "plain",
+          "text": "Existing local affine moment"
+        },
+        {
+          "nodeId": "detector",
+          "text": "Apply it to actual detector dictionaries"
+        },
+        {
+          "nodeId": "high",
+          "text": "Use the smaller selected-row count"
+        },
+        {
+          "nodeId": "geometry",
+          "text": "Rebalance and certify all row ranges"
+        },
+        {
+          "nodeId": "recovery",
+          "text": "Recover the canonical all-Dirichlet endpoint"
+        }
       ]
     },
     "gao-gex-20999-24000": {
@@ -1151,6 +1329,425 @@
       "sourceIds": [
         "gao-gex-owner"
       ]
+    },
+    "gao-affine-asymmetric-20261015": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "inverse",
+          "kind": "inherited-estimate",
+          "detail": "Retains the complete inverse/Möbius moment theorems.",
+          "sourceIds": [
+            "gao-affine-asymmetric-paper"
+          ],
+          "formulaIds": [
+            "inverse-marked",
+            "inverse-long"
+          ]
+        },
+        {
+          "nodeId": "plain",
+          "kind": "inherited-estimate",
+          "detail": "Uses the inherited initial affine construction with this method’s source-paid B, then applies it to actual detector energies.",
+          "sourceIds": [
+            "gao-affine-asymmetric-paper",
+            "gao-affine-asymmetric-20261015-source"
+          ],
+          "formulas": [
+            {
+              "id": "gao-affine-source-plane",
+              "tex": "2m+\\Lambda z\\le B,\\quad\\Lambda=19312/4787,\\quad B=14200/14361+7/10000",
+              "display": "2m + Λz ≤ B;  Λ = 19312/4787;  B = 14200/14361 + 7/10000",
+              "plain": "2m + Λz ≤ B;  Λ = 19312/4787;  B = 14200/14361 + 7/10000",
+              "domain": "Actual initial affine energy, fixed parent width 1 and moving width 0; .41≤m≤.44 and .034≤z≤.04, with the inherited masks, slots and profiles.",
+              "scope": "The admissible B is paid by the stronger actual source argument. This is neither a new inverse moment nor the older Cycle61 worked-example plane.",
+              "sourceIds": [
+                "gao-affine-asymmetric-paper",
+                "gao-affine-asymmetric-20261015-source"
+              ]
+            },
+            {
+              "id": "gao-actual-affine-energy",
+              "tex": "\\mathcal E_\\eta(U;m,z)\\ll_{\\eta,\\varepsilon}(1+T)^{D_\\eta}\\mathcal S(\\Phi)^2U^{1+\\varepsilon}",
+              "display": "Eη(U;m,z) ≲ (1+T)^Dη · S(Φ)² · U^(1+ε)",
+              "plain": "Eη(U;m,z) ≲ (1+T)^Dη · S(Φ)² · U^(1+ε)",
+              "domain": "Under the displayed source-paid affine gate; actual normalized plain energy and selected prime factors. Finite dictionary maxima are taken for each fixed final target.",
+              "scope": "Eη is the arithmetic quantity being estimated; the inequality is its estimate. No uniform degree over infinitely many target characters is assumed.",
+              "sourceIds": [
+                "gao-affine-asymmetric-paper"
+              ]
+            }
+          ]
+        },
+        {
+          "nodeId": "amplitude",
+          "kind": "inherited-construction",
+          "detail": "Retains asymmetric inverse/plain selections and common-allocation radical accounting; amplitude transfer uses the certified count monotonicity.",
+          "sourceIds": [
+            "gao-affine-asymmetric-paper",
+            "radical-asymmetric"
+          ],
+          "formulaIds": [
+            "prime-amplitude",
+            "slot-selection"
+          ]
+        },
+        {
+          "nodeId": "detector",
+          "kind": "new-consumer",
+          "detail": "Combines the stronger source-paid moment with finite-dictionary affine detector counting; retains original fallback branches.",
+          "sourceIds": [
+            "gao-affine-asymmetric-paper",
+            "gao-affine-asymmetric-20261015-source"
+          ],
+          "formulas": [
+            {
+              "id": "gao-affine-detector-count",
+              "tex": "R_{\\rm aff}=1-\\delta+\\frac{(5/6-\\delta)\\delta(1-p)(1-2pB/\\Lambda)}{(5/6-\\delta)(3-p-4p/\\Lambda)+\\delta(1-p)(2-4p/\\Lambda)}",
+              "display": "R_aff = 1 − δ + (5/6−δ)δ(1−p)(1−2pB/Λ) / J",
+              "plain": "R_aff = 1 − δ + (5/6−δ)δ(1−p)(1−2pB/Λ) / J",
+              "domain": "J=(5/6−δ)(3−p−4p/Λ)+δ(1−p)(2−4p/Λ)>0; δ∈[89/200,97/200], p∈[199/400,1/2], with this method’s B.",
+              "scope": "Selected-row count is ≲U^(R_aff+ε), with charged mesh errors. Plain m lies in [m₀,847/2000], m₀=(B−Λ/25)/2. Widths below 17/500 and larger m use the old moment; outside the certified (δ,p) region use the old count.",
+              "sourceIds": [
+                "gao-affine-asymmetric-paper",
+                "gao-affine-asymmetric-20261015-source"
+              ]
+            }
+          ]
+        },
+        {
+          "nodeId": "low",
+          "kind": "inherited-estimate",
+          "detail": "Retains complete LOW and its fixed source reserves; checks them at d₋=159/200.",
+          "sourceIds": [
+            "gao-affine-asymmetric-paper"
+          ],
+          "formulaIds": [
+            "low-subsets"
+          ]
+        },
+        {
+          "nodeId": "high",
+          "kind": "sharper-payment",
+          "detail": "Combines inherited source savings with the improved detector population in the complete physical numerator.",
+          "sourceIds": [
+            "gao-affine-asymmetric-paper"
+          ],
+          "formulas": [
+            {
+              "id": "gao-asymmetric-source-ledger",
+              "tex": "\\frac{519}{4550}u+\\delta f+\\frac{224}{1755}\\min(v,13Q/400)\\ge37M/10000",
+              "display": "(519/4550)u + δf + (224/1755)min(v,13Q/400) ≥ 37M/10000",
+              "plain": "(519/4550)u + δf + (224/1755)min(v,13Q/400) ≥ 37M/10000",
+              "domain": "Marked HIGH range 17/25≤δ≤7/10; actual common/residual/surviving widths u,f,v≥0, u+f+v≥33M/1000 and Q≥1121M/1250−2u.",
+              "scope": "Inherited asymmetric selections and the common-radical penalty must use the same allocation variables. After ≤M/20000 losses the retained saving is 73M/20000; this is a source exponent saving, not a final endpoint gain.",
+              "sourceIds": [
+                "gao-affine-asymmetric-paper",
+                "radical-asymmetric"
+              ]
+            },
+            {
+              "id": "gao-full-row-reserve",
+              "tex": "E_{\\kappa_*}(d,C_{\\rm new};\\delta,p)<\\vartheta-4999/5000000000",
+              "display": "Eκ*(d,Cnew;δ,p) < θ − 4999/5000000000",
+              "plain": "Eκ*(d,Cnew;δ,p) < θ − 4999/5000000000",
+              "domain": "θ=21871/25000, d∈[159/200,h+10⁻¹⁰], δ∈[0,3/4], p∈[0,1/2]; Cnew(d)=[2y−(2−B)d]/Λ.",
+              "scope": "Exact rational certificates cover the continuous rectangle and both affine/old count pieces. Lower rows use old capacity with reserve 1/100000; the estimate includes detector population, numerator costs and actual physical reconstruction.",
+              "sourceIds": [
+                "gao-affine-asymmetric-paper"
+              ]
+            }
+          ]
+        },
+        {
+          "nodeId": "principal",
+          "kind": "inherited-construction",
+          "detail": "Retains principal, cube-floor, amplifier and tails; the source checks include plain scales, selected widths and the allocation gate.",
+          "sourceIds": [
+            "gao-affine-asymmetric-paper"
+          ]
+        },
+        {
+          "nodeId": "geometry",
+          "kind": "retuning",
+          "detail": "Retunes h=1989/2500 and d₋=159/200; exact certificates cover every δ,p and all required d ranges at θ=21871/25000.",
+          "sourceIds": [
+            "gao-affine-asymmetric-paper"
+          ],
+          "formulas": [
+            {
+              "id": "gao-full-row-reserve",
+              "tex": "E_{\\kappa_*}(d,C_{\\rm new};\\delta,p)<\\vartheta-4999/5000000000",
+              "display": "Eκ*(d,Cnew;δ,p) < θ − 4999/5000000000",
+              "plain": "Eκ*(d,Cnew;δ,p) < θ − 4999/5000000000",
+              "domain": "θ=21871/25000, d∈[159/200,h+10⁻¹⁰], δ∈[0,3/4], p∈[0,1/2]; Cnew(d)=[2y−(2−B)d]/Λ.",
+              "scope": "Exact rational certificates cover the continuous rectangle and both affine/old count pieces. Lower rows use old capacity with reserve 1/100000; the estimate includes detector population, numerator costs and actual physical reconstruction.",
+              "sourceIds": [
+                "gao-affine-asymmetric-paper"
+              ]
+            }
+          ]
+        },
+        {
+          "nodeId": "recovery",
+          "kind": "source-integration",
+          "detail": "Checks actual per-label energies and uniform continuation reserve, then uses inherited continuation/Dirichlet transfer.",
+          "sourceIds": [
+            "gao-affine-asymmetric-paper",
+            "gao-affine-asymmetric-20261015-source"
+          ],
+          "formulas": [
+            {
+              "id": "gao-common-continuation-gap",
+              "tex": "\\exists\\omega,\\sigma>0\\ \\forall\\psi\\ \\exists\\tau_\\psi>0,\\quad\\varepsilon_{\\rm cont}=\\min((\\beta-\\vartheta)/2,\\sigma)>0",
+              "display": "∃ω,σ>0 ∀ψ ∃τψ>0;  εcont = min((β−θ)/2,σ) > 0",
+              "plain": "∃ω,σ>0 ∀ψ ∃τψ>0;  εcont = min((β−θ)/2,σ) > 0",
+              "domain": "Under the contradiction β>θ, where β is the global family supremum. Each target has a finite detector dictionary and its own allowed height.",
+              "scope": "The continuation gap remains independent of the target; character-dependent constants and heights do not add an analytic premise to the final canonical theorem.",
+              "sourceIds": [
+                "gao-affine-asymmetric-paper",
+                "gao-affine-asymmetric-20261015-source"
+              ]
+            }
+          ]
+        }
+      ],
+      "inherited": [
+        "timbalud asymmetric marked HIGH count and common-radical source payment",
+        "DaysSky actual affine detector supply and finite-dictionary integration",
+        "Collet Cycle61, Levy weighted numerator, and OpenAI continuation/transfer"
+      ],
+      "unknown": [],
+      "sourceIds": [
+        "gao-affine-asymmetric-paper",
+        "gao-affine-asymmetric-20261015-source",
+        "gao-affine-asymmetric-20261015-receipt",
+        "radical-asymmetric",
+        "detector-affine"
+      ],
+      "route": [
+        {
+          "nodeId": "high",
+          "text": "Retain asymmetric and common-radical source savings",
+          "label": "Arithmetic source saving"
+        },
+        {
+          "nodeId": "plain",
+          "text": "Pay the chosen affine moment gate",
+          "label": "Source-paid moment"
+        },
+        {
+          "nodeId": "detector",
+          "text": "Apply it inside actual detector dictionaries"
+        },
+        {
+          "nodeId": "high",
+          "text": "Combine count and numerator in every row",
+          "label": "HIGH reconstruction"
+        },
+        {
+          "nodeId": "geometry",
+          "text": "Retune and certify the complete endpoint"
+        },
+        {
+          "nodeId": "recovery",
+          "text": "Continue and transfer to all Dirichlet characters"
+        }
+      ]
+    },
+    "certb-local-20261013": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "inverse",
+          "kind": "inherited-estimate",
+          "detail": "Retains the inverse/Möbius moment input of the inherited local-source construction.",
+          "sourceIds": [
+            "certb-assembly",
+            "certb-local-20261013-source"
+          ],
+          "formulaIds": [
+            "inverse-marked",
+            "inverse-long"
+          ]
+        },
+        {
+          "nodeId": "plain",
+          "kind": "retuned-parameters",
+          "detail": "Enlarges the paid local affine defect to 429/100000, retaining slope 9/2 and the separate source-volume cap.",
+          "sourceIds": [
+            "certb-capacity",
+            "certb-region"
+          ],
+          "formulas": [
+            {
+              "id": "certb-local-source-region",
+              "tex": "n_1+n_2+z\\le881/1000,\\qquad n_1+n_2+(9/2)z\\le100429/100000",
+              "display": "n₁ + n₂ + z ≤ .881;  n₁ + n₂ + (9/2)z ≤ 1.00429",
+              "plain": "n₁ + n₂ + z ≤ .881;  n₁ + n₂ + (9/2)z ≤ 1.00429",
+              "domain": "Actual local source-region wrapper; individual nᵢ≤.423 and z≤.037, with the inherited source data.",
+              "scope": "This is CertB’s local source capacity model, not Cycle61’s Λ/B plane. The arithmetic transport gate alone is not an independent analytic moment theorem.",
+              "sourceIds": [
+                "certb-region",
+                "certb-capacity"
+              ]
+            },
+            {
+              "id": "certb-local-transport-capacity",
+              "tex": "z_{\\max}(n,t)=\\max\\{0,(1+g-2(n+t))/(9/2)\\},\\quad g=429/100000",
+              "display": "zmax(n,t) = max(0, [1.00429 − 2(n+t)] / 4.5)",
+              "plain": "zmax(n,t) = max(0, [1.00429 − 2(n+t)] / 4.5)",
+              "domain": "Base n∈[.419,.422], local transport 0≤t≤3/4000; all actual source-region and slot gates must also hold.",
+              "scope": "Beyond the small transport interval the construction returns to the old numerator 1−2(n+t). The local enlargement must not be extrapolated.",
+              "sourceIds": [
+                "certb-capacity"
+              ]
+            }
+          ]
+        },
+        {
+          "nodeId": "amplitude",
+          "kind": "inherited-construction",
+          "detail": "Retains the amplifier and actual source slot construction; the legal local capacity is enlarged by the reserve reallocation.",
+          "sourceIds": [
+            "certb-capacity",
+            "certb-numerator"
+          ]
+        },
+        {
+          "nodeId": "detector",
+          "kind": "inherited-estimate",
+          "detail": "Retains Cycle25 rowCount(δ,p,κ); no new detector-affine consumer is claimed.",
+          "sourceIds": [
+            "certb-numerator"
+          ],
+          "formulaIds": [
+            "cycle25-count"
+          ]
+        },
+        {
+          "nodeId": "low",
+          "kind": "retuned-parameters",
+          "detail": "Reallocates LOW/extracted-error reserves while retaining a positive critical face reserve.",
+          "sourceIds": [
+            "certb-budget"
+          ],
+          "formulas": [
+            {
+              "id": "certb-face2-reserve",
+              "tex": "3/500-(67/450)(g+6(3/500))\\ge19/15000000",
+              "display": "3/500 − (67/450)(g + 6·3/500) ≥ 19/15000000",
+              "plain": "3/500 − (67/450)(g + 6·3/500) ≥ 19/15000000",
+              "domain": "Inherited extracted-error Face 2, g=429/100000; all other source-payment faces and estimates remain required.",
+              "scope": "This reserve arithmetic licenses the chosen local defect. It does not by itself prove a complete LOW bound or a new zero-free endpoint.",
+              "sourceIds": [
+                "certb-budget"
+              ]
+            }
+          ]
+        },
+        {
+          "nodeId": "high",
+          "kind": "retuned-parameters",
+          "detail": "Feeds the enlarged local capacity into the inherited physical numerator and complete HIGH reconstruction.",
+          "sourceIds": [
+            "certb-numerator",
+            "certb-assembly"
+          ],
+          "formulas": [
+            {
+              "id": "certb-numerator-payment",
+              "tex": "-\\delta p(2\\ell_y-d+gd)/9",
+              "display": "Numerator exponent includes −δp(2ℓy − d + gd)/9",
+              "plain": "Numerator exponent includes −δp(2ℓy − d + gd)/9",
+              "domain": "The local physical-numerator branch with g=429/100000 and the recorded d, density, amplitude and source-capacity gates.",
+              "scope": "This is one payment inside the complete HIGH exponent, not the whole bound. The detector still uses its inherited Cycle25 rowCount(δ,p,κ).",
+              "sourceIds": [
+                "certb-numerator"
+              ]
+            }
+          ]
+        },
+        {
+          "nodeId": "principal",
+          "kind": "inherited-construction",
+          "detail": "Retains the principal/floor/intermediate source framework and rechecks its actual-source assembly obligations.",
+          "sourceIds": [
+            "certb-assembly"
+          ]
+        },
+        {
+          "nodeId": "geometry",
+          "kind": "retuned-parameters",
+          "detail": "Rebuilds exact certificates at h=397/500, ℓ=1567507/9375000, ℓy=4308736/9375000, κ=4685831/6250000; θ=10935831/12500000.",
+          "sourceIds": [
+            "certb-assembly",
+            "certb-capacity"
+          ],
+          "formulas": [
+            {
+              "id": "certb-endpoint-parameters",
+              "tex": "\\vartheta=10935831/12500000,\\quad h=397/500,\\quad\\ell=1567507/9375000",
+              "display": "θ = 10935831/12500000;  h = 397/500;  ℓ = 1567507/9375000",
+              "plain": "θ = 10935831/12500000;  h = 397/500;  ℓ = 1567507/9375000",
+              "domain": "Regenerated exact transport and endpoint certificates, with the complete inherited source gates and final reserve 1/50000000.",
+              "scope": "This admitted endpoint is separate from B127’s conditional arithmetic-envelope and limit statements.",
+              "sourceIds": [
+                "certb-assembly"
+              ]
+            }
+          ]
+        },
+        {
+          "nodeId": "recovery",
+          "kind": "inherited-construction",
+          "detail": "Retains and rechecks actual source identities, local/old source selection, the raw full probe, continuation and canonical Dirichlet transfer.",
+          "sourceIds": [
+            "certb-assembly",
+            "certb-local-20261013-source",
+            "certb-local-20261013-receipt"
+          ]
+        }
+      ],
+      "inherited": [
+        "Reserve-balanced affine local source construction",
+        "Cycle25 detector count and weighted HIGH framework",
+        "Actual source recovery, common probe and canonical all-Dirichlet transfer"
+      ],
+      "unknown": [
+        "B127’s additional conditional arithmetic limit hierarchy is not an admitted endpoint improvement. Its fixed-plane test concerns the next rational grid step under fixed budgets, not a universal optimum."
+      ],
+      "sourceIds": [
+        "certb-budget",
+        "certb-capacity",
+        "certb-region",
+        "certb-numerator",
+        "certb-assembly",
+        "certb-local-20261013-receipt",
+        "certb-limits"
+      ],
+      "route": [
+        {
+          "nodeId": "low",
+          "text": "Use extracted-error reserve slack"
+        },
+        {
+          "nodeId": "plain",
+          "text": "Enlarge the paid local source capacity"
+        },
+        {
+          "nodeId": "high",
+          "text": "Strengthen the physical numerator payment"
+        },
+        {
+          "nodeId": "geometry",
+          "text": "Rebuild transport and endpoint certificates"
+        },
+        {
+          "nodeId": "recovery",
+          "text": "Assemble the complete all-Dirichlet theorem"
+        }
+      ]
     }
   },
   "examples": [
@@ -1158,7 +1755,7 @@
       "id": "cycle61-to-pr56",
       "title": "One moment theorem, two consumers",
       "before": "Cycle61 uses its interior affine moment in the physical numerator; detector still uses old plain capacity.",
-      "after": "PR56 proposes applying the same affine moment to detector witnesses in a certified local region.",
+      "after": "PR56 applies the same affine moment to actual detector witnesses in its certified local region; the canonical endpoint is now officially verified.",
       "changedNodes": [
         "detector",
         "geometry"
@@ -1185,7 +1782,11 @@
       "build/new_target_2026-10-14/publication-staging/proofs/cycle61-c0125139/manuscript/paper.md",
       "build/tracker_local_moment_extension_2026-10-11/upstream-pr-checkout/public/proofs/qrh-20261009/accepted-answer.tex",
       "build/new_target_2026-10-14/external-record-updates/20261015T014709/catalogue.json",
-      "build/new_target_2026-10-14/external-record-updates/20261015T014709/pr56.json"
+      "build/new_target_2026-10-14/external-record-updates/20261015T014709/pr56.json",
+      "build/new_record_2026-10-15/paper-combined-r1/paper.tex",
+      "Pinned public DaysSky detector-affine notes/provenance at a0efd9ee546b417de650f36bc8403f781706a94e",
+      "Pinned CertB source B006/B026/B029/B038/B126/B127 at df08a83bd6d336d50c9243a86d3234e29877097c",
+      "Official canonical receipts for certb-local-20261013, detector-affine-c0125154 and gao-affine-asymmetric-20261015"
     ],
     "note": "Local paths are internal provenance only; UI citations should use the public source URL dictionary."
   }

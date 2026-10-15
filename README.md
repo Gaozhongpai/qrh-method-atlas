@@ -9,6 +9,7 @@ Website: **https://gaozhongpai.github.io/qrh-method-atlas/**
 - Compare two methods in a dimension matrix, with exact rational endpoints and source links.
 - Open the [dimension guide](https://gaozhongpai.github.io/qrh-method-atlas/#dimensions) when needed. Definitions, examples, and the relationship between LOW and HIGH appear in a side panel, preserving your place in the comparison.
 - Inspect declared proof dependencies and nine required proof gates.
+- Follow the selected method’s documented improvement route. The dependency map separates the LOW branch, detector-to-HIGH flow, compatibility, recovery, and verification; selecting a gate highlights its inputs and consumers. Method-specific formulas override representative framework examples.
 - Use a categorical radar footprint. Its area is **not** a mathematical strength score; verification is separate.
 - Explore a worked moment-capacity example: adjust equal plain length m, the conditional standard parameter κ, and a test prime length z with sliders, exact-value fields, or by clicking the plot. The plot distinguishes the affine local window from its inequality and does not represent the complete endpoint requirements.
 - Keep proposed endpoints separate from the verified catalogue.
