@@ -1,5 +1,5 @@
-import {mountBottleneck} from './bottleneck-view.js?v=atlas-2';
-import {capacityAt,capacityPoint,CAPACITY_EXAMPLE} from './capacity-model.js?v=atlas-2';
+import {mountBottleneck} from './bottleneck-view.js?v=atlas-3';
+import {capacityAt,capacityPoint,CAPACITY_EXAMPLE} from './capacity-model.js?v=atlas-3';
 export {capacityAt};
 const TRACKER = 'https://gtimg.github.io/QuasiRiemannTracker/';
 const SNAPSHOT_VERSION = new URL(import.meta.url).search;

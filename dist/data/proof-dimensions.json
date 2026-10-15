@@ -1557,6 +1557,7 @@
       "bottleneck": {
         "sourceCommit": "3874f3e75de18ff5806dcb9519fc260e034ef0e9",
         "auditedAt": "2026-10-15T13:12:22.731641+00:00",
+        "headline": "Tightest certified reserve: the top physical rows (θ − E > 9.998×10⁻⁷). Global LOW is balanced exactly at θ; moment capacity sits on its plane boundary.",
         "assessment": "Global LOW is deliberately balanced at θ, and limiting moment capacity uses its plane boundary. Among the three comparable final-row guarantees, the top-row certificate has the smallest positive reserve. These facts identify constraints to inspect; they do not prove an optimized global bottleneck or that all remaining improvement is exhausted.",
         "scope": "Audit of selected scalar identities, certified interval reserves and actual source contracts for the admitted 21871/25000 proof. Six analytic dimensions share constraints. Only the three final-row guarantees share the θ−E scale. Internal source-LOW/HIGH payments belong to the moment construction. Numerical optimization, exact global minima and cross-normalization reserve rankings are not claimed.",
         "constraints": [
