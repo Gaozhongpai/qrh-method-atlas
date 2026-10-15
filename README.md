@@ -7,6 +7,7 @@ Website: **https://gaozhongpai.github.io/qrh-method-atlas/**
 ## Views
 
 - Compare two methods in a dimension matrix, with exact rational endpoints and source links.
+- Read the [dimension guide](https://gaozhongpai.github.io/qrh-method-atlas/#dimensions), with plain-language definitions, examples, and an explanation of how LOW and HIGH fit together.
 - Inspect declared proof dependencies and nine required proof gates.
 - Use a categorical radar footprint. Its area is **not** a mathematical strength score; verification is separate.
 - Explore the standard and local affine capacity planes, including intercepts, length windows, and the standard theorem's zero-bound premise.

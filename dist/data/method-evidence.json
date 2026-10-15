@@ -22,12 +22,12 @@
     {
       "id": "low",
       "label": "LOW estimate",
-      "description": "The low-row contribution to the common physical probe and its paid losses."
+      "description": "Direct reflected-energy bound for the complete compensated physical probe, with all marked subsets and paid losses."
     },
     {
       "id": "high",
       "label": "HIGH estimate",
-      "description": "The high-row contribution, reflected numerator and allocation estimates."
+      "description": "Complementary zero-sensitive source bound after isolating the principal term; uses numerator averages, selected-row counts and all required row ranges."
     },
     {
       "id": "detector",

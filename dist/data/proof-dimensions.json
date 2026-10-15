@@ -247,7 +247,7 @@
     {
       "id": "low",
       "label": "LOW reflected energy",
-      "description": "Bounds the complete low-row physical probe using completed theta reflection and marked energy.",
+      "description": "Bounds the complete compensated physical probe directly using completed theta reflection and marked energy.",
       "formulas": [
         {
           "id": "low-subsets",
@@ -283,7 +283,7 @@
     {
       "id": "high",
       "label": "HIGH physical numerator",
-      "description": "Pays high rows using the actual numerator, detector count and source-preserving weighted averages.",
+      "description": "Bounds the complementary zero-sensitive source using the actual numerator, detector count and source-preserving weighted averages across required row ranges.",
       "formulas": [
         {
           "id": "weighted-numerator",
