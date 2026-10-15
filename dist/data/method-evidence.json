@@ -1,0 +1,2250 @@
+{
+  "schema_version": 1,
+  "retrieved_at": "2026-10-15T02:10:35.767607+00:00",
+  "source_catalogue": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json",
+  "source_as_of": "2026-10-15",
+  "editorial_scope": "Mechanism tags are conservative editorial readings of cited primary descriptions, not a new proof audit or numerical performance score. Unknown means unspecified, not absent or unchanged. Endpoint verification does not independently verify this crosswalk.",
+  "status_legend": {
+    "foundation": "Establishes the starting framework for this dimension.",
+    "changed": "The source explicitly reports a changed estimate, construction, or admissible region.",
+    "retuned": "Existing architecture with revised parameters, reserves or exact certificates.",
+    "reused": "The source explicitly reuses an existing ingredient or consumer.",
+    "unknown": "The cited evidence does not identify a distinct change here.",
+    "verified": "The official catalogue lists the endpoint as framework-verified.",
+    "pending": "The proposed endpoint has not been admitted in this catalogue snapshot."
+  },
+  "dimensions": [
+    {
+      "id": "moment",
+      "label": "Moment estimates",
+      "description": "Inverse and plain-polynomial moments, prime-slot costs, and admissible length regions."
+    },
+    {
+      "id": "low",
+      "label": "LOW estimate",
+      "description": "The low-row contribution to the common physical probe and its paid losses."
+    },
+    {
+      "id": "high",
+      "label": "HIGH estimate",
+      "description": "The high-row contribution, reflected numerator and allocation estimates."
+    },
+    {
+      "id": "detector",
+      "label": "Detector / density",
+      "description": "Selected-zero detection, row counting, density ranges and characterwise supply."
+    },
+    {
+      "id": "geometry",
+      "label": "Geometry / reserves",
+      "description": "Length balance, amplification, prime-slot allocation and reserve budgets."
+    },
+    {
+      "id": "recovery",
+      "label": "Recovery / endpoint",
+      "description": "Common-probe assembly, continuation and transfer to the canonical L-functions."
+    },
+    {
+      "id": "verification",
+      "label": "Verification",
+      "description": "Canonical statement comparison and independent proof-kernel acceptance."
+    }
+  ],
+  "methods": {
+    "classical-euler-product": {
+      "short_name": "Euler product",
+      "what_changed": "Absolute convergence supplies the classical right half-plane.",
+      "status": "framework-verified",
+      "parents": [],
+      "parent_edges": [],
+      "dimensions": {
+        "moment": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "low": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "high": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "detector": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "geometry": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "recovery": {
+          "status": "foundation",
+          "text": "Euler-product nonvanishing for Re(s) > 1 supplies the starting endpoint.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/classical-euler-product.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        }
+      ],
+      "metrics": []
+    },
+    "openai-baseline": {
+      "short_name": "OpenAI 7/8",
+      "what_changed": "The original common-probe framework proves the seven-eighths boundary.",
+      "status": "framework-verified",
+      "parents": [],
+      "parent_edges": [],
+      "dimensions": {
+        "moment": {
+          "status": "foundation",
+          "text": "Separate inverse and plain moment inductions carry prime factors; see §§17–18.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "OpenAI original quasi-Riemann paper",
+              "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf"
+            }
+          ]
+        },
+        "low": {
+          "status": "foundation",
+          "text": "The completed cubic-theta probe supplies the LOW estimate.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "OpenAI original quasi-Riemann paper",
+              "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf"
+            }
+          ]
+        },
+        "high": {
+          "status": "foundation",
+          "text": "Moment and detector estimates control the HIGH contribution.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "OpenAI original quasi-Riemann paper",
+              "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf"
+            }
+          ]
+        },
+        "detector": {
+          "status": "foundation",
+          "text": "A truncated inverse detects zeros and counts selected rows.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "OpenAI original quasi-Riemann paper",
+              "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf"
+            }
+          ]
+        },
+        "geometry": {
+          "status": "foundation",
+          "text": "Asymmetric lengths and compensated prime slots amplify the signal.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "OpenAI original quasi-Riemann paper",
+              "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "foundation",
+          "text": "Mellin continuation and character transfer establish the uniform endpoint.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "OpenAI original quasi-Riemann paper",
+              "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf"
+            }
+          ]
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/openai-baseline.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        },
+        {
+          "label": "OpenAI original quasi-Riemann paper",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf"
+        }
+      ],
+      "metrics": [
+        {
+          "label": "Plain prime cost at κ = 3/4",
+          "value": "9/2",
+          "dimension": "moment",
+          "scope": "Original n₁+n₂+6κz ≤ M gate; not an endpoint score.",
+          "sources": [
+            {
+              "label": "OpenAI original quasi-Riemann paper",
+              "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    "argonaut-20261008": {
+      "short_name": "Argonaut",
+      "what_changed": "A pinned refinement of the original endpoint; finer mechanism attribution is unspecified here.",
+      "status": "framework-verified",
+      "parents": [
+        "openai-baseline"
+      ],
+      "parent_edges": [
+        {
+          "id": "openai-baseline",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "low": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "high": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "detector": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "geometry": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "recovery": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/argonaut-20261008.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        }
+      ],
+      "metrics": []
+    },
+    "liu-20261008": {
+      "short_name": "Baiying Liu",
+      "what_changed": "Optimizes the original length and boundary parameters.",
+      "status": "framework-verified",
+      "parents": [
+        "openai-baseline"
+      ],
+      "parent_edges": [
+        {
+          "id": "openai-baseline",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "low": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "high": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "detector": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "geometry": {
+          "status": "retuned",
+          "text": "Optimizes b and ℓ; the boundary is an exact algebraic number.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Original paper",
+              "url": "https://arxiv.org/abs/2610.12234"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/liu-20261008.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        },
+        {
+          "label": "Original paper",
+          "url": "https://arxiv.org/abs/2610.12234"
+        }
+      ],
+      "metrics": []
+    },
+    "proofcouncil-20261009": {
+      "short_name": "ProofCouncil",
+      "what_changed": "Extends masked moment and detector ranges, then assembles optimized probe bounds.",
+      "status": "framework-verified",
+      "parents": [
+        "openai-baseline"
+      ],
+      "parent_edges": [
+        {
+          "id": "openai-baseline",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "changed",
+          "text": "Extends the actual masked-moment range.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        "low": {
+          "status": "retuned",
+          "text": "Proves an optimized LOW probe bound.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        "high": {
+          "status": "retuned",
+          "text": "Proves an optimized HIGH probe bound.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        "detector": {
+          "status": "changed",
+          "text": "Extends the detector range.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        "geometry": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "recovery": {
+          "status": "reused",
+          "text": "Applies Mellin continuation and all-character transfer.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/proofcouncil-20261009.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        }
+      ],
+      "metrics": []
+    },
+    "nielstron-20261009-tightening": {
+      "short_name": "nielstron algebraic",
+      "what_changed": "Extracts the exact cubic endpoint of the same predecessor contribution.",
+      "status": "framework-verified",
+      "parents": [
+        "proofcouncil-20261009",
+        "openai-baseline"
+      ],
+      "parent_edges": [
+        {
+          "id": "proofcouncil-20261009",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "openai-baseline",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "low": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "high": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "detector": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "geometry": {
+          "status": "retuned",
+          "text": "Replaces a rational endpoint by the unique-root algebraic endpoint of the same argument.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "reused",
+          "text": "Retains the predecessor proof package and endpoint construction.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/nielstron-algebraic-20261009.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        }
+      ],
+      "metrics": []
+    },
+    "akashlevy-20261009-weighted-numerator": {
+      "short_name": "Akash Levy",
+      "what_changed": "Uses a weighted fourth moment for the reflected numerator instead of a pointwise bound.",
+      "status": "framework-verified",
+      "parents": [
+        "openai-baseline"
+      ],
+      "parent_edges": [
+        {
+          "id": "openai-baseline",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "changed",
+          "text": "A fourth moment controls the actual reflected numerator with unused length carrying prime factors.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 6",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/6"
+            }
+          ]
+        },
+        "low": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "high": {
+          "status": "changed",
+          "text": "The weighted numerator estimate controls the HIGH probe more sharply.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 6",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/6"
+            }
+          ]
+        },
+        "detector": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "geometry": {
+          "status": "retuned",
+          "text": "Keeps κ = 3/4 and chooses ℓ = 167/1000.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 6",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/6"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/akashlevy-20261009-weighted-numerator.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        },
+        {
+          "label": "Submission PR 6",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/6"
+        }
+      ],
+      "metrics": [
+        {
+          "label": "κ",
+          "value": "3/4",
+          "dimension": "moment",
+          "scope": "Original moment parameter retained.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "label": "ℓ",
+          "value": "167/1000",
+          "dimension": "geometry",
+          "scope": "Selected parameter in this complete endpoint proof.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ]
+    },
+    "single-prime-29-33-20261010": {
+      "short_name": "Single prime",
+      "what_changed": "A compensating-prime construction gives a distinct, weaker endpoint and a moving-radical moment.",
+      "status": "framework-verified",
+      "parents": [
+        "openai-baseline"
+      ],
+      "parent_edges": [
+        {
+          "id": "openai-baseline",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "changed",
+          "text": "Establishes an unconditional moving-radical mixed moment.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 8",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/8"
+            }
+          ]
+        },
+        "low": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "high": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "detector": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "geometry": {
+          "status": "changed",
+          "text": "Uses a single compensating prime.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 8",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/8"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "changed",
+          "text": "A finite descent supplies the all-Dirichlet conclusion.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 8",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/8"
+            }
+          ]
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/single-prime-29-33-20261010.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        },
+        {
+          "label": "Submission PR 8",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/8"
+        }
+      ],
+      "metrics": []
+    },
+    "cycle25-quartic-20261010": {
+      "short_name": "Collet Cycle25",
+      "what_changed": "Extends the common-mesh moving-radical moment and weighted probe assembly.",
+      "status": "framework-verified",
+      "parents": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator"
+      ],
+      "parent_edges": [
+        {
+          "id": "openai-baseline",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "akashlevy-20261009-weighted-numerator",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "changed",
+          "text": "Extends the unconditional common-mesh moving-radical moment.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 9",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/9"
+            }
+          ]
+        },
+        "low": {
+          "status": "changed",
+          "text": "Uses weighted LOW estimates in the complete construction.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 9",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/9"
+            }
+          ]
+        },
+        "high": {
+          "status": "changed",
+          "text": "Uses weighted HIGH estimates in the complete construction.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 9",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/9"
+            }
+          ]
+        },
+        "detector": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "geometry": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "recovery": {
+          "status": "reused",
+          "text": "Applies analytic continuation to the three stated L-function families.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 9",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/9"
+            }
+          ]
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/cycle25-quartic-20261010.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        },
+        {
+          "label": "Submission PR 9",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/9"
+        }
+      ],
+      "metrics": []
+    },
+    "local44-20261013": {
+      "short_name": "Local 22/5",
+      "what_changed": "Lowers the local prime cost and pays the reconstructed-row errors coherently.",
+      "status": "framework-verified",
+      "parents": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator",
+        "cycle25-quartic-20261010"
+      ],
+      "parent_edges": [
+        {
+          "id": "openai-baseline",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "akashlevy-20261009-weighted-numerator",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "cycle25-quartic-20261010",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "changed",
+          "text": "Local prime cost becomes 22/5 in place of 9/2, with independent plain heights.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Local 22/5 mathematical explanation",
+              "url": "https://github.com/nielstron/QuasiRiemannTracker/blob/ef2ae62e99e2df364aaf4f4680e03a24216fdb22/submissions/local44-20261013/explanation.md"
+            },
+            {
+              "label": "Submission PR 26",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/26"
+            }
+          ]
+        },
+        "low": {
+          "status": "reused",
+          "text": "Existing LOW and exceptional estimates are verified for the new geometry.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Local 22/5 mathematical explanation",
+              "url": "https://github.com/nielstron/QuasiRiemannTracker/blob/ef2ae62e99e2df364aaf4f4680e03a24216fdb22/submissions/local44-20261013/explanation.md"
+            },
+            {
+              "label": "Submission PR 26",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/26"
+            }
+          ]
+        },
+        "high": {
+          "status": "changed",
+          "text": "Coherent amplification and joint row reconstruction retain error cancellation.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Local 22/5 mathematical explanation",
+              "url": "https://github.com/nielstron/QuasiRiemannTracker/blob/ef2ae62e99e2df364aaf4f4680e03a24216fdb22/submissions/local44-20261013/explanation.md"
+            },
+            {
+              "label": "Submission PR 26",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/26"
+            }
+          ]
+        },
+        "detector": {
+          "status": "reused",
+          "text": "Actual amplitude classes and detector counts supply the source contract.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Local 22/5 mathematical explanation",
+              "url": "https://github.com/nielstron/QuasiRiemannTracker/blob/ef2ae62e99e2df364aaf4f4680e03a24216fdb22/submissions/local44-20261013/explanation.md"
+            },
+            {
+              "label": "Submission PR 26",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/26"
+            }
+          ]
+        },
+        "geometry": {
+          "status": "retuned",
+          "text": "Changes the local length and endpoint geometry with explicit positive reserves.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Local 22/5 mathematical explanation",
+              "url": "https://github.com/nielstron/QuasiRiemannTracker/blob/ef2ae62e99e2df364aaf4f4680e03a24216fdb22/submissions/local44-20261013/explanation.md"
+            },
+            {
+              "label": "Submission PR 26",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/26"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "reused",
+          "text": "The same literal probe feeds continuation and the Hecke-to-Dirichlet identity.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Local 22/5 mathematical explanation",
+              "url": "https://github.com/nielstron/QuasiRiemannTracker/blob/ef2ae62e99e2df364aaf4f4680e03a24216fdb22/submissions/local44-20261013/explanation.md"
+            },
+            {
+              "label": "Submission PR 26",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/26"
+            }
+          ]
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/local44-20261013.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        },
+        {
+          "label": "Local 22/5 mathematical explanation",
+          "url": "https://github.com/nielstron/QuasiRiemannTracker/blob/ef2ae62e99e2df364aaf4f4680e03a24216fdb22/submissions/local44-20261013/explanation.md"
+        },
+        {
+          "label": "Submission PR 26",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/26"
+        }
+      ],
+      "metrics": [
+        {
+          "label": "Local plain prime cost",
+          "value": "22/5",
+          "dimension": "moment",
+          "scope": "Local range only; the original 6κ cost remains below the junction.",
+          "sources": [
+            {
+              "label": "Local 22/5 mathematical explanation",
+              "url": "https://github.com/nielstron/QuasiRiemannTracker/blob/ef2ae62e99e2df364aaf4f4680e03a24216fdb22/submissions/local44-20261013/explanation.md"
+            }
+          ]
+        }
+      ]
+    },
+    "affine-local-20261013": {
+      "short_name": "Affine capacity",
+      "what_changed": "Carries volume and capacity-defect allowances separately through the existing transport.",
+      "status": "framework-verified",
+      "parents": [
+        "local44-20261013"
+      ],
+      "parent_edges": [
+        {
+          "id": "local44-20261013",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "changed",
+          "text": "Retains an affine capacity region instead of only the 22/5 slice.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 37",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/37"
+            }
+          ]
+        },
+        "low": {
+          "status": "reused",
+          "text": "The LOW architecture is explicitly retained.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 37",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/37"
+            }
+          ]
+        },
+        "high": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "detector": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "geometry": {
+          "status": "retuned",
+          "text": "Revises exact endpoint parameters within the unchanged physical window.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 37",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/37"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/affine-local-20261013.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        },
+        {
+          "label": "Submission PR 37",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/37"
+        }
+      ],
+      "metrics": [
+        {
+          "label": "Allowed capacity defect",
+          "value": "37/10000",
+          "dimension": "moment",
+          "scope": "Affine gate n₁+n₂+(9/2)z−1 ≤ defect; retains the separate volume gate.",
+          "sources": [
+            {
+              "label": "Submission PR 37",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/37"
+            }
+          ]
+        },
+        {
+          "label": "Source volume cap",
+          "value": "881/1000",
+          "dimension": "moment",
+          "scope": "Separate gate n₁+n₂+z ≤ cap.",
+          "sources": [
+            {
+              "label": "Submission PR 37",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/37"
+            }
+          ]
+        }
+      ]
+    },
+    "reserve-local-20261013": {
+      "short_name": "Balanced reserves",
+      "what_changed": "Moves intermediate reserves to permit a larger affine defect.",
+      "status": "framework-verified",
+      "parents": [
+        "local44-20261013",
+        "affine-local-20261013"
+      ],
+      "parent_edges": [
+        {
+          "id": "local44-20261013",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "affine-local-20261013",
+          "basis": "explicit predecessor reference",
+          "sources": [
+            {
+              "label": "Submission PR 38",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/38"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "changed",
+          "text": "The affine capacity defect grows from 37/10000 to 1/250.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 38",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/38"
+            }
+          ]
+        },
+        "low": {
+          "status": "retuned",
+          "text": "Reallocates the LOW reserve while retaining a positive final saving.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 38",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/38"
+            }
+          ]
+        },
+        "high": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "detector": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "geometry": {
+          "status": "retuned",
+          "text": "Rebalances extracted-error reserves and regenerates the endpoint arithmetic.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 38",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/38"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/reserve-local-20261013.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        },
+        {
+          "label": "Submission PR 38",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/38"
+        }
+      ],
+      "metrics": [
+        {
+          "label": "Allowed capacity defect",
+          "value": "1/250",
+          "dimension": "moment",
+          "scope": "Same affine-gate convention as the preceding capacity proof.",
+          "sources": [
+            {
+              "label": "Submission PR 38",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/38"
+            }
+          ]
+        }
+      ]
+    },
+    "gao-asymmetric-reserves-20261013": {
+      "short_name": "Gao asymmetric",
+      "what_changed": "Uses asymmetric LOW reserves to expand the affine defect allowance.",
+      "status": "framework-verified",
+      "parents": [
+        "reserve-local-20261013",
+        "affine-local-20261013",
+        "local44-20261013"
+      ],
+      "parent_edges": [
+        {
+          "id": "reserve-local-20261013",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "affine-local-20261013",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "local44-20261013",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "changed",
+          "text": "Increases the affine defect allowance to 1/241.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 41",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/41"
+            }
+          ]
+        },
+        "low": {
+          "status": "retuned",
+          "text": "Uses asymmetric LOW reserve allocation.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 41",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/41"
+            }
+          ]
+        },
+        "high": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "detector": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "geometry": {
+          "status": "retuned",
+          "text": "Propagates exact endpoint geometry through the complete source.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 41",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/41"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/gao-asymmetric-reserves-20261013.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        },
+        {
+          "label": "Submission PR 41",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/41"
+        }
+      ],
+      "metrics": [
+        {
+          "label": "Allowed capacity defect",
+          "value": "1/241",
+          "dimension": "moment",
+          "scope": "Affine local capacity; this number is not a general moment exponent.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 41",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/41"
+            }
+          ]
+        }
+      ]
+    },
+    "cycle61-c0125139": {
+      "short_name": "Collet Cycle61",
+      "what_changed": "Integrates the local refinement with wider density coverage and a complete common probe.",
+      "status": "framework-verified",
+      "parents": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator",
+        "single-prime-29-33-20261010",
+        "cycle25-quartic-20261010"
+      ],
+      "parent_edges": [
+        {
+          "id": "openai-baseline",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "akashlevy-20261009-weighted-numerator",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "single-prime-29-33-20261010",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "cycle25-quartic-20261010",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "changed",
+          "text": "Combines previous moments with the local refinement and an affine moment.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 42",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/42"
+            }
+          ]
+        },
+        "low": {
+          "status": "changed",
+          "text": "Completes common-probe main and error estimates.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 42",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/42"
+            }
+          ]
+        },
+        "high": {
+          "status": "changed",
+          "text": "Completes common-probe main and error estimates over the required region.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 42",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/42"
+            }
+          ]
+        },
+        "detector": {
+          "status": "changed",
+          "text": "Extends the required density range.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 42",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/42"
+            }
+          ]
+        },
+        "geometry": {
+          "status": "retuned",
+          "text": "Extends the local numerical region and common-probe parameters.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 42",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/42"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "reused",
+          "text": "Uses the completed common probe to exclude zeros unconditionally.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 42",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/42"
+            }
+          ]
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/cycle61-c0125139.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        },
+        {
+          "label": "Submission PR 42",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/42"
+        }
+      ],
+      "metrics": []
+    },
+    "gao-cycle61-plane-20261013": {
+      "short_name": "Gao Cycle61 plane",
+      "what_changed": "Couples the Cycle61 density split to its source and amplification parameters.",
+      "status": "framework-verified",
+      "parents": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator",
+        "cycle25-quartic-20261010",
+        "cycle61-c0125139"
+      ],
+      "parent_edges": [
+        {
+          "id": "openai-baseline",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "akashlevy-20261009-weighted-numerator",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "cycle25-quartic-20261010",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "cycle61-c0125139",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "low": {
+          "status": "retuned",
+          "text": "Propagates revised exact reserves through the actual LOW consumers.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 43",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/43"
+            }
+          ]
+        },
+        "high": {
+          "status": "retuned",
+          "text": "Supplies global quadratic row certificates and revised HIGH reserves.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 43",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/43"
+            }
+          ]
+        },
+        "detector": {
+          "status": "retuned",
+          "text": "Couples the density split to the chosen source parameters.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 43",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/43"
+            }
+          ]
+        },
+        "geometry": {
+          "status": "retuned",
+          "text": "Refines the complete Cycle61 parameter tuple.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 43",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/43"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/gao-cycle61-plane-20261013.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        },
+        {
+          "label": "Submission PR 43",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/43"
+        }
+      ],
+      "metrics": []
+    },
+    "marked-high-count-20261014": {
+      "short_name": "Marked HIGH",
+      "what_changed": "Retains prime amplitudes in the zero count and conserves allocation width.",
+      "status": "framework-verified",
+      "parents": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator",
+        "cycle25-quartic-20261010",
+        "cycle61-c0125139"
+      ],
+      "parent_edges": [
+        {
+          "id": "openai-baseline",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "akashlevy-20261009-weighted-numerator",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "cycle25-quartic-20261010",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "cycle61-c0125139",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "low": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "high": {
+          "status": "changed",
+          "text": "Combines the marked count with common-allocation width conservation.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 48",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/48"
+            }
+          ]
+        },
+        "detector": {
+          "status": "changed",
+          "text": "Retains prime-slot amplitudes in high-zero counting; collision partitions handle overlapping pools.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 48",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/48"
+            }
+          ]
+        },
+        "geometry": {
+          "status": "changed",
+          "text": "Retains common-allocation width in the source estimate.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 48",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/48"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/marked-high-count-20261014.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        },
+        {
+          "label": "Submission PR 48",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/48"
+        }
+      ],
+      "metrics": [
+        {
+          "label": "Source saving before explicit losses",
+          "value": "33/20000",
+          "dimension": "high",
+          "scope": "Pre-loss source estimate; not the final endpoint gain.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 48",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/48"
+            }
+          ]
+        }
+      ]
+    },
+    "radical-asymmetric-count-20261014": {
+      "short_name": "Asymmetric HIGH",
+      "what_changed": "Separates inverse/plain selections and retains the common-radical penalty.",
+      "status": "framework-verified",
+      "parents": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator",
+        "cycle25-quartic-20261010",
+        "cycle61-c0125139",
+        "marked-high-count-20261014"
+      ],
+      "parent_edges": [
+        {
+          "id": "openai-baseline",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "akashlevy-20261009-weighted-numerator",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "cycle25-quartic-20261010",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "cycle61-c0125139",
+          "basis": "catalogue builds_on",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            }
+          ]
+        },
+        {
+          "id": "marked-high-count-20261014",
+          "basis": "explicit predecessor reference",
+          "sources": [
+            {
+              "label": "Submission PR 50",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/50"
+            }
+          ]
+        }
+      ],
+      "dimensions": {
+        "moment": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "low": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "high": {
+          "status": "changed",
+          "text": "Combines asymmetric marked counting with the retained radical penalty.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 50",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/50"
+            }
+          ]
+        },
+        "detector": {
+          "status": "changed",
+          "text": "Uses separate inverse and plain prime-slot selections.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 50",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/50"
+            }
+          ]
+        },
+        "geometry": {
+          "status": "changed",
+          "text": "Couples allocation with the common-radical penalty.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 50",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/50"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "unknown",
+          "text": "A distinct change in this dimension is not established by the cited method description.",
+          "sources": []
+        },
+        "verification": {
+          "status": "verified",
+          "text": "Listed as framework-verified by the official tracker; inspect the linked certificate for its exact scope and receipt.",
+          "sources": [
+            {
+              "label": "Official verification certificate",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/radical-asymmetric-count-20261014.json"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Official tracker catalogue",
+          "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+        },
+        {
+          "label": "Submission PR 50",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/50"
+        }
+      ],
+      "metrics": [
+        {
+          "label": "Source saving before charged errors",
+          "value": "37/10000",
+          "dimension": "high",
+          "scope": "Pre-loss source estimate; not the final endpoint gain.",
+          "sources": [
+            {
+              "label": "Official tracker catalogue",
+              "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+            },
+            {
+              "label": "Submission PR 50",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/50"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "pending": [
+    {
+      "id": "detector-affine-c0125154",
+      "short_name": "DaysSky detector-affine",
+      "title": "Cycle61 affine moment in the detector count",
+      "status": "pending",
+      "theta": {
+        "numerator": "437423",
+        "denominator": "500000"
+      },
+      "authors": [
+        {
+          "name": "DaysSky",
+          "url": "https://github.com/DaysSky"
+        }
+      ],
+      "pr": 56,
+      "builds_on": [
+        "cycle61-c0125139"
+      ],
+      "parents": [
+        "cycle61-c0125139"
+      ],
+      "source_commit": "67edfb7a1161008b37ff32aadec35cecaa711731",
+      "pr_status": {
+        "number": 56,
+        "state": "open",
+        "merged": false,
+        "merged_at": null,
+        "updated_at": "2026-10-15T01:34:57Z",
+        "head": "67edfb7a1161008b37ff32aadec35cecaa711731",
+        "api_url": "https://api.github.com/repos/GTimG/QuasiRiemannTracker/pulls/56"
+      },
+      "what_changed": "Reuses a proved affine moment in a new detector-count consumer.",
+      "dimensions": {
+        "moment": {
+          "status": "reused",
+          "text": "Reuses Cycle61’s initial affine moment at each detector character; it does not claim a new moment theorem.",
+          "sources": [
+            {
+              "label": "Submission PR 56",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+            }
+          ]
+        },
+        "low": {
+          "status": "unknown",
+          "text": "No separate change established here.",
+          "sources": []
+        },
+        "high": {
+          "status": "retuned",
+          "text": "Uses the revised count on its stated critical HIGH region and rechecks the endpoint inequalities.",
+          "sources": [
+            {
+              "label": "Submission PR 56",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+            }
+          ]
+        },
+        "detector": {
+          "status": "changed",
+          "text": "Applies that affine moment inside the detector’s per-fiber count.",
+          "sources": [
+            {
+              "label": "Submission PR 56",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+            }
+          ]
+        },
+        "geometry": {
+          "status": "retuned",
+          "text": "Chooses h = 15903/20000 and a revised exact endpoint.",
+          "sources": [
+            {
+              "label": "Submission PR 56",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+            }
+          ]
+        },
+        "recovery": {
+          "status": "reused",
+          "text": "Retains Cycle61’s other estimates and endpoint architecture.",
+          "sources": [
+            {
+              "label": "Submission PR 56",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+            }
+          ]
+        },
+        "verification": {
+          "status": "pending",
+          "text": "The PR reports a local Lean build; independent Comparator / three-kernel acceptance is not claimed.",
+          "sources": [
+            {
+              "label": "Submission PR 56",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Submission PR 56",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+        }
+      ],
+      "source_status_note": "Open proposal when consulted; not present among the 17 official framework-verified records.",
+      "metrics": [
+        {
+          "label": "h",
+          "value": "15903/20000",
+          "dimension": "geometry",
+          "scope": "Parameter of the submitted proposal.",
+          "sources": [
+            {
+              "label": "Submission PR 56",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+            }
+          ]
+        },
+        {
+          "label": "Plain length window",
+          "value": "[0.4137, 0.4235]",
+          "dimension": "detector",
+          "scope": "Window where the affine moment is used by the detector.",
+          "sources": [
+            {
+              "label": "Submission PR 56",
+              "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

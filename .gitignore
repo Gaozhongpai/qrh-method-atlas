@@ -1,0 +1,8 @@
+.openai/
+.sites-runtime/
+.sites-checkout*
+__pycache__/
+*.pyc
+.DS_Store
+qa-artifacts/
+dist/data/.sync.lock

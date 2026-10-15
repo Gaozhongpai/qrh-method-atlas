@@ -1,0 +1,450 @@
+{
+  "schema_version": 1,
+  "initialized_at": "2026-10-15T02:23:05.156256+00:00",
+  "fingerprint_fields": [
+    "id",
+    "theta",
+    "source_commit",
+    "method",
+    "builds_on",
+    "exact_bound",
+    "bound_interval",
+    "repository",
+    "entrypoint",
+    "status"
+  ],
+  "source_catalogue_sha256": "9a2be108362dedb0e7192f3f1f7812c8526473568da9538a121261a9615c4d82",
+  "reviewed": {
+    "affine-local-20261013": {
+      "reviewed_source_commit": "c707738a659786b9a44a79c629bed8c801cca8f3",
+      "reviewed_fingerprint": "d0271270caa5b2b10d0e48c7e689e3f0f32999882990a6ed3ef904bafba7ae13",
+      "reviewed_fields": {
+        "id": "affine-local-20261013",
+        "theta": {
+          "numerator": "4374347",
+          "denominator": "5000000"
+        },
+        "source_commit": "c707738a659786b9a44a79c629bed8c801cca8f3",
+        "method": "Retains the local fourth-moment proof's separate volume and capacity-defect allowances through its actual-source and physical transport wrappers. This replaces the narrower 22/5 capacity slice by an affine capacity and feeds a revised exact endpoint certificate into the all-Dirichlet continuation argument. Builds on nielstron's local 22/5 moment, Zhongpai Gao's local-moment work, Hailey Collet's Cycle25 framework, Akash Levy's weighted numerator, and OpenAI/math. Prepared with AI assistance.",
+        "builds_on": [
+          "local44-20261013"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "GTimG/QuasiRiemannTracker",
+        "entrypoint": {
+          "module": "Candidate.Main",
+          "declaration": "Candidate.bound"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "akashlevy-20261009-weighted-numerator": {
+      "reviewed_source_commit": "ec626ec9c0e7ab7b29f6c916314932caeb4df39a",
+      "reviewed_fingerprint": "6ab7181352188baf03d10d3f4591a9e242a7e4b5df3f770bc54d7f40b6d9e778",
+      "reviewed_fields": {
+        "id": "akashlevy-20261009-weighted-numerator",
+        "theta": {
+          "numerator": "10499",
+          "denominator": "12000"
+        },
+        "source_commit": "ec626ec9c0e7ab7b29f6c916314932caeb4df39a",
+        "method": "Replaces the pointwise numerator bound in the cubic-theta probe of OpenAI's argument by a weighted fourth moment of the reflected physical numerator: Mellin inversion and the Hecke functional equation reduce the actual smoothed numerator sum to a plain polynomial of length at most U/Y, and the unused length carries selected prime factors in the original fourth moment, while a coefficient-norm argument controls the original Euler correction and its ramified error terms. The moment parameter stays at the original kappa = 3/4; with ell = 167/1000, theta = 11/12 - ell/4 = 10499/12000, and the finite exponent comparisons are exact rational certificates. Lean 4.34.1 development of 228 modules on the akashlevy/math fork (c388e88e6) of OpenAI/math fd4aeeb, with Mathlib d13f23b7; it proves zeta, all-Dirichlet and finite-order Hecke nonvanishing for Re s > 10499/12000.",
+        "builds_on": [
+          "openai-baseline"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "akashlevy/QuasiRiemannTracker",
+        "entrypoint": {
+          "module": "WeightedQRH.Statements",
+          "declaration": "OAI.DirichletCharacter.LFunction_ne_zero_of_10499_12000_lt_re"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "argonaut-20261008": {
+      "reviewed_source_commit": "5971383edcb0b1cf863927eed3b359d2d3ba346e",
+      "reviewed_fingerprint": "99a8f4b5e11208408574616a6f8cee75a52ebec8ac0e0ce806f20010ed7622c7",
+      "reviewed_fields": {
+        "id": "argonaut-20261008",
+        "theta": {
+          "numerator": "3499999",
+          "denominator": "4000000"
+        },
+        "source_commit": "5971383edcb0b1cf863927eed3b359d2d3ba346e",
+        "method": "Refinement of the OpenAI framework to 3499999/4000000. The pinned original proof has been independently reproduced and checked with Comparator and three kernels.",
+        "builds_on": [
+          "openai-baseline"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "Argonaut-Math/argonaut-math-quasi-riemann-boundary",
+        "entrypoint": {
+          "module": "PerturbedBoundaryMain",
+          "declaration": "OAI.DirichletCharacter.LFunction_ne_zero_of_perturbed_boundary_lt_re"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "classical-euler-product": {
+      "reviewed_source_commit": "a04a07166729cadd3d74da634c6cfa7b2821f2c2",
+      "reviewed_fingerprint": "7dde59679c8e594d91963661f6837a12d6e502db5551c8b45e3416431357f84b",
+      "reviewed_fields": {
+        "id": "classical-euler-product",
+        "theta": {
+          "numerator": "1",
+          "denominator": "1"
+        },
+        "source_commit": "a04a07166729cadd3d74da634c6cfa7b2821f2c2",
+        "method": "Absolute convergence of the Euler products gives nonvanishing of the Riemann zeta function and every Dirichlet L-function for Re(s) > 1. This is the classical starting bound; quasi-RH asks for a fixed boundary strictly below 1.",
+        "builds_on": [],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "nielstron/QuasiRiemannTracker",
+        "entrypoint": {
+          "module": "Candidate.Main",
+          "declaration": "Candidate.bound"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "cycle25-quartic-20261010": {
+      "reviewed_source_commit": "58344dfdbe756cf2f743da1908ffe0582418cf5b",
+      "reviewed_fingerprint": "26943bfa19c7da92dac0861c633e7e24c9ba89aeea898ccad8998043f74e2811",
+      "reviewed_fields": {
+        "id": "cycle25-quartic-20261010",
+        "theta": {
+          "numerator": "683505193",
+          "denominator": "781250000"
+        },
+        "source_commit": "58344dfdbe756cf2f743da1908ffe0582418cf5b",
+        "method": "The exact boundary is 11/12−ℓ/4, where ℓ is the unique root in [1/6,1/5] of 927ℓ⁴−3135ℓ³+2433ℓ²+275ℓ−100=0. The plotted rational 683505193/781250000 is a proved upper bound less than 4×10⁻¹⁴ above it. The proof extends the unconditional common-mesh moving-radical moment and applies weighted low/high estimates and analytic continuation to Dirichlet, zeta and finite-order Eisenstein Hecke L-functions.",
+        "builds_on": [
+          "openai-baseline",
+          "akashlevy-20261009-weighted-numerator"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "HaileyStorm/QuasiRiemannTracker",
+        "entrypoint": {
+          "module": "Cycle25.Assembly.Final.Endpoint",
+          "declaration": "Cycle25.dirichlet_nonzero_catalogue"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "cycle61-c0125139": {
+      "reviewed_source_commit": "fb6d4fd11aeaff0b37dd96bad3b274ce28a5c08b",
+      "reviewed_fingerprint": "74541b46e8f805b7cec680ab31e307bc5b74aaa2784e7b5e10ada514f7a7d7f2",
+      "reviewed_fields": {
+        "id": "cycle61-c0125139",
+        "theta": {
+          "numerator": "874861",
+          "denominator": "1000000"
+        },
+        "source_commit": "fb6d4fd11aeaff0b37dd96bad3b274ce28a5c08b",
+        "method": "An unconditional all-Dirichlet zero-free half-plane at theta=874861/1000000, with strict boundary and the principal pole excluded. The proof combines earlier moment and physical-source estimates with Zhongpai Gao’s local refinement, extends the density range and local numerical region, and supplies a common probe for zero exclusion. It builds on OpenAI’s seven-eighths framework, Akash Levy’s weighted-numerator work, and the earlier AI-assisted QRH research directed by Hailey Collet. Hailey is the sole human author; research direction and source integration are distinguished from the AI-produced derivations, substantial drafting and formalization. Exact source attribution is retained in the paper and accompanying provenance.",
+        "builds_on": [
+          "openai-baseline",
+          "akashlevy-20261009-weighted-numerator",
+          "single-prime-29-33-20261010",
+          "cycle25-quartic-20261010"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "GTimG/QuasiRiemannTracker",
+        "entrypoint": {
+          "module": "Candidate.Main",
+          "declaration": "Candidate.bound"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "gao-asymmetric-reserves-20261013": {
+      "reviewed_source_commit": "82da425c8f8da008de063eaebe1c8d33e9c33f21",
+      "reviewed_fingerprint": "971543b94c6a11555d3ea23903db58fc9fa9a9102d9634773001031b763bc88b",
+      "reviewed_fields": {
+        "id": "gao-asymmetric-reserves-20261013",
+        "theta": {
+          "numerator": "8748673",
+          "denominator": "10000000"
+        },
+        "source_commit": "82da425c8f8da008de063eaebe1c8d33e9c33f21",
+        "method": "Refines affine local capacity to defect 1/241 using asymmetric LOW reserves and exact endpoint geometry. Complete 128-module candidate proof of the all-moduli Dirichlet theorem. Builds on Kari Roegnvaldsson, nielstron, OpenAI, Akash Levy, Hailey Collet, and Gao's earlier adapters. AI-assisted; inherited notices retained.",
+        "builds_on": [
+          "reserve-local-20261013",
+          "affine-local-20261013",
+          "local44-20261013"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "GTimG/QuasiRiemannTracker",
+        "entrypoint": {
+          "module": "Candidate.Main",
+          "declaration": "Candidate.bound"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "gao-cycle61-plane-20261013": {
+      "reviewed_source_commit": "9e0008692e77836a9a61cff25c808727d6d6690d",
+      "reviewed_fingerprint": "b720b2a9e025a4966ba74a2b05319cbf0ca3656212e6a769095e4cddec7ebcd8",
+      "reviewed_fields": {
+        "id": "gao-cycle61-plane-20261013",
+        "theta": {
+          "numerator": "4374299",
+          "denominator": "5000000"
+        },
+        "source_commit": "9e0008692e77836a9a61cff25c808727d6d6690d",
+        "method": "A Cycle61 parameter refinement at the canonical all-moduli Dirichlet boundary 4374299/5000000, adapting Hailey Collet’s complete source. It couples the density split and source/amplification parameters, propagates exact reserves through the actual analytic consumers, and supplies global quadratic row certificates. The 206-module source splits the slow B167/B176 compilation units. Prepared with AI assistance; original attribution and Apache-2.0 notices retained.",
+        "builds_on": [
+          "openai-baseline",
+          "akashlevy-20261009-weighted-numerator",
+          "cycle25-quartic-20261010",
+          "cycle61-c0125139"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "GTimG/QuasiRiemannTracker",
+        "entrypoint": {
+          "module": "Candidate.Main",
+          "declaration": "Candidate.bound"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "liu-20261008": {
+      "reviewed_source_commit": "7d10420de90efa2f082a06a342fc7accbd57ab37",
+      "reviewed_fingerprint": "804ee7990172ac1e8d52cc736b905dbaef2aa3974b096ef642b0354068929078",
+      "reviewed_fields": {
+        "id": "liu-20261008",
+        "theta": {
+          "numerator": "874957069799168740018340006959",
+          "denominator": "1000000000000000000000000000000"
+        },
+        "source_commit": "7d10420de90efa2f082a06a342fc7accbd57ab37",
+        "method": "Optimizes b and ℓ in the OpenAI argument. The exact boundary is algebraic. The plotted rational is a certified upper endpoint less than 10⁻³⁰ above it, used only for rendering.",
+        "builds_on": [
+          "openai-baseline"
+        ],
+        "exact_bound": "(1507 − 2√921) / 1653",
+        "bound_interval": {
+          "lower": {
+            "numerator": "437478534899584370009170003479",
+            "denominator": "500000000000000000000000000000"
+          },
+          "upper": {
+            "numerator": "874957069799168740018340006959",
+            "denominator": "1000000000000000000000000000000"
+          }
+        },
+        "repository": "liubaiying101/Slightly-improved-zero-free-half-planes-for-the-quasi-Riemann-hypothesis",
+        "entrypoint": {
+          "module": "RHZeroFreeExtension.CombinedPaperVerification",
+          "declaration": "CombinedPaper.algebraic_dirichlet_nonzero"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "local44-20261013": {
+      "reviewed_source_commit": "16ce30342471344c2b2f0d383388e6f9acb9bccf",
+      "reviewed_fingerprint": "28b43db855358b79a93d69ec5b1f24a91d6cfa8c15ab729a54bb0edf0cf9faad",
+      "reviewed_fields": {
+        "id": "local44-20261013",
+        "theta": {
+          "numerator": "87487",
+          "denominator": "100000"
+        },
+        "source_commit": "16ce30342471344c2b2f0d383388e6f9acb9bccf",
+        "method": "A local fourth-moment estimate with prime cost 22/5 gives all-Dirichlet nonvanishing for Re(s) > 87487/100000, excluding the principal pole. Coherent amplification and a joint reconstructed-row density estimate preserve cancellation through the error terms; independent heights, coefficient dilations and physical normalization feed the low/high assembly and unconditional continuation argument.",
+        "builds_on": [
+          "openai-baseline",
+          "akashlevy-20261009-weighted-numerator",
+          "cycle25-quartic-20261010"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "GTimG/QuasiRiemannTracker",
+        "entrypoint": {
+          "module": "Candidate.Main",
+          "declaration": "Candidate.bound"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "marked-high-count-20261014": {
+      "reviewed_source_commit": "57ca0662b4ddeb2a75c0e302d0350cc65cf67c12",
+      "reviewed_fingerprint": "2983aa77aeae301a5006d533ee4ac58eabfaaff8fe68bbe7e757b4c572125b3b",
+      "reviewed_fields": {
+        "id": "marked-high-count-20261014",
+        "theta": {
+          "numerator": "437429",
+          "denominator": "500000"
+        },
+        "source_commit": "57ca0662b4ddeb2a75c0e302d0350cc65cf67c12",
+        "method": "Proves the canonical all-moduli Dirichlet zero-free bound by retaining prime-slot amplitudes in high-zero counting and combining the resulting gain with common-allocation width conservation. Overlapping prime pools are handled by collision partitions. The source estimate gains 33/20000 before explicit losses. Builds on the complete Cycle61 construction and the listed predecessor proofs; inherited source attribution is preserved.",
+        "builds_on": [
+          "openai-baseline",
+          "akashlevy-20261009-weighted-numerator",
+          "cycle25-quartic-20261010",
+          "cycle61-c0125139"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "GTimG/QuasiRiemannTracker",
+        "entrypoint": {
+          "module": "Candidate.Main",
+          "declaration": "Candidate.bound"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "nielstron-20261009-tightening": {
+      "reviewed_source_commit": "2fc2b0b7f2b9510df4618936e1b2ccd58f7d9171",
+      "reviewed_fingerprint": "dcf1cf09781b8af66a1a91707b9626db5520def322a83bb81f27d58139cdb407",
+      "reviewed_fields": {
+        "id": "nielstron-20261009-tightening",
+        "theta": {
+          "numerator": "874957019420098946128603850561452983",
+          "denominator": "1000000000000000000000000000000000000"
+        },
+        "source_commit": "2fc2b0b7f2b9510df4618936e1b2ccd58f7d9171",
+        "method": "Revision of the same compressed Lean contribution to the exact cubic endpoint: 11/12-e/4, where e is the unique real root in [1/6,1/5] of 657e³−954e²+21e+20=0. The plotted rational is a rigorously proved upper bound. The final QRH package uses 259,073 source tokens under the pinned LeanLeanBench metric. The earlier N24 proof and its evidence remain available as historical snapshots.",
+        "builds_on": [
+          "proofcouncil-20261009",
+          "openai-baseline"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "nielstron/QuasiRiemannTracker",
+        "entrypoint": {
+          "module": "QRH.TighterNonvanishing",
+          "declaration": "QRH.DirichletCharacter.LFunction_ne_zero_of_tightTheta_lt_re"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "openai-baseline": {
+      "reviewed_source_commit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+      "reviewed_fingerprint": "475063bd5e4866b05d302a464c318201507bfdfb70b6ecb5883588ee2824f113",
+      "reviewed_fields": {
+        "id": "openai-baseline",
+        "theta": {
+          "numerator": "7",
+          "denominator": "8"
+        },
+        "source_commit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+        "method": "OpenAI’s quasi-Riemann framework establishes the 7/8 boundary. The original pinned proof has now been rebuilt and checked directly.",
+        "builds_on": [],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "openai/math",
+        "entrypoint": {
+          "module": "OAI.NumberTheory.DirichletL.Nonvanishing",
+          "declaration": "OAI.DirichletCharacter.LFunction_ne_zero_of_seven_eighths_lt_re"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "proofcouncil-20261009": {
+      "reviewed_source_commit": "",
+      "reviewed_fingerprint": "9a197fbdcbfb43cc3d97ac493d5b5ff502dfc16dd20c76e3636a2866516f3a73",
+      "reviewed_fields": {
+        "id": "proofcouncil-20261009",
+        "theta": {
+          "numerator": "874957019421",
+          "denominator": "1000000000000"
+        },
+        "source_commit": "",
+        "method": "Extends the actual masked moment and detector range, proves optimized low/high probe estimates, and applies Mellin continuation and all-character transfer. All three targets compile at the exact rational threshold.",
+        "builds_on": [
+          "openai-baseline"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "",
+        "entrypoint": {
+          "module": "QRH.Nonvanishing",
+          "declaration": "QRH.DirichletCharacter.LFunction_ne_zero_of_theta_lt_re"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "radical-asymmetric-count-20261014": {
+      "reviewed_source_commit": "8cb265dc34909040c6f8cb48f53b19670a217ceb",
+      "reviewed_fingerprint": "7ec88141f49008019a47f0ee0d6fc5a4211c29b95a2f980bd421f480509b4855",
+      "reviewed_fields": {
+        "id": "radical-asymmetric-count-20261014",
+        "theta": {
+          "numerator": "8748559",
+          "denominator": "10000000"
+        },
+        "source_commit": "8cb265dc34909040c6f8cb48f53b19670a217ceb",
+        "method": "Proves the all-moduli Dirichlet boundary 0.8748559. Separate inverse and plain prime-slot selections increase the marked count gain; retaining the common-radical penalty strengthens the allocation estimate. Their combined source saving is 37/10000 before charged errors. Builds on the marked high-zero construction, Cycle61, and the listed predecessor proofs; inherited attribution is preserved.",
+        "builds_on": [
+          "openai-baseline",
+          "akashlevy-20261009-weighted-numerator",
+          "cycle25-quartic-20261010",
+          "cycle61-c0125139"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "GTimG/QuasiRiemannTracker",
+        "entrypoint": {
+          "module": "Candidate.Main",
+          "declaration": "Candidate.bound"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "reserve-local-20261013": {
+      "reviewed_source_commit": "14ab1618c5133a7d12e06aa76661bbcb34e843cd",
+      "reviewed_fingerprint": "5e0b890d9899e98d93902cd17b65d0046099fec33ccd04f911c1dca5a2bc879f",
+      "reviewed_fields": {
+        "id": "reserve-local-20261013",
+        "theta": {
+          "numerator": "87486797",
+          "denominator": "100000000"
+        },
+        "source_commit": "14ab1618c5133a7d12e06aa76661bbcb34e843cd",
+        "method": "Reallocates intermediate LOW and extracted-error reserves to enlarge the affine local-moment defect allowance to 1/250 while retaining the amplifier, volume cap, and final analytic savings. Regenerates the endpoint and transport arithmetic for the canonical all-Dirichlet statement. Builds on Kari Roegnvaldsson's affine-capacity proof, nielstron's local 22/5 moment, Zhongpai Gao's local-moment work, Hailey Collet's Cycle25 framework, Akash Levy's weighted numerator, and OpenAI/math. Prepared with AI assistance.",
+        "builds_on": [
+          "local44-20261013"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "GTimG/QuasiRiemannTracker",
+        "entrypoint": {
+          "module": "Candidate.Main",
+          "declaration": "Candidate.bound"
+        },
+        "status": "framework-verified"
+      }
+    },
+    "single-prime-29-33-20261010": {
+      "reviewed_source_commit": "eecd4131f1cac4f31f71e84b301a4e4619aa18d9",
+      "reviewed_fingerprint": "ea5929c9a72d3dc91a2c3eb2b2069d1a5dfaddf156eb6ce8b21f3f614c028349",
+      "reviewed_fields": {
+        "id": "single-prime-29-33-20261010",
+        "theta": {
+          "numerator": "29",
+          "denominator": "33"
+        },
+        "source_commit": "eecd4131f1cac4f31f71e84b301a4e4619aa18d9",
+        "method": "A single compensating-prime construction and finite descent give all-Dirichlet nonvanishing to the right of 29/33. The development includes an unconditional moving-radical mixed moment and uses pinned OpenAI foundations.",
+        "builds_on": [
+          "openai-baseline"
+        ],
+        "exact_bound": null,
+        "bound_interval": null,
+        "repository": "HaileyStorm/QuasiRiemannTracker",
+        "entrypoint": {
+          "module": "Candidate.Main",
+          "declaration": "Candidate.bound"
+        },
+        "status": "framework-verified"
+      }
+    }
+  }
+}

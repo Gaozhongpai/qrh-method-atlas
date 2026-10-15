@@ -1,0 +1,1081 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-10-15",
+  "records": [
+    {
+      "submitted_at": "",
+      "published_at": "",
+      "merged_at": "",
+      "pr": 5,
+      "repository": "nielstron/QuasiRiemannTracker",
+      "source_commit": "a04a07166729cadd3d74da634c6cfa7b2821f2c2",
+      "first_verified_at": "2026-10-12T17:39:36.807728+00:00",
+      "entrypoint": {
+        "module": "Candidate.Main",
+        "declaration": "Candidate.bound"
+      },
+      "license": "Apache-2.0",
+      "builds_on": [],
+      "id": "classical-euler-product",
+      "title": "Classical baseline · θ = 1",
+      "theta": {
+        "numerator": "1",
+        "denominator": "1"
+      },
+      "authors": [
+        {
+          "name": "Classical Euler-product theorem"
+        }
+      ],
+      "method": "Absolute convergence of the Euler products gives nonvanishing of the Riemann zeta function and every Dirichlet L-function for Re(s) > 1. This is the classical starting bound; quasi-RH asks for a fixed boundary strictly below 1.",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/classical-euler-product.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/verifier/standard/receipts/classical-first-20261012/solution-src/Solution.lean"
+        },
+        {
+          "label": "Hardy–Littlewood, Partitio numerorum III, p. 4 (Hypothesis R); scan printed in 1922",
+          "url": "https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/5327-11511_2006_Article_BF02403921.pdf"
+        },
+        {
+          "label": "Publisher catalogue: Acta Mathematica 44 (1923), pp. 1–70",
+          "url": "https://link.springer.com/article/10.1007/BF02403921"
+        },
+        {
+          "label": "Pinned Mathlib proof of all-Dirichlet nonvanishing for Re(s) > 1",
+          "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/NumberTheory/LSeries/Dirichlet.lean#L228"
+        },
+        {
+          "label": "Pinned standard submission and attribution",
+          "url": "https://github.com/nielstron/QuasiRiemannTracker/tree/a04a07166729cadd3d74da634c6cfa7b2821f2c2/submissions/classical-euler-product"
+        }
+      ],
+      "status": "framework-verified",
+      "timeline_at": "1922-01-01T00:00:00Z",
+      "date_precision": "year",
+      "date_label": "Early QRH-era formulation",
+      "verification_note": "Comparator verified the canonical all-Dirichlet statement at θ = 1. Lean, NanoDa and con-ron accepted the proof in the standard sandbox. The timeline uses the historical 1922 anchor; the verification date records the completed check.",
+      "attribution_note": "The point uses 1922, the printing year shown in Hardy and Littlewood’s Partitio numerorum III; the publisher catalogues the volume in 1923. The paper supplies an early fixed-half-plane formulation and the timeline anchor. The Euler-product bound was already classical.",
+      "certificate_url": "certificates/classical-euler-product.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/verifier/standard/receipts/classical-first-20261012/solution-src/Solution.lean"
+    },
+    {
+      "submitted_at": "",
+      "published_at": "",
+      "merged_at": "",
+      "pr": null,
+      "repository": "openai/math",
+      "source_commit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+      "first_verified_at": "2026-10-09T11:37:19Z",
+      "entrypoint": {
+        "module": "OAI.NumberTheory.DirichletL.Nonvanishing",
+        "declaration": "OAI.DirichletCharacter.LFunction_ne_zero_of_seven_eighths_lt_re"
+      },
+      "license": "Apache-2.0",
+      "builds_on": [],
+      "id": "openai-baseline",
+      "title": "OpenAI · seven eighths",
+      "theta": {
+        "numerator": "7",
+        "denominator": "8"
+      },
+      "authors": [
+        {
+          "name": "OpenAI"
+        }
+      ],
+      "method": "OpenAI’s quasi-Riemann framework establishes the 7/8 boundary. The original pinned proof has now been rebuilt and checked directly.",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/openai-baseline.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/palomar-20261009/openai/src/Solution.lean"
+        },
+        {
+          "label": "Original source and scope",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/003.md"
+        }
+      ],
+      "status": "framework-verified",
+      "timeline_at": "2026-10-06T00:00:00Z",
+      "date_label": "Public release",
+      "verification_note": "Comparator verified the all-Dirichlet, zeta and finite-order Eisenstein Hecke statements and their definitions. Lean, NanoDa and con-ron accepted the exported proofs.",
+      "certificate_url": "certificates/openai-baseline.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/palomar-20261009/openai/src/Solution.lean"
+    },
+    {
+      "submitted_at": "",
+      "published_at": "",
+      "merged_at": "",
+      "pr": null,
+      "repository": "Argonaut-Math/argonaut-math-quasi-riemann-boundary",
+      "source_commit": "5971383edcb0b1cf863927eed3b359d2d3ba346e",
+      "first_verified_at": "2026-10-10T10:09:10.743884+00:00",
+      "entrypoint": {
+        "module": "PerturbedBoundaryMain",
+        "declaration": "OAI.DirichletCharacter.LFunction_ne_zero_of_perturbed_boundary_lt_re"
+      },
+      "license": "Apache-2.0",
+      "builds_on": [
+        "openai-baseline"
+      ],
+      "id": "argonaut-20261008",
+      "title": "Argonaut · perturbed boundary",
+      "theta": {
+        "numerator": "3499999",
+        "denominator": "4000000"
+      },
+      "authors": [
+        {
+          "name": "Argonaut Math"
+        }
+      ],
+      "method": "Refinement of the OpenAI framework to 3499999/4000000. The pinned original proof has been independently reproduced and checked with Comparator and three kernels.",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/argonaut-20261008.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/argonaut-20261010-safe-replay/solution-src/Solution.lean"
+        },
+        {
+          "label": "Reviewed original source package",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/argonaut-20261010-kernels/source-public.tar.gz"
+        },
+        {
+          "label": "Argonaut source and release",
+          "url": "https://github.com/Argonaut-Math/argonaut-math-quasi-riemann-boundary"
+        }
+      ],
+      "status": "framework-verified",
+      "timeline_at": "2026-10-08T00:00:00Z",
+      "date_label": "Public announcement",
+      "verification_note": "The pinned v0.1.8 proof was rebuilt in an offline Linux sandbox. Comparator verified the all-Dirichlet, zeta and finite-order Eisenstein Hecke statements at exactly 3499999/4000000; Lean, NanoDa and con-ron accepted the proofs.",
+      "certificate_url": "certificates/argonaut-20261008.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/argonaut-20261010-safe-replay/solution-src/Solution.lean"
+    },
+    {
+      "submitted_at": "",
+      "published_at": "",
+      "merged_at": "",
+      "pr": null,
+      "repository": "liubaiying101/Slightly-improved-zero-free-half-planes-for-the-quasi-Riemann-hypothesis",
+      "source_commit": "7d10420de90efa2f082a06a342fc7accbd57ab37",
+      "first_verified_at": "2026-10-10T09:10:59.898288+00:00",
+      "entrypoint": {
+        "module": "RHZeroFreeExtension.CombinedPaperVerification",
+        "declaration": "CombinedPaper.algebraic_dirichlet_nonzero"
+      },
+      "license": "See source and notices",
+      "builds_on": [
+        "openai-baseline"
+      ],
+      "id": "liu-20261008",
+      "title": "Baiying Liu · optimized parameters",
+      "theta": {
+        "numerator": "874957069799168740018340006959",
+        "denominator": "1000000000000000000000000000000"
+      },
+      "exact_bound": "(1507 − 2√921) / 1653",
+      "bound_interval": {
+        "lower": {
+          "numerator": "437478534899584370009170003479",
+          "denominator": "500000000000000000000000000000"
+        },
+        "upper": {
+          "numerator": "874957069799168740018340006959",
+          "denominator": "1000000000000000000000000000000"
+        }
+      },
+      "authors": [
+        {
+          "name": "Baiying Liu"
+        }
+      ],
+      "method": "Optimizes b and ℓ in the OpenAI argument. The exact boundary is algebraic. The plotted rational is a certified upper endpoint less than 10⁻³⁰ above it, used only for rendering.",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/liu-20261008.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/liu-20261010-safe-replay/solution-src/Solution.lean"
+        },
+        {
+          "label": "Paper · arXiv:2610.12234",
+          "url": "https://arxiv.org/abs/2610.12234"
+        },
+        {
+          "label": "Reported Lean formalization",
+          "url": "https://github.com/liubaiying101/Slightly-improved-zero-free-half-planes-for-the-quasi-Riemann-hypothesis"
+        }
+      ],
+      "status": "framework-verified",
+      "timeline_at": "2026-10-08T16:18:53Z",
+      "date_label": "arXiv submission",
+      "verification_note": "The pinned proof was rebuilt in an offline Linux sandbox. Comparator verified the all-Dirichlet, zeta and finite-order Eisenstein Hecke statements at (1507 − 2√921) / 1653; Lean, NanoDa and con-ron accepted the proofs. The rational enclosure determines its chart position.",
+      "certificate_url": "certificates/liu-20261008.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/liu-20261010-safe-replay/solution-src/Solution.lean"
+    },
+    {
+      "submitted_at": "",
+      "published_at": "",
+      "merged_at": "",
+      "pr": null,
+      "repository": "",
+      "source_commit": "",
+      "first_verified_at": "2026-10-09T11:37:19Z",
+      "entrypoint": {
+        "module": "QRH.Nonvanishing",
+        "declaration": "QRH.DirichletCharacter.LFunction_ne_zero_of_theta_lt_re"
+      },
+      "license": "Apache-2.0 (Lean development; retained upstream notices)",
+      "builds_on": [
+        "openai-baseline"
+      ],
+      "id": "proofcouncil-20261009",
+      "title": "ProofCouncil · certified uniform descent",
+      "theta": {
+        "numerator": "874957019421",
+        "denominator": "1000000000000"
+      },
+      "authors": [
+        {
+          "name": "Tim Gehrunger · ProofCouncil"
+        }
+      ],
+      "method": "Extends the actual masked moment and detector range, proves optimized low/high probe estimates, and applies Mellin continuation and all-character transfer. All three targets compile at the exact rational threshold.",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/proofcouncil-20261009.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/palomar-20261009/qrh/src/Solution.lean"
+        },
+        {
+          "label": "Lean proof source",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/qrh-20261009/Nonvanishing.lean"
+        },
+        {
+          "label": "Complete proof source, inputs and logs",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/qrh-20261009/source-public.tar.gz"
+        },
+        {
+          "label": "Accepted manuscript (TeX)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/qrh-20261009/accepted-answer.tex"
+        }
+      ],
+      "status": "framework-verified",
+      "timeline_at": "2026-10-09T11:37:19Z",
+      "date_label": "Lean verification",
+      "verification_note": "Comparator verified the all-Dirichlet, zeta and finite-order Eisenstein Hecke statements and their definitions. Lean, NanoDa and con-ron accepted the exported proofs.",
+      "attribution_note": "Tim Gehrunger is the maintainer; ProofCouncil is the project credit. AI-assisted research and formalization, reusing the Apache-2.0 OpenAI/math and Mathlib developments. This display credit does not amend the supplied manuscript’s blank author field.",
+      "certificate_url": "certificates/proofcouncil-20261009.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/palomar-20261009/qrh/src/Solution.lean"
+    },
+    {
+      "submitted_at": "",
+      "published_at": "",
+      "merged_at": "",
+      "pr": null,
+      "repository": "nielstron/QuasiRiemannTracker",
+      "source_commit": "2fc2b0b7f2b9510df4618936e1b2ccd58f7d9171",
+      "first_verified_at": "2026-10-09T19:51:12.662856+00:00",
+      "entrypoint": {
+        "module": "QRH.TighterNonvanishing",
+        "declaration": "QRH.DirichletCharacter.LFunction_ne_zero_of_tightTheta_lt_re"
+      },
+      "license": "Apache-2.0 (retained upstream notices)",
+      "builds_on": [
+        "proofcouncil-20261009",
+        "openai-baseline"
+      ],
+      "id": "nielstron-20261009-tightening",
+      "title": "nielstron · exact algebraic endpoint",
+      "theta": {
+        "numerator": "874957019420098946128603850561452983",
+        "denominator": "1000000000000000000000000000000000000"
+      },
+      "authors": [
+        {
+          "name": "nielstron",
+          "url": "https://github.com/nielstron"
+        }
+      ],
+      "method": "Revision of the same compressed Lean contribution to the exact cubic endpoint: 11/12-e/4, where e is the unique real root in [1/6,1/5] of 657e³−954e²+21e+20=0. The plotted rational is a rigorously proved upper bound. The final QRH package uses 259,073 source tokens under the pinned LeanLeanBench metric. The earlier N24 proof and its evidence remain available as historical snapshots.",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/nielstron-algebraic-20261009.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/nielstron-algebraic-20261009-kernels/src/Solution.lean"
+        },
+        {
+          "label": "Frozen source and native evidence",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/nielstron-algebraic-20261009/source-public.tar.gz"
+        }
+      ],
+      "status": "framework-verified",
+      "timeline_at": "2026-10-09T19:51:12.662856+00:00",
+      "date_label": "Independent kernel verification",
+      "verification_note": "Comparator verified seven targets: three rational bounds, three exact algebraic bounds and unique root existence. Lean, NanoDa and con-ron accepted the proofs. Positive, statement-mismatch and ill-typed-proof controls passed.",
+      "attribution_note": "Human contributor: nielstron. AI-assisted research and formalization; inherited ProofCouncil and OpenAI notices retained.",
+      "proof_revision": "nielstron-algebraic-20261009",
+      "certificate_url": "certificates/nielstron-algebraic-20261009.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/nielstron-algebraic-20261009-kernels/src/Solution.lean"
+    },
+    {
+      "submitted_at": "2026-10-10T03:22:55Z",
+      "published_at": "",
+      "merged_at": "",
+      "pr": 6,
+      "repository": "akashlevy/QuasiRiemannTracker",
+      "source_commit": "ec626ec9c0e7ab7b29f6c916314932caeb4df39a",
+      "first_verified_at": "2026-10-10T13:35:18.422104+00:00",
+      "entrypoint": {
+        "module": "WeightedQRH.Statements",
+        "declaration": "OAI.DirichletCharacter.LFunction_ne_zero_of_10499_12000_lt_re"
+      },
+      "license": "Apache-2.0 (retained upstream notices)",
+      "builds_on": [
+        "openai-baseline"
+      ],
+      "id": "akashlevy-20261009-weighted-numerator",
+      "title": "Akash Levy · weighted numerator",
+      "theta": {
+        "numerator": "10499",
+        "denominator": "12000"
+      },
+      "authors": [
+        {
+          "name": "Akash Levy",
+          "url": "https://github.com/akashlevy"
+        }
+      ],
+      "method": "Replaces the pointwise numerator bound in the cubic-theta probe of OpenAI's argument by a weighted fourth moment of the reflected physical numerator: Mellin inversion and the Hecke functional equation reduce the actual smoothed numerator sum to a plain polynomial of length at most U/Y, and the unused length carries selected prime factors in the original fourth moment, while a coefficient-norm argument controls the original Euler correction and its ramified error terms. The moment parameter stays at the original kappa = 3/4; with ell = 167/1000, theta = 11/12 - ell/4 = 10499/12000, and the finite exponent comparisons are exact rational certificates. Lean 4.34.1 development of 228 modules on the akashlevy/math fork (c388e88e6) of OpenAI/math fd4aeeb, with Mathlib d13f23b7; it proves zeta, all-Dirichlet and finite-order Hecke nonvanishing for Re s > 10499/12000.",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/akashlevy-20261009-weighted-numerator.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/akashlevy-20261009-weighted-numerator/Solution.lean"
+        },
+        {
+          "label": "Manuscript (PDF)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/akashlevy-20261009-weighted-numerator/manuscript.pdf"
+        },
+        {
+          "label": "Manuscript (TeX)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/akashlevy-20261009-weighted-numerator/weighted_numerator_proof.tex"
+        },
+        {
+          "label": "Manuscript lemma (TeX, input by the manuscript)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/akashlevy-20261009-weighted-numerator/weighted_numerator_lemma.tex"
+        },
+        {
+          "label": "Complete Lean source, manuscript source and evidence",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/akashlevy-20261009-weighted-numerator/source-public.tar.gz"
+        },
+        {
+          "label": "Lean base: akashlevy/math fork of OpenAI/math",
+          "url": "https://github.com/akashlevy/math/tree/c388e88e6519d139ad2ca5571ef0c7fbf0e245b5"
+        }
+      ],
+      "status": "framework-verified",
+      "timeline_at": "2026-10-10T03:22:55Z",
+      "date_label": "PR submitted",
+      "verification_note": "The 228 submitted modules and 2,670 dependency modules were rebuilt in an offline Linux sandbox. Comparator verified the all-Dirichlet, zeta and Eisenstein Hecke statements at 10499/12000; Lean, NanoDa and con-ron accepted the proofs. The timeline records this first independent acceptance.",
+      "attribution_note": "Akash Levy (akashlevy) is the human contributor. GPT-6 Astra (Ultra) was used to discover the proof and perform partial formalization; Opus 5.5 Ultracode was used to complete the formalization and submit the result. Builds on the Apache-2.0 OpenAI/math and Mathlib developments; upstream notices are retained.",
+      "certificate_url": "certificates/akashlevy-20261009-weighted-numerator.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/akashlevy-20261009-weighted-numerator/Solution.lean"
+    },
+    {
+      "submitted_at": "",
+      "published_at": "",
+      "merged_at": "",
+      "pr": 8,
+      "repository": "HaileyStorm/QuasiRiemannTracker",
+      "source_commit": "eecd4131f1cac4f31f71e84b301a4e4619aa18d9",
+      "first_verified_at": "2026-10-12T18:44:41.093487+00:00",
+      "entrypoint": {
+        "module": "Candidate.Main",
+        "declaration": "Candidate.bound"
+      },
+      "license": "Apache-2.0 for the OpenAI-derived Lean sources; manuscript licensing is separate, see NOTICE.md",
+      "builds_on": [
+        "openai-baseline"
+      ],
+      "id": "single-prime-29-33-20261010",
+      "title": "Single compensating prime · 29/33",
+      "theta": {
+        "numerator": "29",
+        "denominator": "33"
+      },
+      "authors": [
+        {
+          "name": "Hailey Collet"
+        }
+      ],
+      "method": "A single compensating-prime construction and finite descent give all-Dirichlet nonvanishing to the right of 29/33. The development includes an unconditional moving-radical mixed moment and uses pinned OpenAI foundations.",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/single-prime-29-33-20261010.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/verifier/standard/receipts/single-prime-first-20261012/solution-src/Solution.lean"
+        },
+        {
+          "label": "Rendered manuscript (PDF)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/single-prime-29-33-20261010/zeta_zero_free_4_33_self_contained.pdf"
+        },
+        {
+          "label": "Source and reproduction",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/tree/d716ecaae80f7823a5b8314916364fdfa0d133fb/proofs/single-prime-29-33-20261010"
+        },
+        {
+          "label": "Pinned standard submission",
+          "url": "https://github.com/HaileyStorm/QuasiRiemannTracker/tree/eecd4131f1cac4f31f71e84b301a4e4619aa18d9/submissions/single-prime-29-33-20261010"
+        }
+      ],
+      "status": "framework-verified",
+      "timeline_at": "2026-10-10T07:47:35.881822+00:00",
+      "date_label": "Contributor three-kernel verification",
+      "verification_note": "Comparator verified the canonical all-Dirichlet statement at 29/33. Lean, NanoDa and con-ron accepted the proof in the standard sandbox. The timeline records contributor verification; the verification date records the independent standard check.",
+      "attribution_note": "Manuscript by Hailey Collet, developed with assistance from OpenAI's GPT-6 Pro. Formalization submitted as HaileyStorm with substantial OpenAI Codex assistance, adapting pinned OpenAI/math foundations. See NOTICE.md for attribution and licensing.",
+      "certificate_url": "certificates/single-prime-29-33-20261010.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/verifier/standard/receipts/single-prime-first-20261012/solution-src/Solution.lean"
+    },
+    {
+      "submitted_at": "2026-10-10T12:08:27Z",
+      "published_at": "",
+      "merged_at": "",
+      "pr": 9,
+      "repository": "HaileyStorm/QuasiRiemannTracker",
+      "source_commit": "58344dfdbe756cf2f743da1908ffe0582418cf5b",
+      "first_verified_at": "2026-10-10T16:09:09.733191+00:00",
+      "entrypoint": {
+        "module": "Cycle25.Assembly.Final.Endpoint",
+        "declaration": "Cycle25.dirichlet_nonzero_catalogue"
+      },
+      "license": "Apache-2.0 (retained upstream notices)",
+      "builds_on": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator"
+      ],
+      "id": "cycle25-quartic-20261010",
+      "title": "Hailey Collet · quartic boundary",
+      "theta": {
+        "numerator": "683505193",
+        "denominator": "781250000"
+      },
+      "authors": [
+        {
+          "name": "Hailey Collet"
+        }
+      ],
+      "method": "The exact boundary is 11/12−ℓ/4, where ℓ is the unique root in [1/6,1/5] of 927ℓ⁴−3135ℓ³+2433ℓ²+275ℓ−100=0. The plotted rational 683505193/781250000 is a proved upper bound less than 4×10⁻¹⁴ above it. The proof extends the unconditional common-mesh moving-radical moment and applies weighted low/high estimates and analytic continuation to Dirichlet, zeta and finite-order Eisenstein Hecke L-functions.",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/cycle25-quartic-20261010.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/cycle25-20261010-safe-replay/solution-src/Solution.lean"
+        },
+        {
+          "label": "Paper (PDF)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/cycle25-quartic-20261010/paper.pdf"
+        },
+        {
+          "label": "Paper source (TeX)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/cycle25-quartic-20261010/paper.tex"
+        },
+        {
+          "label": "Finished proof source and evidence",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/cycle25-quartic-20261010/source-public.tar.gz"
+        }
+      ],
+      "status": "framework-verified",
+      "timeline_at": "2026-10-10T12:08:27Z",
+      "date_label": "PR submitted",
+      "verification_note": "The 3,224 Lean modules were rebuilt in an offline Linux sandbox. Comparator verified the rational and exact quartic all-Dirichlet, zeta and Eisenstein Hecke bounds, quartic root existence and uniqueness, and the reusable moment theorem. Lean, NanoDa and con-ron accepted all eight targets. The timeline records this first independent acceptance.",
+      "attribution_note": "Human contributor: Hailey Collet. AI-assisted research and formalization, reusing OpenAI/math, Mathlib and Akash Levy’s weighted construction. The earlier single-compensating-prime development supplies a reused unconditional moment lemma; its terminal 29/33 bound is not an assumption. Upstream licenses and notices are retained.",
+      "certificate_url": "certificates/cycle25-quartic-20261010.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/cycle25-20261010-safe-replay/solution-src/Solution.lean"
+    },
+    {
+      "id": "local44-20261013",
+      "title": "nielstron · local 22/5 moment",
+      "theta": {
+        "numerator": "87487",
+        "denominator": "100000"
+      },
+      "authors": [
+        {
+          "name": "nielstron",
+          "url": "https://github.com/nielstron"
+        }
+      ],
+      "method": "A local fourth-moment estimate with prime cost 22/5 gives all-Dirichlet nonvanishing for Re(s) > 87487/100000, excluding the principal pole. Coherent amplification and a joint reconstructed-row density estimate preserve cancellation through the error terms; independent heights, coefficient dilations and physical normalization feed the low/high assembly and unconditional continuation argument.",
+      "status": "framework-verified",
+      "submitted_at": "2026-10-13T00:29:50Z",
+      "published_at": "",
+      "merged_at": "2026-10-13T06:45:53Z",
+      "pr": 26,
+      "repository": "GTimG/QuasiRiemannTracker",
+      "source_commit": "16ce30342471344c2b2f0d383388e6f9acb9bccf",
+      "first_verified_at": "2026-10-13T06:44:04.476615+00:00",
+      "timeline_at": "2026-10-13T00:29:50Z",
+      "date_label": "PR submitted",
+      "entrypoint": {
+        "module": "Candidate.Main",
+        "declaration": "Candidate.bound"
+      },
+      "license": "Apache-2.0 (retained upstream notices)",
+      "builds_on": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator",
+        "cycle25-quartic-20261010"
+      ],
+      "verification_note": "The hosted PR worker accepted the canonical all-Dirichlet theorem at 87487/100000 for the exact submitted commit. Comparator checked the statement, definitions and permitted axioms; Lean, NanoDa and con-ron accepted the proof in the standard sandbox.",
+      "attribution_note": "Human contributor: nielstron. Builds on OpenAI/math, Akash Levy’s weighted numerator, Hailey Collet’s Cycle25 framework, Zhongpai Gao’s local-moment work, Mathlib and their dependencies. Upstream attribution and license notices are retained in the submitted Lean sources.",
+      "certificate_url": "certificates/local44-20261013.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/16ce30342471344c2b2f0d383388e6f9acb9bccf/submissions/local44-20261013/src/Candidate/Main.lean",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/local44-20261013.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/16ce30342471344c2b2f0d383388e6f9acb9bccf/submissions/local44-20261013/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Reviewed submission",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/26"
+        },
+        {
+          "label": "Independent verification run",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/actions/runs/38342781752/attempts/1"
+        },
+        {
+          "label": "Original mathematical explanation",
+          "url": "https://github.com/nielstron/QuasiRiemannTracker/blob/ef2ae62e99e2df364aaf4f4680e03a24216fdb22/submissions/local44-20261013/explanation.md"
+        },
+        {
+          "label": "Zhongpai Gao’s local-moment work",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/15"
+        }
+      ]
+    },
+    {
+      "id": "affine-local-20261013",
+      "title": "Affine local-moment capacity",
+      "theta": {
+        "numerator": "4374347",
+        "denominator": "5000000"
+      },
+      "authors": [
+        {
+          "name": "Kari Roegnvaldsson",
+          "url": "https://github.com/karirogg"
+        }
+      ],
+      "method": "Retains the local fourth-moment proof's separate volume and capacity-defect allowances through its actual-source and physical transport wrappers. This replaces the narrower 22/5 capacity slice by an affine capacity and feeds a revised exact endpoint certificate into the all-Dirichlet continuation argument. Builds on nielstron's local 22/5 moment, Zhongpai Gao's local-moment work, Hailey Collet's Cycle25 framework, Akash Levy's weighted numerator, and OpenAI/math. Prepared with AI assistance.",
+      "license": "Apache-2.0 (inherited notices retained)",
+      "builds_on": [
+        "local44-20261013"
+      ],
+      "status": "framework-verified",
+      "submitted_at": "2026-10-13T11:42:58Z",
+      "published_at": "",
+      "merged_at": "2026-10-13T14:53:44Z",
+      "pr": 37,
+      "repository": "GTimG/QuasiRiemannTracker",
+      "source_commit": "c707738a659786b9a44a79c629bed8c801cca8f3",
+      "first_verified_at": "2026-10-13T13:04:36.374379+00:00",
+      "timeline_at": "2026-10-13T11:42:58Z",
+      "date_label": "PR submitted",
+      "entrypoint": {
+        "module": "Candidate.Main",
+        "declaration": "Candidate.bound"
+      },
+      "verification_note": "Comparator checked the canonical all-Dirichlet statement at 4374347/5000000 for the submitted commit. Lean, NanoDa and con-ron accepted the proof in the standard sandbox.",
+      "certificate_url": "certificates/affine-local-20261013.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/c707738a659786b9a44a79c629bed8c801cca8f3/submissions/affine-local-20261013/src/Candidate/Main.lean",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/affine-local-20261013.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/c707738a659786b9a44a79c629bed8c801cca8f3/submissions/affine-local-20261013/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Reviewed submission",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/37"
+        },
+        {
+          "label": "Local 22/5 predecessor",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/26"
+        }
+      ]
+    },
+    {
+      "id": "reserve-local-20261013",
+      "title": "Reserve-balanced affine local moment",
+      "theta": {
+        "numerator": "87486797",
+        "denominator": "100000000"
+      },
+      "authors": [
+        {
+          "name": "Kari Roegnvaldsson",
+          "url": "https://github.com/karirogg"
+        }
+      ],
+      "method": "Reallocates intermediate LOW and extracted-error reserves to enlarge the affine local-moment defect allowance to 1/250 while retaining the amplifier, volume cap, and final analytic savings. Regenerates the endpoint and transport arithmetic for the canonical all-Dirichlet statement. Builds on Kari Roegnvaldsson's affine-capacity proof, nielstron's local 22/5 moment, Zhongpai Gao's local-moment work, Hailey Collet's Cycle25 framework, Akash Levy's weighted numerator, and OpenAI/math. Prepared with AI assistance.",
+      "license": "Apache-2.0 (inherited notices retained)",
+      "builds_on": [
+        "local44-20261013"
+      ],
+      "status": "framework-verified",
+      "submitted_at": "2026-10-13T13:23:23Z",
+      "published_at": "",
+      "merged_at": "2026-10-13T15:24:43Z",
+      "pr": 38,
+      "repository": "GTimG/QuasiRiemannTracker",
+      "source_commit": "14ab1618c5133a7d12e06aa76661bbcb34e843cd",
+      "first_verified_at": "2026-10-13T14:41:11.858515+00:00",
+      "timeline_at": "2026-10-13T13:23:23Z",
+      "date_label": "PR submitted",
+      "entrypoint": {
+        "module": "Candidate.Main",
+        "declaration": "Candidate.bound"
+      },
+      "verification_note": "Comparator checked the canonical all-Dirichlet statement at 87486797/100000000 for the submitted commit. Lean, NanoDa and con-ron accepted the proof in the standard sandbox.",
+      "certificate_url": "certificates/reserve-local-20261013.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/14ab1618c5133a7d12e06aa76661bbcb34e843cd/submissions/reserve-local-20261013/src/Candidate/Main.lean",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/reserve-local-20261013.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/14ab1618c5133a7d12e06aa76661bbcb34e843cd/submissions/reserve-local-20261013/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Reviewed submission",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/38"
+        },
+        {
+          "label": "Verified affine-capacity predecessor",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/37"
+        },
+        {
+          "label": "Local 22/5 predecessor",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/26"
+        }
+      ]
+    },
+    {
+      "id": "gao-asymmetric-reserves-20261013",
+      "title": "Asymmetric reserves · 0.8748673",
+      "theta": {
+        "numerator": "8748673",
+        "denominator": "10000000"
+      },
+      "authors": [
+        {
+          "name": "Zhongpai Gao",
+          "url": "https://github.com/Gaozhongpai"
+        }
+      ],
+      "method": "Refines affine local capacity to defect 1/241 using asymmetric LOW reserves and exact endpoint geometry. Complete 128-module candidate proof of the all-moduli Dirichlet theorem. Builds on Kari Roegnvaldsson, nielstron, OpenAI, Akash Levy, Hailey Collet, and Gao's earlier adapters. AI-assisted; inherited notices retained.",
+      "license": "Apache-2.0",
+      "builds_on": [
+        "reserve-local-20261013",
+        "affine-local-20261013",
+        "local44-20261013"
+      ],
+      "status": "framework-verified",
+      "submitted_at": "2026-10-13T15:53:59Z",
+      "published_at": "",
+      "merged_at": "2026-10-13T20:53:36Z",
+      "pr": 41,
+      "repository": "GTimG/QuasiRiemannTracker",
+      "source_commit": "82da425c8f8da008de063eaebe1c8d33e9c33f21",
+      "first_verified_at": "2026-10-13T18:43:50.342009+00:00",
+      "timeline_at": "2026-10-13T15:53:59Z",
+      "date_label": "PR submitted",
+      "entrypoint": {
+        "module": "Candidate.Main",
+        "declaration": "Candidate.bound"
+      },
+      "verification_note": "Comparator checked the canonical all-Dirichlet statement at 8748673/10000000 for the submitted commit. Lean, NanoDa and con-ron accepted the proof in the standard sandbox.",
+      "certificate_url": "certificates/gao-asymmetric-reserves-20261013.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/82da425c8f8da008de063eaebe1c8d33e9c33f21/submissions/gao-asymmetric-reserves-20261013/src/Candidate/Main.lean",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/gao-asymmetric-reserves-20261013.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/82da425c8f8da008de063eaebe1c8d33e9c33f21/submissions/gao-asymmetric-reserves-20261013/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Reviewed submission",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/41"
+        },
+        {
+          "label": "Asymmetric reserve allocation paper",
+          "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/c5235c0c4b21e548a86b0c616fb295e2c3a00441/proofs/gao-asymmetric-reserves-20261013/paper.pdf"
+        }
+      ]
+    },
+    {
+      "id": "cycle61-c0125139",
+      "title": "A zero-free half-plane with boundary 874861/1000000",
+      "theta": {
+        "numerator": "874861",
+        "denominator": "1000000"
+      },
+      "authors": [
+        {
+          "name": "Hailey Collet",
+          "url": "https://github.com/HaileyStorm"
+        }
+      ],
+      "method": "An unconditional all-Dirichlet zero-free half-plane at theta=874861/1000000, with strict boundary and the principal pole excluded. The proof combines earlier moment and physical-source estimates with Zhongpai Gao’s local refinement, extends the density range and local numerical region, and supplies a common probe for zero exclusion. It builds on OpenAI’s seven-eighths framework, Akash Levy’s weighted-numerator work, and the earlier AI-assisted QRH research directed by Hailey Collet. Hailey is the sole human author; research direction and source integration are distinguished from the AI-produced derivations, substantial drafting and formalization. Exact source attribution is retained in the paper and accompanying provenance.",
+      "license": "Apache-2.0, with retained upstream licenses and notices",
+      "builds_on": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator",
+        "single-prime-29-33-20261010",
+        "cycle25-quartic-20261010"
+      ],
+      "status": "framework-verified",
+      "submitted_at": "2026-10-13T16:56:38Z",
+      "published_at": "",
+      "merged_at": "2026-10-13T20:55:29Z",
+      "pr": 42,
+      "repository": "GTimG/QuasiRiemannTracker",
+      "source_commit": "fb6d4fd11aeaff0b37dd96bad3b274ce28a5c08b",
+      "first_verified_at": "2026-10-13T18:43:23.391812+00:00",
+      "timeline_at": "2026-10-13T16:56:38Z",
+      "date_label": "PR submitted",
+      "entrypoint": {
+        "module": "Candidate.Main",
+        "declaration": "Candidate.bound"
+      },
+      "verification_note": "Comparator checked the canonical all-Dirichlet statement at 874861/1000000 for the submitted commit. Lean, NanoDa and con-ron accepted the proof in the standard sandbox.",
+      "certificate_url": "certificates/cycle61-c0125139.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/fb6d4fd11aeaff0b37dd96bad3b274ce28a5c08b/submissions/cycle61-c0125139/src/Candidate/Main.lean",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/cycle61-c0125139.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/fb6d4fd11aeaff0b37dd96bad3b274ce28a5c08b/submissions/cycle61-c0125139/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Reviewed submission",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/42"
+        },
+        {
+          "label": "Paper and downloads",
+          "url": "https://haileystorm.github.io/research/cycle61-qrh-boundary/"
+        },
+        {
+          "label": "Gao local-refinement source",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/15"
+        }
+      ]
+    },
+    {
+      "id": "gao-cycle61-plane-20261013",
+      "title": "Refine the Cycle61 zero-free boundary to 0.8748598",
+      "theta": {
+        "numerator": "4374299",
+        "denominator": "5000000"
+      },
+      "authors": [
+        {
+          "name": "Zhongpai Gao",
+          "url": "https://github.com/Gaozhongpai"
+        }
+      ],
+      "method": "A Cycle61 parameter refinement at the canonical all-moduli Dirichlet boundary 4374299/5000000, adapting Hailey Collet’s complete source. It couples the density split and source/amplification parameters, propagates exact reserves through the actual analytic consumers, and supplies global quadratic row certificates. The 206-module source splits the slow B167/B176 compilation units. Prepared with AI assistance; original attribution and Apache-2.0 notices retained.",
+      "license": "Apache-2.0; inherited source notices and dependency licenses retained.",
+      "builds_on": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator",
+        "cycle25-quartic-20261010",
+        "cycle61-c0125139"
+      ],
+      "status": "framework-verified",
+      "submitted_at": "2026-10-13T21:06:27Z",
+      "published_at": "",
+      "merged_at": "2026-10-14T11:47:05Z",
+      "pr": 43,
+      "repository": "GTimG/QuasiRiemannTracker",
+      "source_commit": "9e0008692e77836a9a61cff25c808727d6d6690d",
+      "first_verified_at": "2026-10-14T10:07:04.865497+00:00",
+      "timeline_at": "2026-10-13T21:06:27Z",
+      "date_label": "PR submitted",
+      "entrypoint": {
+        "module": "Candidate.Main",
+        "declaration": "Candidate.bound"
+      },
+      "verification_note": "Comparator checked the canonical all-Dirichlet statement at 4374299/5000000 for the submitted commit. Lean, NanoDa and con-ron accepted the proof in the standard sandbox.",
+      "certificate_url": "certificates/gao-cycle61-plane-20261013.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/9e0008692e77836a9a61cff25c808727d6d6690d/submissions/gao-cycle61-plane-20261013/src/Candidate/Main.lean",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/gao-cycle61-plane-20261013.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/9e0008692e77836a9a61cff25c808727d6d6690d/submissions/gao-cycle61-plane-20261013/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Reviewed submission",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/43"
+        },
+        {
+          "label": "Cycle61 source (PR #42)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/42"
+        },
+        {
+          "label": "Exact Cycle61 source snapshot",
+          "url": "https://github.com/HaileyStorm/QuasiRiemannTracker/tree/fb6d4fd11aeaff0b37dd96bad3b274ce28a5c08b/submissions/cycle61-c0125139/src/Candidate"
+        },
+        {
+          "label": "Gao local-refinement predecessor",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/15"
+        },
+        {
+          "label": "Three-page mathematical note",
+          "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/752fd1952a4dec6ef92181f6abc20e41269ff9b7/proofs/gao-cycle61-plane-20261013/paper.pdf"
+        },
+        {
+          "label": "Complete Lean source",
+          "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/0a73e73348befd36061ff251e43540c1b11135bc/submissions/gao-cycle61-plane-20261013/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Independent maintainer verification and logs (14 October 2026)",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/e238cab21d1ab48cfa17cff8f06ea11f0aaf3f7e/verifier/standard/receipts/pr43-9e000869-20261014/README.md"
+        }
+      ]
+    },
+    {
+      "id": "marked-high-count-20261014",
+      "title": "Marked high-zero counting gives the all-Dirichlet boundary 0.874858",
+      "theta": {
+        "numerator": "437429",
+        "denominator": "500000"
+      },
+      "authors": [
+        {
+          "name": "timbalud",
+          "url": "https://github.com/timbalud"
+        }
+      ],
+      "method": "Proves the canonical all-moduli Dirichlet zero-free bound by retaining prime-slot amplitudes in high-zero counting and combining the resulting gain with common-allocation width conservation. Overlapping prime pools are handled by collision partitions. The source estimate gains 33/20000 before explicit losses. Builds on the complete Cycle61 construction and the listed predecessor proofs; inherited source attribution is preserved.",
+      "license": "Apache-2.0; inherited notices and dependency licenses retained.",
+      "builds_on": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator",
+        "cycle25-quartic-20261010",
+        "cycle61-c0125139"
+      ],
+      "status": "framework-verified",
+      "submitted_at": "2026-10-14T16:56:17Z",
+      "published_at": "",
+      "merged_at": "2026-10-15T01:14:54Z",
+      "pr": 48,
+      "repository": "GTimG/QuasiRiemannTracker",
+      "source_commit": "57ca0662b4ddeb2a75c0e302d0350cc65cf67c12",
+      "first_verified_at": "2026-10-15T01:10:53.369530+00:00",
+      "timeline_at": "2026-10-14T16:56:17Z",
+      "date_label": "PR submitted",
+      "entrypoint": {
+        "module": "Candidate.Main",
+        "declaration": "Candidate.bound"
+      },
+      "verification_note": "Comparator checked the canonical all-Dirichlet statement at 437429/500000 for the submitted commit. Lean, NanoDa and con-ron accepted the proof in the standard sandbox.",
+      "certificate_url": "certificates/marked-high-count-20261014.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/57ca0662b4ddeb2a75c0e302d0350cc65cf67c12/submissions/marked-high-count-20261014/src/Candidate/Main.lean",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/marked-high-count-20261014.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/57ca0662b4ddeb2a75c0e302d0350cc65cf67c12/submissions/marked-high-count-20261014/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Reviewed submission",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/48"
+        },
+        {
+          "label": "Cycle61 proof",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/42"
+        },
+        {
+          "label": "Verified comparison bound 0.8748598",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/43"
+        }
+      ]
+    },
+    {
+      "id": "radical-asymmetric-count-20261014",
+      "title": "Asymmetric marked counting with coupled radical allocation",
+      "theta": {
+        "numerator": "8748559",
+        "denominator": "10000000"
+      },
+      "authors": [
+        {
+          "name": "timbalud",
+          "url": "https://github.com/timbalud"
+        }
+      ],
+      "method": "Proves the all-moduli Dirichlet boundary 0.8748559. Separate inverse and plain prime-slot selections increase the marked count gain; retaining the common-radical penalty strengthens the allocation estimate. Their combined source saving is 37/10000 before charged errors. Builds on the marked high-zero construction, Cycle61, and the listed predecessor proofs; inherited attribution is preserved.",
+      "license": "Apache-2.0; inherited notices and dependency licenses retained.",
+      "builds_on": [
+        "openai-baseline",
+        "akashlevy-20261009-weighted-numerator",
+        "cycle25-quartic-20261010",
+        "cycle61-c0125139"
+      ],
+      "status": "framework-verified",
+      "submitted_at": "2026-10-14T19:38:41Z",
+      "published_at": "",
+      "merged_at": "2026-10-14T23:12:08Z",
+      "pr": 50,
+      "repository": "GTimG/QuasiRiemannTracker",
+      "source_commit": "8cb265dc34909040c6f8cb48f53b19670a217ceb",
+      "first_verified_at": "2026-10-14T22:53:11.065059+00:00",
+      "timeline_at": "2026-10-14T19:38:41Z",
+      "date_label": "PR submitted",
+      "entrypoint": {
+        "module": "Candidate.Main",
+        "declaration": "Candidate.bound"
+      },
+      "verification_note": "Comparator checked the canonical all-Dirichlet statement at 8748559/10000000 for the submitted commit. Lean, NanoDa and con-ron accepted the proof in the standard sandbox.",
+      "certificate_url": "certificates/radical-asymmetric-count-20261014.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/8cb265dc34909040c6f8cb48f53b19670a217ceb/submissions/radical-asymmetric-count-20261014/src/Candidate/Main.lean",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/radical-asymmetric-count-20261014.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/8cb265dc34909040c6f8cb48f53b19670a217ceb/submissions/radical-asymmetric-count-20261014/src/Candidate/Main.lean"
+        },
+        {
+          "label": "Reviewed submission",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/50"
+        },
+        {
+          "label": "Marked high-zero predecessor",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/48"
+        },
+        {
+          "label": "Cycle61 construction",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/42"
+        },
+        {
+          "label": "Verified comparison bound 0.8748598",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/43"
+        }
+      ]
+    }
+  ],
+  "historical_records": [
+    {
+      "submitted_at": "2026-10-09T17:29:56Z",
+      "published_at": "",
+      "merged_at": "",
+      "pr": 1,
+      "repository": "nielstron/QuasiRiemannTracker",
+      "source_commit": "49331e02e2c04bb2388ae9c6e9ea424c23b96ac6",
+      "first_verified_at": "2026-10-09T18:25:39.673785+00:00",
+      "entrypoint": {
+        "module": "QRH.TighterNonvanishing",
+        "declaration": "QRH.DirichletCharacter.LFunction_ne_zero_of_tightTheta_lt_re"
+      },
+      "license": "Apache-2.0 (retained upstream notices)",
+      "builds_on": [
+        "proofcouncil-20261009",
+        "openai-baseline"
+      ],
+      "id": "nielstron-20261009-tightening",
+      "title": "nielstron · compressed rational refinement",
+      "theta": {
+        "numerator": "874957019420098946128604623",
+        "denominator": "1000000000000000000000000000"
+      },
+      "authors": [
+        {
+          "name": "nielstron",
+          "url": "https://github.com/nielstron"
+        }
+      ],
+      "method": "Compresses the ProofCouncil Lean development, then tightens its exact rational certificate and slack budgets. The all-Dirichlet, zeta and finite-order Eisenstein Hecke targets compile at the smaller rational boundary. Final QRH source tokens decrease from 294,019 to 251,464 under the pinned LeanLeanBench metric.",
+      "references": [
+        {
+          "label": "Verification record",
+          "url": "certificates/nielstron-20261009-tightening.json"
+        },
+        {
+          "label": "Checked Lean solution",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/nielstron-20261009-kernels/src/Solution.lean"
+        },
+        {
+          "label": "Tighter Lean proof source",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/nielstron-20261009-tightening/TighterNonvanishing.lean"
+        },
+        {
+          "label": "Complete reproducible source and evidence",
+          "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/nielstron-20261009-tightening/source-public.tar.gz"
+        }
+      ],
+      "status": "framework-verified",
+      "timeline_at": "2026-10-09T17:29:56Z",
+      "date_label": "PR submitted",
+      "verification_note": "Comparator verified the all-Dirichlet, zeta and finite-order Eisenstein Hecke statements. Lean, NanoDa and con-ron accepted the proofs.",
+      "attribution_note": "nielstron is the human contributor; this research and formalization were AI-assisted. The result derives from Tim Gehrunger / ProofCouncil and the Apache-2.0 OpenAI/math and Mathlib developments; upstream notices are retained.",
+      "certificate_url": "certificates/nielstron-20261009-tightening.json",
+      "solution_url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/nielstron-20261009-kernels/src/Solution.lean"
+    }
+  ]
+}

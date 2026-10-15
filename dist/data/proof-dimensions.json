@@ -1,0 +1,1192 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-14",
+  "title": "Required proof dimensions and their method-specific gates",
+  "scopeNotes": [
+    "A smaller numerical endpoint does not imply every analytic dimension improved.",
+    "Capacity slope, intercept, admissible domain and source eligibility must be compared together.",
+    "An inherited theorem used by a new consumer is distinct from a new analytic estimate.",
+    "Verification is categorical evidence, not a numerical strength score.",
+    "The radar footprint marks where a method changes the proof; its area is not a mathematical quality metric.",
+    "No single universal LOW/HIGH or moment formula is asserted for incomparable methods.",
+    "Admission status can change after this snapshot; the live catalogue and exact-head certificate are authoritative."
+  ],
+  "sources": {
+    "openai-paper": {
+      "label": "OpenAI manuscript, Part II §§12–20",
+      "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf"
+    },
+    "openai-certificate": {
+      "label": "OpenAI canonical verification",
+      "url": "https://gtimg.github.io/QuasiRiemannTracker/certificates/openai-baseline.json"
+    },
+    "liu-paper": {
+      "label": "Baiying Liu, arXiv:2610.12234",
+      "url": "https://arxiv.org/abs/2610.12234"
+    },
+    "proofcouncil-paper": {
+      "label": "ProofCouncil accepted manuscript",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/qrh-20261009/accepted-answer.tex"
+    },
+    "levy-paper": {
+      "label": "Akash Levy weighted numerator manuscript",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/akashlevy-20261009-weighted-numerator/weighted_numerator_proof.tex"
+    },
+    "levy-lemma": {
+      "label": "Weighted physical numerator lemma",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/akashlevy-20261009-weighted-numerator/weighted_numerator_lemma.tex"
+    },
+    "cycle25-paper": {
+      "label": "Cycle25 manuscript, B0.4–5, B0.37–44, B3.31, B3.40",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/blob/d716ecaae80f7823a5b8314916364fdfa0d133fb/public/proofs/cycle25-quartic-20261010/paper.tex"
+    },
+    "cycle61-paper": {
+      "label": "Cycle61 paper and downloads, Theorem 2.2 and §3",
+      "url": "https://haileystorm.github.io/research/cycle61-qrh-boundary/"
+    },
+    "cycle61-source": {
+      "label": "Pinned Cycle61 natural source and endpoint",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/tree/fb6d4fd11aeaff0b37dd96bad3b274ce28a5c08b/submissions/cycle61-c0125139/src/Candidate"
+    },
+    "gao-asymmetric": {
+      "label": "Gao asymmetric reserve allocation paper",
+      "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/c5235c0c4b21e548a86b0c616fb295e2c3a00441/proofs/gao-asymmetric-reserves-20261013/paper.pdf"
+    },
+    "gao-cycle61": {
+      "label": "Gao coupled Cycle61 parameter refinement paper",
+      "url": "https://github.com/Gaozhongpai/QuasiRiemannTracker/blob/752fd1952a4dec6ef92181f6abc20e41269ff9b7/proofs/gao-cycle61-plane-20261013/paper.pdf"
+    },
+    "gao-gex-owner": {
+      "label": "RH–GEX complete endpoint and scope",
+      "url": "https://github.com/Gaozhongpai/RH/blob/main/framework/programs/fixed_strip/results/OPENAI_GEOMETRY_ENDPOINT_STRENGTHENING.md"
+    },
+    "local44": {
+      "label": "Local 22/5 moment, reviewed PR 26",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/26"
+    },
+    "affine-local": {
+      "label": "Affine local capacity, reviewed PR 37",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/37"
+    },
+    "marked-high": {
+      "label": "Marked HIGH zero count, reviewed PR 48",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/48"
+    },
+    "radical-asymmetric": {
+      "label": "Asymmetric marked/radical count, reviewed PR 50",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/50"
+    },
+    "detector-affine": {
+      "label": "Detector-affine proposal, PR 56",
+      "url": "https://github.com/GTimG/QuasiRiemannTracker/pull/56"
+    },
+    "catalogue": {
+      "label": "Live tracker catalogue and admission status",
+      "url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json"
+    }
+  },
+  "nodes": [
+    {
+      "id": "inverse",
+      "label": "Inverse moment",
+      "description": "Controls marked Möbius polynomials and the long inverse witness.",
+      "formulas": [
+        {
+          "id": "inverse-marked",
+          "tex": "r+2z\\le1-c_1,\\quad2r+8z\\le3-c_2\\ \\Longrightarrow\\ \\sum_{Nu\\ll U}|M_u(U^r)Q_{u,I}|^2\\ll U^{1+\\varepsilon}",
+          "plain": "Marked inverse second moment with two simultaneous capacity gates.",
+          "domain": "Fixed positive c1,c2; bounded row-independent prime coefficients; either common character orientation; every subcollection.",
+          "context": "Lengths are normalized to row width one. Full-width form replaces 1,3 by M,3M.",
+          "scope": "Natural nonunit zeros, common profiles and polynomial height costs must remain; no prime mesh is needed for this contract.",
+          "sourceIds": [
+            "cycle25-paper"
+          ]
+        },
+        {
+          "id": "inverse-long",
+          "tex": "e_I(r)=\\max\\{1,(1+5r)/6\\}",
+          "plain": "Unmarked long inverse moment exponent.",
+          "domain": "0≤r≤2 in the recorded Cycle61 input; sixth-power-free rows; fixed smooth profiles.",
+          "context": "Sixth-power amplification gives the long detector line.",
+          "scope": "This is an unmarked moment exponent, not a zero-free endpoint.",
+          "sourceIds": [
+            "cycle25-paper",
+            "cycle61-paper"
+          ]
+        }
+      ],
+      "requiredChecks": [
+        "Both marked capacity inequalities",
+        "Original zero extensions",
+        "Common profiles and independent height costs",
+        "Sixth-power rows or their explicit reconstruction"
+      ]
+    },
+    {
+      "id": "plain",
+      "label": "Paired plain + prime capacity",
+      "description": "Controls the squared product of two physical plain polynomials and selected prime slots.",
+      "formulas": [
+        {
+          "id": "plain-capacity",
+          "tex": "n_1+n_2+6\\kappa z\\le M\\ \\Longrightarrow\\ \\sum_{u\\ {\\rm eligible}}|S_{u,1}S_{u,2}Q_{u,I}|^2\\ll Z^{M+\\varepsilon}\\mathcal H_J",
+          "plain": "Paired plain moment with prime-slot cost 6κ.",
+          "domain": "Cycle25: 7/10≤κ≤3/4, β*≥51/100, 2β*−1≤κ for positive slots. M includes row plus moving-character width.",
+          "context": "Symmetric form: 2m+6κz≤M. The zero-slot assertion has a separate unrestricted bounded-length contract.",
+          "scope": "Only the actual canonical prime pools, common profile, literal natural eligibility, masks and choice order are licensed. Arbitrary coefficient families are not interchangeable.",
+          "sourceIds": [
+            "cycle25-paper"
+          ]
+        },
+        {
+          "id": "cycle61-affine",
+          "tex": "n_1+n_2+\\Lambda z\\le B,\\quad\\Lambda=19312/4787,\\quad B=14200/14361-10^{-5}",
+          "plain": "Strictly interior affine capacity with both slope and intercept.",
+          "domain": "Width M=1; .41≤n1,n2≤.44; .034≤z≤.04; fixed parent of moving width zero.",
+          "context": "Cycle61 Theorem 2.2; includes the four derivative-profile pairs needed by physical scale recovery.",
+          "scope": "Λ alone does not measure strength: B<1 and the local length box are essential. This is not a global replacement for the old capacity plane.",
+          "sourceIds": [
+            "cycle61-paper",
+            "cycle61-source"
+          ]
+        }
+      ],
+      "requiredChecks": [
+        "Full capacity plane including its intercept",
+        "Admissible length box and moving width",
+        "Literal prime pools and row eligibility",
+        "Independent heights, profiles and four derivative pairs",
+        "Every shortened child uses a licensed estimate"
+      ]
+    },
+    {
+      "id": "amplitude",
+      "label": "Prime amplitudes + selection",
+      "description": "Carries actual prime-slot amplitudes into detector and numerator consumers.",
+      "formulas": [
+        {
+          "id": "prime-amplitude",
+          "tex": "0\\le g_i\\le\\delta/2,\\quad q=L^{-1}\\sum_i z_i g_i=\\delta p,\\quad0\\le p\\le1/2",
+          "plain": "Amplitude classes and their weighted average.",
+          "domain": "U=Z^d; local slot widths zi=ℓi/d; L=Σzi; δ=2a−1.",
+          "context": "Classify the actual physical main slots; errors and small amplitudes carry gi=0.",
+          "scope": "The family zero bound and original natural holes are retained. Slot amplitudes are not independent free coefficients.",
+          "sourceIds": [
+            "cycle25-paper"
+          ]
+        },
+        {
+          "id": "slot-selection",
+          "tex": "\\prod_{i\\in I}|Q_{u,i}|^2\\ge U^{2qz-\\delta\\max_i z_i-o(1)}",
+          "plain": "Whole-slot greedy selection at capacity z.",
+          "domain": "0≤z≤L; sufficiently fine mesh selected in the prescribed order.",
+          "context": "One fractional slot is discarded, with its explicit mesh loss.",
+          "scope": "Any separate inverse/plain slot selections or overlapping pools require their own collision/allocation proof.",
+          "sourceIds": [
+            "cycle25-paper",
+            "radical-asymmetric"
+          ]
+        }
+      ],
+      "requiredChecks": [
+        "Pointwise amplitude ceiling",
+        "Whole-slot supply at each consumer",
+        "Greedy overshoot or mesh loss",
+        "Overlapping-pool collision partitions when present",
+        "Original relative characters and masks"
+      ]
+    },
+    {
+      "id": "detector",
+      "label": "Shared-zero witness + row count",
+      "description": "Combines inverse/plain witnesses for the same selected zero before feeding the population exponent into HIGH.",
+      "formulas": [
+        {
+          "id": "witness-lines",
+          "tex": "A_I=1-q-(\\delta-q)r,\\qquad A_P=1-q/(3\\kappa)-2(\\delta-q/(3\\kappa))m",
+          "plain": "Marked short inverse/plain row-count lines.",
+          "domain": "r+m≥t up to paid tolerances; selected capacities (1−r)/2 and (1−2m)/(6κ) must be supplied.",
+          "context": "The witness uses one actual zero, a common frequency and genuine common-profile polynomials.",
+          "scope": "Two independent moment bounds do not by themselves prove an improved joint covariance estimate.",
+          "sourceIds": [
+            "cycle25-paper",
+            "cycle61-paper"
+          ]
+        },
+        {
+          "id": "cycle25-count",
+          "tex": "C_\\kappa(p)=\\frac{2(1-p)(1-p/(3\\kappa))}{3-p-2p/(3\\kappa)},\\quad R_\\kappa=1-\\delta+\\frac{\\delta C_\\kappa(p)(5/6-\\delta)}{2(5/6-\\delta+\\delta C_\\kappa(p))}",
+          "plain": "Balanced short/long witness population exponent.",
+          "domain": "0≤p≤1/2; 0≤δ≤5/6 with endpoint interpretation; used κ and prime supply must satisfy the source gates.",
+          "context": "Number of rows ≪ U^(Rκ+ε) times a fixed polynomial in height.",
+          "scope": "Row density must be proved for the actual dictionary and its modulus bounds, including restored sixth-power multiples.",
+          "sourceIds": [
+            "cycle25-paper"
+          ]
+        },
+        {
+          "id": "detector-affine-capacity",
+          "tex": "z_P^{\\rm old}=\\frac{1-2m}{6\\kappa}\\quad\\longrightarrow\\quad z_P^{\\rm affine}=\\frac{B-2m}{\\Lambda}",
+          "plain": "PR56 applies the existing Cycle61 affine moment to the detector.",
+          "domain": "Proposal: .4137≤m≤.4235; .445≤δ≤.485; .495≤p≤.5; κ≥the proposed endpoint reference.",
+          "context": "New application/consumer of Cycle61 Theorem 2.2, previously used for the physical source row.",
+          "scope": "The PR describes per-character moment degrees and heights; official acceptance is separate from this proposed formula.",
+          "sourceIds": [
+            "detector-affine"
+          ]
+        }
+      ],
+      "requiredChecks": [
+        "Same-zero and common-frequency witness",
+        "Actual finite dictionary and conductor bounds",
+        "Floor bins handled separately",
+        "Full continuous density/amplitude domain",
+        "Height choice after returned analytic degree"
+      ]
+    },
+    {
+      "id": "low",
+      "label": "LOW reflected energy",
+      "description": "Bounds the complete low-row physical probe using completed theta reflection and marked energy.",
+      "formulas": [
+        {
+          "id": "low-subsets",
+          "tex": "-v+(5\\ell-1+v)_+/8\\le0\\qquad(0\\le v\\le\\ell\\le1/5)",
+          "plain": "Nonpositive correction for every marked/rescaled subset in the recorded LOW geometry.",
+          "domain": "The source must first satisfy the retained completed-index energy gates and physical scale relations.",
+          "context": "Controls all compensated subsets, not merely the unmarked principal term.",
+          "scope": "This scalar correction is not an independent proof of theta reflection or the complete LOW estimate.",
+          "sourceIds": [
+            "levy-paper",
+            "cycle25-paper"
+          ]
+        },
+        {
+          "id": "gex-low",
+          "tex": "\\ell=1/6+p\\quad\\Longrightarrow\\quad E_{\\rm LOW}=3/16-p/4",
+          "plain": "RH–GEX complete LOW exponent in its one-parameter geometry.",
+          "domain": "b=1/8; lx=17/48−p/2; ly=23/48−p/2; h=13/16+3p/2; p=1/6000 in the verified instance.",
+          "context": "Crosses C(θ)=θ−11/16 at θ=20999/24000.",
+          "scope": "Specific to the stated geometry and completed source; do not apply this formula to arbitrary method parameters.",
+          "sourceIds": [
+            "gao-gex-owner"
+          ]
+        }
+      ],
+      "requiredChecks": [
+        "Completed index cn³ with original coprimality rules",
+        "Both reflection collision masks and cusp terms",
+        "All marked/rescaled subsets",
+        "Physical normalization and all height costs"
+      ]
+    },
+    {
+      "id": "high",
+      "label": "HIGH physical numerator",
+      "description": "Pays high rows using the actual numerator, detector count and source-preserving weighted averages.",
+      "formulas": [
+        {
+          "id": "weighted-numerator",
+          "tex": "\\sum_{u\\ {\\rm in\\ class}}|\\mathcal N_u|\\ll Y^{-1/2}Z^{\\ell(z_0-1/2)+\\ell q}U^{1/4+3R/4-qz_A/2+\\varepsilon}\\mathcal H_J",
+          "plain": "Weighted fourth-moment numerator average.",
+          "domain": "Cycle25 form: m=log(Y)/log(U)>1/2; zA=[2min(m,1)−1]/(6κ)≤L; Re(s)=a plus source buffer; z0=.34.",
+          "context": "Mellin inversion and reflection act on the complete reconstructed physical numerator before the reciprocal denominator is estimated.",
+          "scope": "Euler correction terms, strict ramified errors and conductor deficits are part of the estimate. A generic arbitrary-coefficient fourth moment is not a substitute.",
+          "sourceIds": [
+            "levy-lemma",
+            "cycle25-paper"
+          ]
+        },
+        {
+          "id": "cycle61-source-capacity",
+          "tex": "z_A(t)=\\frac{B-2n}{\\Lambda},\\qquad n=1-y/d+t",
+          "plain": "Cycle61 affine capacity in the physical numerator.",
+          "domain": "Only d near h and small Euler free shift t, with n and zA inside Theorem 2.2’s local box; remaining shifts use separate paid branches.",
+          "context": "Hölder contributes −q zA/2 to the numerator exponent.",
+          "scope": "The intercept deficit 1−B, both plain factors, all shortenings and the original slot gain must remain.",
+          "sourceIds": [
+            "cycle61-paper"
+          ]
+        }
+      ],
+      "requiredChecks": [
+        "Actual signed physical coefficient before absolute values",
+        "Conductor deficit for every Euler error subset",
+        "All ramified terms and all free shifts",
+        "Common profile scale recovery",
+        "Population exponent applied only to licensed rows"
+      ]
+    },
+    {
+      "id": "principal",
+      "label": "Principal + floor + intermediate",
+      "description": "Pays branches that do not disappear when LOW or HIGH improves.",
+      "formulas": [],
+      "formulaStatus": "Method-specific gates; no universal scalar formula is asserted.",
+      "requiredChecks": [
+        "Nonzero positive principal residue",
+        "Convergent Euler products on required contours",
+        "Principal poles and zero frequencies",
+        "Small-row floor estimates",
+        "Intermediate row ranges and every branch junction",
+        "Normalizer, dyadic, contour and tail losses"
+      ],
+      "sourceIds": [
+        "openai-paper",
+        "proofcouncil-paper",
+        "levy-paper",
+        "cycle61-paper"
+      ]
+    },
+    {
+      "id": "geometry",
+      "label": "Geometry + endpoint",
+      "description": "Chooses physical scales so every source branch is below the same signal exponent.",
+      "formulas": [
+        {
+          "id": "saturated-geometry",
+          "tex": "x+y=1-\\ell,\\quad h=1+\\ell-x,\\quad b=y-x,\\quad C(s)=s-(4+b)/6",
+          "plain": "Saturated compensated-probe geometry and signal exponent.",
+          "domain": "Recorded Part-II parameterizations satisfying their additional positivity, energy, row extension and source supply gates.",
+          "context": "x,y are physical plain lengths; ℓ is total slot length; h is the largest row exponent.",
+          "scope": "These identities alone do not establish any endpoint; LOW/HIGH/principal gates are separately required.",
+          "sourceIds": [
+            "proofcouncil-paper",
+            "levy-paper",
+            "cycle61-paper"
+          ]
+        },
+        {
+          "id": "geometry-crossing",
+          "tex": "\\theta=11/12-\\ell/4",
+          "plain": "LOW/signal crossing in the recorded optimized construction.",
+          "domain": "Only where the complete LOW estimate and saturated geometry establish this crossing.",
+          "context": "Increasing ℓ lowers θ but may violate HIGH, moment, principal or supply constraints.",
+          "scope": "Not a universal formula for every QRH method or the alternate short-row recovery route.",
+          "sourceIds": [
+            "proofcouncil-paper",
+            "levy-paper",
+            "cycle25-paper"
+          ]
+        },
+        {
+          "id": "cycle25-quartic",
+          "tex": "927\\ell^4-3135\\ell^3+2433\\ell^2+275\\ell-100=0,\\quad\\ell\\in[1/6,1/5]",
+          "plain": "Cycle25 exact quartic optimization.",
+          "domain": "Unique root in the displayed interval; θ=11/12−ℓ/4≈.8748866470399641.",
+          "context": "The catalogue rational is a proved upper enclosure, not the exact algebraic boundary.",
+          "scope": "Tightening an enclosure does not improve the underlying theorem.",
+          "sourceIds": [
+            "cycle25-paper"
+          ]
+        }
+      ],
+      "requiredChecks": [
+        "Positive physical scales and common slot supply",
+        "Uniform LOW/HIGH comparison on the entire continuous domain",
+        "Exact branch coverage and endpoint certificates",
+        "Positive allowances for all reconstruction losses"
+      ]
+    },
+    {
+      "id": "recovery",
+      "label": "Full recovery + verification",
+      "description": "Turns compatible source estimates into the exact unconditional all-family zero-free theorem and verifies its meaning.",
+      "formulas": [],
+      "formulaStatus": "Categorical proof and verification obligations; no numeric strength score.",
+      "requiredChecks": [
+        "All original masks, Euler errors, cusp sources and residues",
+        "All dyads, independent heights and profile derivatives",
+        "Correct parameter and degree choice order",
+        "Mellin continuation and rightmost-zero contradiction",
+        "All Dirichlet moduli and imprimitive characters; principal pole exception",
+        "Exact canonical theorem definitions and literal endpoint",
+        "Comparator and permitted-axiom closure",
+        "Lean plus independent NanoDa and con-ron acceptance when claimed",
+        "Tracker admission and merge recorded separately from contributor checks"
+      ],
+      "sourceIds": [
+        "openai-certificate",
+        "catalogue"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "inverse",
+      "to": "detector",
+      "label": "inverse witness payment"
+    },
+    {
+      "from": "plain",
+      "to": "detector",
+      "label": "plain witness capacity"
+    },
+    {
+      "from": "amplitude",
+      "to": "detector",
+      "label": "selected prime-slot gain"
+    },
+    {
+      "from": "plain",
+      "to": "high",
+      "label": "weighted physical numerator"
+    },
+    {
+      "from": "amplitude",
+      "to": "high",
+      "label": "actual slot amplitudes"
+    },
+    {
+      "from": "detector",
+      "to": "high",
+      "label": "selected-row population"
+    },
+    {
+      "from": "low",
+      "to": "geometry",
+      "label": "LOW versus signal"
+    },
+    {
+      "from": "high",
+      "to": "geometry",
+      "label": "HIGH versus signal"
+    },
+    {
+      "from": "principal",
+      "to": "geometry",
+      "label": "all remaining branch gates"
+    },
+    {
+      "from": "geometry",
+      "to": "recovery",
+      "label": "compatible exact endpoint"
+    },
+    {
+      "from": "principal",
+      "to": "recovery",
+      "label": "residue and continuation validity"
+    }
+  ],
+  "perMethod": {
+    "classical-euler-product": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "recovery",
+          "kind": "different-route",
+          "detail": "Absolute convergence of Euler products gives θ=1; the Part-II moment dimensions do not apply.",
+          "formulaIds": [],
+          "sourceIds": []
+        }
+      ],
+      "inherited": [],
+      "unknown": [
+        "Part-II dimension comparison is not applicable."
+      ],
+      "sourceIds": [
+        "catalogue"
+      ]
+    },
+    "openai-baseline": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "inverse",
+          "kind": "foundation",
+          "detail": "Marked inverse moment and sixth-power amplification.",
+          "formulaIds": [
+            "inverse-marked",
+            "inverse-long"
+          ],
+          "sourceIds": [
+            "openai-paper",
+            "cycle25-paper"
+          ]
+        },
+        {
+          "nodeId": "plain",
+          "kind": "foundation",
+          "detail": "Baseline positive-slot cost 6κ with κ=3/4, hence 9/2.",
+          "formulaIds": [
+            "plain-capacity"
+          ],
+          "sourceIds": [
+            "openai-paper"
+          ]
+        },
+        {
+          "nodeId": "amplitude",
+          "kind": "foundation",
+          "detail": "Compensated disjoint prime slots and pointwise amplitude ceiling.",
+          "formulaIds": [
+            "prime-amplitude",
+            "slot-selection"
+          ],
+          "sourceIds": [
+            "openai-paper"
+          ]
+        },
+        {
+          "nodeId": "detector",
+          "kind": "foundation",
+          "detail": "Buffered shared-zero detector, inverse/plain witness balancing.",
+          "formulaIds": [],
+          "sourceIds": [
+            "openai-paper"
+          ]
+        },
+        {
+          "nodeId": "low",
+          "kind": "foundation",
+          "detail": "Completed cubic-theta reflection and marked energy.",
+          "formulaIds": [],
+          "sourceIds": [
+            "openai-paper"
+          ]
+        },
+        {
+          "nodeId": "high",
+          "kind": "foundation",
+          "detail": "Original pointwise physical numerator estimate.",
+          "formulaIds": [],
+          "sourceIds": [
+            "openai-paper"
+          ]
+        },
+        {
+          "nodeId": "geometry",
+          "kind": "foundation",
+          "detail": "θ=7/8; ℓ=1/6, x=17/48, y=23/48, h=13/16, b=1/8.",
+          "formulaIds": [],
+          "sourceIds": [
+            "openai-paper"
+          ]
+        },
+        {
+          "nodeId": "recovery",
+          "kind": "foundation",
+          "detail": "Canonical all-Dirichlet, zeta and finite-order Eisenstein Hecke targets independently checked.",
+          "formulaIds": [],
+          "sourceIds": [
+            "openai-certificate"
+          ]
+        }
+      ],
+      "inherited": [],
+      "unknown": [],
+      "sourceIds": [
+        "openai-paper",
+        "openai-certificate"
+      ]
+    },
+    "liu-20261008": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "geometry",
+          "kind": "retuning",
+          "detail": "Optimizes b and ℓ at fixed κ=3/4; exact θ=(1507−2√921)/1653.",
+          "formulaIds": [],
+          "sourceIds": [
+            "liu-paper"
+          ]
+        }
+      ],
+      "inherited": [
+        "OpenAI arithmetic moments and construction"
+      ],
+      "unknown": [
+        "Component-level source extraction beyond the documented geometry optimization."
+      ],
+      "sourceIds": [
+        "liu-paper",
+        "catalogue"
+      ]
+    },
+    "proofcouncil-20261009": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "plain",
+          "kind": "domain-extension",
+          "detail": "Extends actual masked plain moment to 13/18≤κ≤1, with β*≤(1+κ)/2 for positive slots when κ<1.",
+          "formulaIds": [
+            "plain-capacity"
+          ],
+          "sourceIds": [
+            "proofcouncil-paper"
+          ]
+        },
+        {
+          "nodeId": "detector",
+          "kind": "new-consumer",
+          "detail": "Feeds self-consistent κ=2β*−1 into the marked detector and extends its range.",
+          "formulaIds": [],
+          "sourceIds": [
+            "proofcouncil-paper"
+          ]
+        },
+        {
+          "nodeId": "geometry",
+          "kind": "retuning",
+          "detail": "Joint b,ℓ optimization with exact whole-domain certificate; θ=874957019421/10^12.",
+          "formulaIds": [
+            "saturated-geometry",
+            "geometry-crossing"
+          ],
+          "sourceIds": [
+            "proofcouncil-paper"
+          ]
+        }
+      ],
+      "inherited": [
+        "Completed reflection and two moment-induction architecture"
+      ],
+      "unknown": [],
+      "sourceIds": [
+        "proofcouncil-paper",
+        "catalogue"
+      ]
+    },
+    "nielstron-20261009-tightening": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "geometry",
+          "kind": "exact-endpoint",
+          "detail": "Same ProofCouncil architecture, exact cubic crossing 657ℓ³−954ℓ²+21ℓ+20=0; improves rational threshold enclosure to algebraic endpoint.",
+          "formulaIds": [],
+          "sourceIds": [
+            "catalogue"
+          ]
+        }
+      ],
+      "inherited": [
+        "ProofCouncil moment, detector, LOW/HIGH and recovery"
+      ],
+      "unknown": [],
+      "sourceIds": [
+        "catalogue"
+      ]
+    },
+    "akashlevy-20261009-weighted-numerator": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "high",
+          "kind": "new-estimate",
+          "detail": "Replaces pointwise numerator payment by weighted fourth moment of the actual reflected physical numerator.",
+          "formulaIds": [
+            "weighted-numerator"
+          ],
+          "sourceIds": [
+            "levy-paper",
+            "levy-lemma"
+          ]
+        },
+        {
+          "nodeId": "geometry",
+          "kind": "retuning",
+          "detail": "Retains κ=3/4; ℓ=167/1000 gives θ=10499/12000.",
+          "formulaIds": [
+            "geometry-crossing"
+          ],
+          "sourceIds": [
+            "levy-paper"
+          ]
+        },
+        {
+          "nodeId": "recovery",
+          "kind": "source-transport",
+          "detail": "Includes original Euler corrections, strict ramified terms and conductor deficit in the weighted estimate.",
+          "formulaIds": [],
+          "sourceIds": [
+            "levy-lemma"
+          ]
+        }
+      ],
+      "inherited": [
+        "OpenAI marked inverse and plain moment at κ=3/4"
+      ],
+      "unknown": [],
+      "sourceIds": [
+        "levy-paper",
+        "levy-lemma",
+        "catalogue"
+      ]
+    },
+    "cycle25-quartic-20261010": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "plain",
+          "kind": "domain-extension",
+          "detail": "Variable-κ common-mesh moving-radical moment on the original natural family.",
+          "formulaIds": [
+            "plain-capacity"
+          ],
+          "sourceIds": [
+            "cycle25-paper"
+          ]
+        },
+        {
+          "nodeId": "detector",
+          "kind": "derived-improvement",
+          "detail": "Variable-κ witness crossing feeds Rκ into the physical source.",
+          "formulaIds": [
+            "cycle25-count"
+          ],
+          "sourceIds": [
+            "cycle25-paper"
+          ]
+        },
+        {
+          "nodeId": "high",
+          "kind": "new-consumer",
+          "detail": "Variable-κ moment and row count feed Levy’s weighted physical numerator.",
+          "formulaIds": [
+            "weighted-numerator"
+          ],
+          "sourceIds": [
+            "cycle25-paper"
+          ]
+        },
+        {
+          "nodeId": "geometry",
+          "kind": "exact-endpoint",
+          "detail": "Exact quartic boundary, with separate rational enclosure.",
+          "formulaIds": [
+            "cycle25-quartic"
+          ],
+          "sourceIds": [
+            "cycle25-paper"
+          ]
+        }
+      ],
+      "inherited": [
+        "OpenAI reflection/inverse architecture",
+        "Levy weighted numerator mechanism"
+      ],
+      "unknown": [],
+      "sourceIds": [
+        "cycle25-paper",
+        "catalogue"
+      ]
+    },
+    "local44-20261013": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "plain",
+          "kind": "new-estimate",
+          "detail": "Local physical paired moment with prime cost 22/5.",
+          "formulaIds": [],
+          "sourceIds": [
+            "local44"
+          ]
+        },
+        {
+          "nodeId": "high",
+          "kind": "source-transport",
+          "detail": "Coherent amplification and reconstructed-row density preserve the actual source through errors and physical wrappers.",
+          "formulaIds": [],
+          "sourceIds": [
+            "local44"
+          ]
+        }
+      ],
+      "inherited": [
+        "OpenAI",
+        "Levy",
+        "Cycle25"
+      ],
+      "unknown": [
+        "Exact complete local length box and source budgets are not transcribed here."
+      ],
+      "sourceIds": [
+        "local44",
+        "catalogue"
+      ]
+    },
+    "affine-local-20261013": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "plain",
+          "kind": "domain-extension",
+          "detail": "Retains separate volume and capacity-defect allowances, replacing the narrower 22/5 slice by an affine domain.",
+          "formulaIds": [],
+          "sourceIds": [
+            "affine-local"
+          ]
+        }
+      ],
+      "inherited": [
+        "Local22/5 source proof and physical transport"
+      ],
+      "unknown": [
+        "Exact affine constants are not transcribed here; do not infer a global slope-only capacity."
+      ],
+      "sourceIds": [
+        "affine-local",
+        "catalogue"
+      ]
+    },
+    "gao-asymmetric-reserves-20261013": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "low",
+          "kind": "sharper-payment",
+          "detail": "Asymmetric LOW reserves retain source allowances.",
+          "formulaIds": [],
+          "sourceIds": [
+            "gao-asymmetric"
+          ]
+        },
+        {
+          "nodeId": "plain",
+          "kind": "domain-extension",
+          "detail": "Refines affine local capacity to defect 1/241.",
+          "formulaIds": [],
+          "sourceIds": [
+            "gao-asymmetric"
+          ]
+        },
+        {
+          "nodeId": "geometry",
+          "kind": "retuning",
+          "detail": "Exact endpoint θ=8748673/10^7.",
+          "formulaIds": [],
+          "sourceIds": [
+            "gao-asymmetric"
+          ]
+        }
+      ],
+      "inherited": [
+        "Kari affine local",
+        "nielstron local22/5",
+        "Cycle25 and Levy/OpenAI foundations"
+      ],
+      "unknown": [
+        "The complete affine capacity plane is not reconstructed from the defect number alone."
+      ],
+      "sourceIds": [
+        "gao-asymmetric",
+        "catalogue"
+      ]
+    },
+    "cycle61-c0125139": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "plain",
+          "kind": "new-estimate",
+          "detail": "Strictly interior affine moment; Λ=19312/4787 and B=14200/14361−10⁻⁵ with its local box.",
+          "formulaIds": [
+            "cycle61-affine"
+          ],
+          "sourceIds": [
+            "cycle61-paper"
+          ]
+        },
+        {
+          "nodeId": "detector",
+          "kind": "domain-extension",
+          "detail": "Extends required fixed-dictionary density range; final marked detector still uses the older capacity lines.",
+          "formulaIds": [
+            "witness-lines",
+            "cycle25-count"
+          ],
+          "sourceIds": [
+            "cycle61-paper"
+          ]
+        },
+        {
+          "nodeId": "high",
+          "kind": "new-consumer",
+          "detail": "Uses the interior affine moment in the physical numerator near the binding row range.",
+          "formulaIds": [
+            "cycle61-source-capacity"
+          ],
+          "sourceIds": [
+            "cycle61-paper"
+          ]
+        },
+        {
+          "nodeId": "geometry",
+          "kind": "retuning",
+          "detail": "Complete endpoint θ=874861/10^6 with compatible local and fallback branches.",
+          "formulaIds": [],
+          "sourceIds": [
+            "cycle61-paper"
+          ]
+        }
+      ],
+      "inherited": [
+        "OpenAI",
+        "Levy",
+        "Cycle25",
+        "Gao local source refinement"
+      ],
+      "unknown": [],
+      "sourceIds": [
+        "cycle61-paper",
+        "cycle61-source",
+        "catalogue"
+      ]
+    },
+    "gao-cycle61-plane-20261013": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "plain",
+          "kind": "retuning",
+          "detail": "Couples density split and source/amplification parameters while retaining the complete Cycle61 source.",
+          "formulaIds": [],
+          "sourceIds": [
+            "gao-cycle61"
+          ]
+        },
+        {
+          "nodeId": "low",
+          "kind": "sharper-payment",
+          "detail": "Propagates coupled exact reserves through actual analytic consumers.",
+          "formulaIds": [],
+          "sourceIds": [
+            "gao-cycle61"
+          ]
+        },
+        {
+          "nodeId": "geometry",
+          "kind": "retuning",
+          "detail": "Global quadratic row certificates give θ=4374299/5000000.",
+          "formulaIds": [],
+          "sourceIds": [
+            "gao-cycle61"
+          ]
+        }
+      ],
+      "inherited": [
+        "Complete Cycle61 moment, numerator and continuation architecture"
+      ],
+      "unknown": [
+        "This entry does not claim a new inverse moment theorem or detector-affine application."
+      ],
+      "sourceIds": [
+        "gao-cycle61",
+        "catalogue"
+      ]
+    },
+    "marked-high-count-20261014": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "amplitude",
+          "kind": "new-consumer",
+          "detail": "Retains prime-slot amplitudes in high-zero counting; collision partitions handle overlapping prime pools.",
+          "formulaIds": [],
+          "sourceIds": [
+            "marked-high"
+          ]
+        },
+        {
+          "nodeId": "detector",
+          "kind": "new-estimate",
+          "detail": "Marked HIGH population bound combines with common-allocation width conservation.",
+          "formulaIds": [],
+          "sourceIds": [
+            "marked-high"
+          ]
+        },
+        {
+          "nodeId": "high",
+          "kind": "sharper-payment",
+          "detail": "Combined source gain 33/20000 before explicit losses.",
+          "formulaIds": [],
+          "sourceIds": [
+            "marked-high"
+          ]
+        }
+      ],
+      "inherited": [
+        "Complete Cycle61 construction"
+      ],
+      "unknown": [
+        "Exact new marked count formula is not transcribed here."
+      ],
+      "sourceIds": [
+        "marked-high",
+        "catalogue"
+      ]
+    },
+    "radical-asymmetric-count-20261014": {
+      "status": "framework-verified",
+      "changes": [
+        {
+          "nodeId": "amplitude",
+          "kind": "new-selection",
+          "detail": "Separate inverse and plain prime-slot selections increase the marked count gain.",
+          "formulaIds": [],
+          "sourceIds": [
+            "radical-asymmetric"
+          ]
+        },
+        {
+          "nodeId": "detector",
+          "kind": "new-estimate",
+          "detail": "Strengthens the marked population estimate with separate selections.",
+          "formulaIds": [],
+          "sourceIds": [
+            "radical-asymmetric"
+          ]
+        },
+        {
+          "nodeId": "high",
+          "kind": "sharper-payment",
+          "detail": "Retains common-radical penalty; combined source saving 37/10000 before errors.",
+          "formulaIds": [],
+          "sourceIds": [
+            "radical-asymmetric"
+          ]
+        }
+      ],
+      "inherited": [
+        "Marked HIGH construction",
+        "Complete Cycle61 source"
+      ],
+      "unknown": [
+        "Exact radical/allocation formula is not transcribed here."
+      ],
+      "sourceIds": [
+        "radical-asymmetric",
+        "catalogue"
+      ]
+    },
+    "detector-affine-c0125154": {
+      "status": "proposal-pending",
+      "changes": [
+        {
+          "nodeId": "plain",
+          "kind": "inherited-estimate",
+          "detail": "Reuses Cycle61 Theorem 2.2; no new affine moment theorem is claimed.",
+          "formulaIds": [
+            "cycle61-affine"
+          ],
+          "sourceIds": [
+            "detector-affine"
+          ]
+        },
+        {
+          "nodeId": "detector",
+          "kind": "new-consumer",
+          "detail": "Applies the existing affine moment inside the per-fiber detector count.",
+          "formulaIds": [
+            "detector-affine-capacity"
+          ],
+          "sourceIds": [
+            "detector-affine"
+          ]
+        },
+        {
+          "nodeId": "geometry",
+          "kind": "retuning",
+          "detail": "Proposed θ=437423/500000=.874846, h=15903/20000; all other Cycle61 gates are retuned.",
+          "formulaIds": [],
+          "sourceIds": [
+            "detector-affine"
+          ]
+        }
+      ],
+      "inherited": [
+        "Cycle61 actual source, local affine moment and physical numerator"
+      ],
+      "unknown": [
+        "Official exact-head Comparator and three-kernel acceptance was pending in the inspected snapshot."
+      ],
+      "sourceIds": [
+        "detector-affine"
+      ]
+    },
+    "gao-gex-20999-24000": {
+      "status": "local-standard-zeta-verified",
+      "changes": [
+        {
+          "nodeId": "geometry",
+          "kind": "retuning",
+          "detail": "p=1/6000, ℓ=1/6+p, b=1/8; endpoint θ=20999/24000.",
+          "formulaIds": [
+            "gex-low"
+          ],
+          "sourceIds": [
+            "gao-gex-owner"
+          ]
+        },
+        {
+          "nodeId": "high",
+          "kind": "sharper-payment",
+          "detail": "Retains exact joint balanced variables; a positive discriminant certificate proves HIGH margin 1/200000.",
+          "formulaIds": [],
+          "sourceIds": [
+            "gao-gex-owner"
+          ]
+        },
+        {
+          "nodeId": "recovery",
+          "kind": "limited-scope-verification",
+          "detail": "Archived standard-zeta Comparator/default-Lean-kernel replay passed. Separate Dirichlet/Hecke target replays and independent NanoDa/con-ron were not performed.",
+          "formulaIds": [],
+          "sourceIds": [
+            "gao-gex-owner"
+          ]
+        }
+      ],
+      "inherited": [
+        "OpenAI arithmetic inputs and raw moments"
+      ],
+      "unknown": [
+        "This is not a tracker-admitted canonical all-Dirichlet record."
+      ],
+      "sourceIds": [
+        "gao-gex-owner"
+      ]
+    }
+  },
+  "examples": [
+    {
+      "id": "cycle61-to-pr56",
+      "title": "One moment theorem, two consumers",
+      "before": "Cycle61 uses its interior affine moment in the physical numerator; detector still uses old plain capacity.",
+      "after": "PR56 proposes applying the same affine moment to detector witnesses in a certified local region.",
+      "changedNodes": [
+        "detector",
+        "geometry"
+      ],
+      "unchangedAnalyticInput": "cycle61-affine",
+      "formulaIds": [
+        "cycle61-affine",
+        "cycle61-source-capacity",
+        "detector-affine-capacity"
+      ],
+      "sourceIds": [
+        "cycle61-paper",
+        "detector-affine"
+      ]
+    }
+  ],
+  "internalProvenance": {
+    "root": "RH/",
+    "readSources": [
+      "framework/programs/fixed_strip/OPENAI_QRH_MECHANISM_LEDGER.md",
+      "CURRENT_TARGET.md",
+      "framework/programs/fixed_strip/results/OPENAI_GEOMETRY_ENDPOINT_STRENGTHENING.md",
+      "build/tracker_weighted_numerator_2026-10-10/latest-cycle25/paper.tex",
+      "build/new_target_2026-10-14/publication-staging/proofs/cycle61-c0125139/manuscript/paper.md",
+      "build/tracker_local_moment_extension_2026-10-11/upstream-pr-checkout/public/proofs/qrh-20261009/accepted-answer.tex",
+      "build/new_target_2026-10-14/external-record-updates/20261015T014709/catalogue.json",
+      "build/new_target_2026-10-14/external-record-updates/20261015T014709/pr56.json"
+    ],
+    "note": "Local paths are internal provenance only; UI citations should use the public source URL dictionary."
+  }
+}

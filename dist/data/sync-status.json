@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "fetched_at": "2026-10-15T02:23:05.404314+00:00",
+  "source_as_of": "2026-10-15",
+  "sources": {
+    "catalogue_url": "https://gtimg.github.io/QuasiRiemannTracker/catalogue.json",
+    "site_url": "https://gtimg.github.io/QuasiRiemannTracker/site.json"
+  },
+  "digests": {
+    "catalogue_sha256": "9a2be108362dedb0e7192f3f1f7812c8526473568da9538a121261a9615c4d82",
+    "site_sha256": "a30c765ad865a9cf554180be0aeb312db209dcb54c9e4fa82461aebae69fcadb"
+  },
+  "record_count": 17,
+  "new_ids": [],
+  "unreviewed_ids": [],
+  "changed_source_ids": [],
+  "removed_ids": [],
+  "reviewed_ids": [
+    "affine-local-20261013",
+    "akashlevy-20261009-weighted-numerator",
+    "argonaut-20261008",
+    "classical-euler-product",
+    "cycle25-quartic-20261010",
+    "cycle61-c0125139",
+    "gao-asymmetric-reserves-20261013",
+    "gao-cycle61-plane-20261013",
+    "liu-20261008",
+    "local44-20261013",
+    "marked-high-count-20261014",
+    "nielstron-20261009-tightening",
+    "openai-baseline",
+    "proofcouncil-20261009",
+    "radical-asymmetric-count-20261014",
+    "reserve-local-20261013",
+    "single-prime-29-33-20261010"
+  ],
+  "review_manifest_initialized_at": "2026-10-15T02:23:05.156256+00:00",
+  "scope": "Automatic endpoint/status sync only. New or changed sources require manual mathematical extraction; no analytic improvements are inferred."
+}
