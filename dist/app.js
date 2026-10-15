@@ -264,9 +264,57 @@ async function refresh({silent=false}={}){
   finally{button.disabled=false;}
 }
 function bindControls(){
-  const openGuide=hash=>{if(!hash.startsWith('#dimension-'))return;const card=document.getElementById(hash.slice(1));if(card?.tagName==='DETAILS')card.open=true;};
-  document.addEventListener('click',event=>{const link=event.target.closest('a[href^="#dimension-"]');if(link)openGuide(link.hash);});
-  addEventListener('hashchange',()=>openGuide(location.hash));openGuide(location.hash);
+  const guide=$('#dimension-dialog'),guideScroll=guide.querySelector('.guide-scroll');
+  let guideOpener=null,guideReturnHash='',guidePagePosition={x:0,y:0},restoreGuideFocus=true;
+  const isGuideHash=hash=>hash==='#dimensions'||(hash.startsWith('#dimension-')&&document.getElementById(hash.slice(1))?.classList.contains('dimension-card'));
+  const openGuide=(hash,trigger=null)=>{
+    if(!isGuideHash(hash))return;
+    if(!guide.open){
+      guideOpener=trigger||document.activeElement;
+      guideReturnHash=isGuideHash(location.hash)?'#compare':location.hash;
+      guidePagePosition={x:scrollX,y:scrollY};restoreGuideFocus=true;
+      document.documentElement.classList.add('guide-open');guide.showModal();
+      $('#guide-close').focus({preventScroll:true});
+    }
+    const id=hash.startsWith('#dimension-')?hash.slice('#dimension-'.length):null;
+    guide.querySelectorAll('.dimension-card').forEach(card=>card.open=card.id===`dimension-${id}`);
+    guide.querySelectorAll('[data-guide-card]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.guideCard===id)));
+    requestAnimationFrame(()=>{
+      const card=id?document.getElementById(`dimension-${id}`):null;
+      const top=card?card.getBoundingClientRect().top-guideScroll.getBoundingClientRect().top+guideScroll.scrollTop-12:0;
+      guideScroll.scrollTo({top:Math.max(0,top),behavior:'instant'});
+      const button=guide.querySelector(`[data-guide-card="${id}"]`),nav=guide.querySelector('.guide-nav');
+      if(button)nav.scrollTo({left:Math.max(0,button.offsetLeft-nav.offsetLeft-16),behavior:'instant'});
+    });
+  };
+  const closeGuide=(navigate=false)=>{restoreGuideFocus=!navigate;guide.close();};
+  $('#guide-close').onclick=()=>closeGuide();
+  guide.addEventListener('close',()=>{
+    document.documentElement.classList.remove('guide-open');
+    if(isGuideHash(location.hash))history.replaceState(null,'',location.pathname+location.search+guideReturnHash);
+    if(restoreGuideFocus)requestAnimationFrame(()=>{
+      window.scrollTo({left:guidePagePosition.x,top:guidePagePosition.y,behavior:'instant'});
+      const opener=guideOpener?.isConnected&&guideOpener!==document.body?guideOpener:$('#open-dimension-guide');
+      opener.focus({preventScroll:true});
+    });
+  });
+  guide.addEventListener('click',event=>{
+    if(event.target!==guide)return;
+    const box=guide.getBoundingClientRect();
+    if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)closeGuide();
+  });
+  guide.querySelectorAll('[data-guide-card]').forEach(button=>button.onclick=()=>openGuide(`#dimension-${button.dataset.guideCard}`));
+  guide.querySelectorAll('.dimension-card').forEach(card=>card.addEventListener('toggle',()=>{
+    guide.querySelector(`[data-guide-card="${card.id.slice('dimension-'.length)}"]`).setAttribute('aria-pressed',String(card.open));
+  }));
+  document.addEventListener('click',event=>{
+    if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+    const link=event.target.closest('a[href^="#"]');if(!link)return;
+    if(isGuideHash(link.hash)){event.preventDefault();openGuide(link.hash,link);}
+    else if(guide.open&&guide.contains(link))closeGuide(true);
+  });
+  addEventListener('hashchange',()=>{if(isGuideHash(location.hash))openGuide(location.hash);else if(guide.open)closeGuide(true);});
+  openGuide(location.hash);
   $('#method-a').onchange=e=>{state.a=e.target.value;renderComparison();};
   $('#method-b').onchange=e=>choose(e.target.value);
   $('#show-pending').onchange=e=>{state.pending=e.target.checked;rebuildRecords();renderSelects();renderComparison();};
