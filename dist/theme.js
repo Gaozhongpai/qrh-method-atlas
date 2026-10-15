@@ -1,7 +1,7 @@
 // Colour theme: system (default), light or dark. CSS handles the stylesheet
 // colours (theme.css); this module remaps colours that the charts write into
 // inline SVG attributes and style attributes, and restores them for light.
-import {DARK_MAP} from './theme-map.js?v=atlas-3';
+import {DARK_MAP} from './theme-map.js?v=atlas-4';
 
 const root = document.documentElement;
 const media = matchMedia('(prefers-color-scheme: dark)');
